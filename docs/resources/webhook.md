@@ -49,15 +49,15 @@ Create a new webhook. Returns a [webhook](#webhook-object) object on success.
 | channelId | [channel id](/resources/channel#channel-object) | the channel's id to create the webhook in |
 
 ## Get Channel Webhooks
-<span class="http-verb">GET</span><span class="http-path">/teams/{team.id}/channels/{channel.id}/webhooks</span>
+<span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/channels/{[channel.id](/resources/channel#channel-object)}/webhooks</span>
 
 !!! bug
-    This endpoint seems to return `{"webhooks": []}` every time. I'm unsure how the client actually fetches webhooks. Do you know the proper endpoint for this? Tell me on [the community server](https://community.guildedapi.com) or submit a [pull request](https://git.guildedapi.com/docs/pulls)!
+    This endpoint returns an empty list; `{"webhooks": []}`. Instead, use [team.webhooks](/resources/team#get-team).
 
-*Should* return a list of [webhook](#webhook-object) objects. Instead, use [team.webhooks](/resources/team#get-team). It is unknown how to get webhook tokens after creating them initially.
+Get a list of [webhook](#webhook-object) objects.
 
 ## Modify Webhook
-<span class="http-verb">PUT</span><span class="http-path">/webhooks/{webhook.id}</span>
+<span class="http-verb">PUT</span><span class="http-path">/webhooks/{[webhook.id](#webhook-object)}</span>
 
 Modify a webhook. Returns the updated [webhook](#webhook-object) object on success.
 
@@ -76,20 +76,23 @@ Modify a webhook. Returns the updated [webhook](#webhook-object) object on succe
 | channelId  | [channel id](/resources/channel#channel-object) | the new channel id this webhook should send to     |
 
 ## Delete Webhook
-<span class="http-verb">DELETE</span><span class="http-path">/webhooks/{webhook.id}</span>
+<span class="http-verb">DELETE</span><span class="http-path">/webhooks/{[webhook.id](#webhook-object)}</span>
 
 Delete a webhook. Returns a partial [webhook](#webhook-object) object on success with only `id` and `deletedAt` fields.
 
 ## Execute Webhook
-<span class="http-verb">POST</span><span class="http-path">https://media.guilded.gg/webhooks/{webhook.id}/{webhook.token}</span>
+<span class="http-verb">POST</span><span class="http-path">https://media.guilded.gg/webhooks/{[webhook.id](#webhook-object)}/{[webhook.token](#webhook-object)}</span>
 
-This endpoint is supposedly [similar enough](/images/webhooks_identical.png) to Discord's `POST /webhooks/{webhook.id}/{webhook.token}` that all you have to do is "change a url". However, many of the same fields are not supported (although they will not raise).
+!!! info
+    This endpoint is supposedly [similar enough](/images/webhooks_identical.png) to Discord's [`POST /webhooks/{webhook.id}/{webhook.token}`](https://discord.dev/resources/webhook#execute-webhook) that all you have to do is "change a url". However, many of the same fields are not supported (although they will not raise).
 
 !!! info
     You do not have to append `/github` onto your webhook URL for use with GitHub repos and organizations. The URL by itself will work as intended.
 
-!!! info
+!!! warning
     It is recommended not to choose all events for GitHub webhooks, as many of them are not supported and will result in an `Error: event type [...] not supported` whenever it happens.
+
+Send a message through a webhook.
 
 ###### JSON/Form Params
 

@@ -853,6 +853,16 @@ Returns a [message](/resources/channel#message-object) object. Fires a [Message 
 
 Delete a message. Fires a [Message Delete](/topics/gateway#ChatMessageDeleted) Gateway event.
 
+## Add Reaction
+<span class="http-verb">POST</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/messages/{[message.id](/resources/channel#message-object)}/reactions/{reaction.id}</span>
+
+React to a message with an emoji. Returns a pretty empty `[null, [], []]` on success.
+
+## Delete Own Reaction
+<span class="http-verb">DELETE</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/messages/{[message.id](/resources/channel#message-object)}/reactions/{reaction.id}</span>
+
+Delete your reaction to a message. Returns a pretty empty `[[], []]` on success.
+
 ## Get Pinned Messages
 <span class="http-verb">GET</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/pins</span>
 

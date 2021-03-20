@@ -28,7 +28,7 @@ As mentioned in [the Intro page](/#userbots-you), there is no bot API. In order 
 
 For the HTTP API, authentication is not passed through the headers, but the JSON body. 
 
-### Quick Authentication How-To
+## Quick Authentication How-To
 <span class="http-verb">POST</span><span class="http-path">/login</span>
 
 Logs you into Guilded. Important data here is the returned `Set-Cookie` header, which you need to pass as a `cookie` header when [connecting to the gateway](/topics/gateway#connecting-to-the-gateway).
@@ -57,7 +57,6 @@ For some endpoints, you will have to Bring Your Own UUID (BYOU). Worry not - thi
 | [uuid.uuid1()](https://docs.python.org/3/library/uuid.html#uuid.uuid1) | Python     |
 | [uuid.uuidv4()](https://www.npmjs.com/package/uuid)                    | JavaScript |
 | [uuid-random.uuid()](https://www.npmjs.com/package/uuid-random)        | JavaScript |
-| | C# |
 
 ## Generic Object IDs
 
