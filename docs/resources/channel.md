@@ -1,0 +1,932 @@
+# Channels
+
+### Channel Object
+
+Represents a team or DM channel.
+
+###### Team Channel Structure
+
+| Field               | Type               | Description                                                                                              |
+|---------------------|--------------------|----------------------------------------------------------------------------------------------------------|
+| id                  | uuid               | the id of this channel                                                                                   |
+| type                | string             | the [type of channel](#channel-types)                                                                    |
+| createdAt           | ISO8601 timestamp  | when this channel was created                                                                            |
+| createdBy           | user id            | who created this channel                                                                                 |
+| updatedAt           | ?ISO8601 timestamp | when this channel was last modified                                                                      |
+| name                | string             | the name of this channel                                                                                 |
+| contentType         | string             | the [content type of channel](#channel-content-types) (text, voice, etc)                                 |
+| archivedAt          | ?ISO8601 timestamp | if this channel is archived, this is when it was archived                                                |
+| parentChannelId     | ?uuid              | if this channel has a parent channel, this is that channel's id                                          |
+| autoArchiveAt       | ?ISO8601 timestamp | when this channel will be automatically archived (only applicable to threads)                            |
+| deletedAt           | ?ISO8601 timestamp | if this channel is deleted, this is when it was deleted                                                  |
+| archivedBy          | ?user id           | if this channel is archived, this is who archived it                                                     |
+| description         | ?string            | the channel description                                                                                  |
+| createdByWebhookId  | ?uuid              | if a webhook created this channel, this is the webhook's id                                              |
+| archivedByWebhookId | ?uuid              | if a webhook archived this channel, this is the webhook's id                                             |
+| teamId              | ?team id           | if this is a team channel (not a DM channel), this is the team's id                                      |
+| channelCategoryId   | ?uuid              | if this channel is in a category, this is the category's id                                              |
+| addedAt             | ?ISO8601 timestamp | ???                                                                                                      |
+| channelId           | ?uuid              | same as `id`                                                                                             |
+| isRoleSynced        | ?bool              | if this channel's roles are synced with the linked Discord guild's roles                                 |
+| roles               | ?array             | a list of roles that (have overwrites in \| are synced with) this channel                                |
+| userPermissions     | ?array             | a list of users who have overwrites in this channel                                                      |
+| tournamentRoles     | ?array             | ???                                                                                                      |
+| isPublic            | bool               | whether this channel is marked as public (can be seen without being a member of the team)                |
+| priority            | integer            | ???                                                                                                      |
+| groupId             | ?group id          | if this is a team channel, this is the group's id this channel belongs to                                |
+| settings            | ???                | ???                                                                                                      |
+| groupType           | string             | ???                                                                                                      |
+| rolesById           | dictionary         | mapping of roleId: role object with undescript permissions                                               |
+| tournamentRolesById | dictionary         | ???                                                                                                      |
+| createdByInfo       | dictionary         | contains the `id`, `name`, `profilePicture`, and `profilePictureSm` of the user who created this channel |
+
+###### DM Channel Structure
+
+| Field               | Type               | Description                                                        |
+|---------------------|--------------------|--------------------------------------------------------------------|
+| id                  | uuid               | the id of this channel                                             |
+| type                | string             | the [type of channel](#channel-types)                              |
+| name                | ?string            | the name of this channel (group dms?)                              |
+| description         | ?string            | the description of this channel (group dms???)                     |
+| users               | array              | list of [users](/resources/user#user-object) in this dm (including yourself) |
+| createdAt           | ISO8601 timestamp  | when this channel was created                                      |
+| createdBy           | [user id](/resources/user#user-object) | the user's id who created this dm                        |
+| updatedAt           | ISO8601 timestamp  | when this channel was last updated                                 |
+| contentType         | string             | the [content type of channel](#channel-content-types). should always be 'chat' |
+| archivedAt          | ?ISO8601 timestamp | when this channel was archived                                      |
+| autoArchiveAt       | ?ISO8601 timestamp | when this channel will automatically be archived                    |
+| archivedBy          | ?[user id](/resources/user#user-object) | the user's id who archived this channel                 |
+| parentChannelId     | ?uuid              | this channel's parent id                                            |
+| deletedAt           | ?ISO8601 timestamp | when this channel was deleted                                       |
+| createdByWebhookId  | ?[webhook id](/resources/webhook#webhook-object) | the webhook's id that created this channel  |
+| archivedByWebhookId | ?[webhook id](/resources/webhook#webhook-object) | the webhook's id that archived this channel |
+| dmType              | string             | the dm type of channel. known values: 'Default'                     |
+| ownerId             | [user id](/resources/user#user-object) | the user's id who owns this dm                  |
+| voiceParticipants?  | array              | list of [users](/resources/user#user-object) in the dm's voice call |
+
+###### Channel Types
+
+| Type | Description                    |
+|------|--------------------------------|
+| Team | a channel within a server      |
+| DM   | a direct message between users |
+
+###### Channel Content Types
+
+| Type  | Description           |
+|-------|-----------------------|
+| chat  | a chat (text) channel |
+| voice | a voice channel       |
+| forum | a forum channel       |
+| doc   | a docs channel        |
+
+###### Example Team Chat Channel
+
+```json
+{
+  "priority": 4,
+  "id": "d2242862-401c-42f8-9ce2-0c75977475a6",
+  "type": "Team",
+  "name": "general",
+  "description": "wacky hi-jinks ensue!",
+  "settings": null,
+  "roles": null,
+  "rolesById": {},
+  "tournamentRolesById": {},
+  "teamId": "4R5q39VR",
+  "channelCategoryId": null,
+  "addedAt": null,
+  "channelId": "d2242862-401c-42f8-9ce2-0c75977475a6",
+  "isRoleSynced": null,
+  "isPublic": false,
+  "groupId": "WD56qLmd",
+  "createdAt": "2020-07-31T18:51:19.563Z",
+  "createdBy": "EdVMVKR4",
+  "updatedAt": "2020-07-31T18:51:19.563Z",
+  "contentType": "chat",
+  "archivedAt": null,
+  "parentChannelId": null,
+  "autoArchiveAt": null,
+  "deletedAt": null,
+  "archivedBy": null,
+  "createdByWebhookId": null,
+  "archivedByWebhookId": null,
+  "userPermissions": null,
+  "tournamentRoles": null,
+  "voiceParticipants": [],
+  "userStreams": []
+}
+```
+
+###### Example DM Channel
+
+```json
+{
+  "id": "f695a133-3812-4db4-b733-64a1efdf8fd2",
+  "type": "DM",
+  "name": null,
+  "description": null,
+  "users": [
+    {
+      "id": "EdVMVKR4",
+      "name": "shay",
+      "badges": null,
+      "nickname": null,
+      "addedAt": "2021-03-18T19:46:18.536991+00:00",
+      "isOwner": true,
+      "channelId": "f695a133-3812-4db4-b733-64a1efdf8fd2",
+      "removedAt": null,
+      "userStatus": {
+        "content": {
+          "object": "value",
+          "document": {
+            "data": {},
+            "nodes": [
+              {
+                "data": {},
+                "type": "paragraph",
+                "nodes": [
+                  {
+                    "leaves": [
+                      {
+                        "text": "g.gg/guilded-api",
+                        "marks": [],
+                        "object": "leaf"
+                      }
+                    ],
+                    "object": "text"
+                  },
+                  {
+                    "data": {
+                      "reaction": {
+                        "id": 294745,
+                        "customReaction": {
+                          "id": 294745,
+                          "name": "blobcouple",
+                          "png": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/448cff53087b93e72298bae9d47708f1-Full.webp?w=120&h=120",
+                          "webp": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/448cff53087b93e72298bae9d47708f1-Full.webp?w=120&h=120",
+                          "apng": null
+                        },
+                        "customReactionId": 294745
+                      }
+                    },
+                    "type": "reaction",
+                    "nodes": [
+                      {
+                        "leaves": [
+                          {
+                            "text": ":blobcouple:",
+                            "marks": [],
+                            "object": "leaf"
+                          }
+                        ],
+                        "object": "text"
+                      }
+                    ],
+                    "object": "inline"
+                  },
+                  {
+                    "leaves": [
+                      {
+                        "text": "g.gg/blob-emoji ",
+                        "marks": [],
+                        "object": "leaf"
+                      }
+                    ],
+                    "object": "text"
+                  },
+                  {
+                    "data": {
+                      "reaction": {
+                        "id": 294677,
+                        "customReaction": {
+                          "id": 294677,
+                          "name": "blobpats",
+                          "png": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/ff03be6efe491bc934b1c217d70da9ce-Full.webp?w=120&h=120",
+                          "webp": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/ff03be6efe491bc934b1c217d70da9ce-Full.webp?w=120&h=120",
+                          "apng": null
+                        },
+                        "customReactionId": 294677
+                      }
+                    },
+                    "type": "reaction",
+                    "nodes": [
+                      {
+                        "leaves": [
+                          {
+                            "text": ":blobpats:",
+                            "marks": [],
+                            "object": "leaf"
+                          }
+                        ],
+                        "object": "text"
+                      }
+                    ],
+                    "object": "inline"
+                  }
+                ],
+                "object": "block"
+              }
+            ],
+            "object": "document"
+          }
+        },
+        "customReactionId": 294765,
+        "customReaction": {
+          "id": 294765,
+          "name": "ablobwobwork",
+          "png": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/d7cf013a4d01460a81186e65f1f8c12a-Full.webp?w=120&h=120&ia=1",
+          "webp": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/d7cf013a4d01460a81186e65f1f8c12a-Full.webp?w=120&h=120&ia=1",
+          "apng": null
+        }
+      },
+      "profilePicture": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/74bfc8be9425a926a1f48d9b078509bc-Large.png?w=450&h=450",
+      "profileBannerBlur": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserBanner/acaa9d0f78dd8cdd93f3ce44d14c0260-Hero.png?w=1500&h=500",
+      "userPresenceStatus": 1
+    },
+    {
+      "id": "2d2Wg8Pm",
+      "name": "GAPI Testing Account",
+      "badges": null,
+      "nickname": null,
+      "addedAt": "2021-03-18T19:46:18.536991+00:00",
+      "isOwner": false,
+      "channelId": "f695a133-3812-4db4-b733-64a1efdf8fd2",
+      "removedAt": null,
+      "userStatus": {
+        "content": null,
+        "customReactionId": null
+      },
+      "profilePicture": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/ca66e6624c1e6706c7c200b3759572cf-Large.png?w=450&h=450",
+      "profileBannerBlur": null,
+      "userPresenceStatus": "2"
+    }
+  ],
+  "DMType": "Default",
+  "lastMessage": {
+    "id": "a70946a5-5053-44b0-8573-fd652052426e",
+    "content": {
+      "object": "value",
+      "document": {
+        "data": {},
+        "nodes": [
+          {
+            "data": {},
+            "type": "paragraph",
+            "nodes": [
+              {
+                "leaves": [
+                  {
+                    "text": "hey docs! ",
+                    "marks": [],
+                    "object": "leaf"
+                  }
+                ],
+                "object": "text"
+              },
+              {
+                "data": {
+                  "reaction": {
+                    "id": 90001815,
+                    "customReactionId": 90001815,
+                    "customReaction": {
+                      "id": 90001815,
+                      "name": "tada",
+                      "png": null,
+                      "webp": null,
+                      "apng": null
+                    }
+                  }
+                },
+                "type": "reaction",
+                "nodes": [
+                  {
+                    "leaves": [
+                      {
+                        "text": ":tada:",
+                        "marks": [],
+                        "object": "leaf"
+                      }
+                    ],
+                    "object": "text"
+                  }
+                ],
+                "object": "inline"
+              },
+              {
+                "leaves": [
+                  {
+                    "text": " ",
+                    "marks": [],
+                    "object": "leaf"
+                  }
+                ],
+                "object": "text"
+              }
+            ],
+            "object": "block"
+          }
+        ],
+        "object": "document"
+      }
+    },
+    "type": "default",
+    "createdBy": "EdVMVKR4",
+    "createdAt": "2021-03-18T19:46:25.697Z",
+    "editedAt": null,
+    "deletedAt": null,
+    "webhookId": null,
+    "botId": null
+  },
+  "createdAt": "2021-03-18T19:46:18.536Z",
+  "createdBy": "EdVMVKR4",
+  "updatedAt": "2021-03-18T19:46:18.536Z",
+  "contentType": "chat",
+  "archivedAt": null,
+  "parentChannelId": null,
+  "autoArchiveAt": null,
+  "deletedAt": null,
+  "archivedBy": null,
+  "createdByWebhookId": null,
+  "archivedByWebhookId": null,
+  "dmType": "Default",
+  "ownerId": "EdVMVKR4",
+  "voiceParticipants": []
+}
+```
+
+![example dm channel message](/images/example_dm_channel_message.png)
+
+### Message Object
+
+Represents a message sent in a channel within Guilded.
+
+###### Message Structure
+
+| Field      | Type                                                 | Description                                                                 |
+|------------|------------------------------------------------------|-----------------------------------------------------------------------------|
+| id         | uuid                                                 | id of the message                                                           |
+| channelId  | [channel id](#channel-object)                        | id of the channel the message was sent in                                   |
+| createdBy  | user id                                              | the author's id of this message                                             |
+| content    | [message content](#message-content-structure) object | contents of the message (including text, embeds, mentions, and attachments) |
+| createdAt  | ISO8601 timestamp                                    | when this message was sent                                                  |
+| editedAt   | ?ISO8601 timestamp                                   | when this message was edited (or null if never)                             |
+| deletedAt  | ?ISO8601 timestamp                                   | when this message was deleted (or null if it has not been deleted)          |
+| reactions  | array of [reaction](#reaction-object) objects        | reactions to the message                                                    |
+| isPinned   | boolean                                              | whether this message is pinned                                              |
+| pinnedBy   | ?user id                                             | if the message is pinned, this is the user's id who pinned it               |
+| webhookId  | ?user id                                             | if the message is generated by a webhook, this is the webhook's id          |
+| botId?     | user id                                              | if the message is generated by a bot, this is the bot's id                  |
+| type       | string                                               | type of message. usually `default`                                          |
+
+###### Example Message
+
+```json
+{
+  "id": "b943384a-d951-4323-8e26-8e3e6b7c431a",
+  "content": {
+    "object": "value",
+    "document": {
+      "object": "document",
+      "data": {},
+      "nodes": [
+        {
+          "object": "block",
+          "type": "paragraph",
+          "data": {},
+          "nodes": [
+            {
+              "object": "text",
+              "leaves": [
+                {
+                  "object": "leaf",
+                  "text": "cool message with an ",
+                  "marks": []
+                }
+              ]
+            },
+            {
+              "object": "inline",
+              "type": "reaction",
+              "data": {
+                "reaction": {
+                  "id": 90001815,
+                  "customReactionId": 90001815
+                }
+              },
+              "nodes": [
+                {
+                  "object": "text",
+                  "leaves": [
+                    {
+                      "object": "leaf",
+                      "text": ":tada:",
+                      "marks": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "object": "text",
+              "leaves": [
+                {
+                  "object": "leaf",
+                  "text": " emoji, some ",
+                  "marks": []
+                },
+                {
+                  "object": "leaf",
+                  "text": "bold formatting",
+                  "marks": [
+                    {
+                      "object": "mark",
+                      "type": "italic",
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "object": "leaf",
+                  "text": ", maybe even a ",
+                  "marks": []
+                }
+              ]
+            },
+            {
+              "object": "inline",
+              "type": "reaction",
+              "data": {
+                "reaction": {
+                  "id": 294637,
+                  "customReactionId": 294637
+                }
+              },
+              "nodes": [
+                {
+                  "object": "text",
+                  "leaves": [
+                    {
+                      "object": "leaf",
+                      "text": ":thinkingwithblobs:",
+                      "marks": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "object": "text",
+              "leaves": [
+                {
+                  "object": "leaf",
+                  "text": " custom emoji?",
+                  "marks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+### Embed Object
+
+Embeds objects in Guilded are the same as in Discord.
+
+###### Embed Structure
+
+| Field        | Type                                                   | Description                |
+|--------------|--------------------------------------------------------|----------------------------|
+| title?       | string                                                 | title of embed             |
+| description? | string                                                 | description of embed       |
+| url?         | string                                                 | url of embed               |
+| timestamp?   | ISO8601 timestamp                                      | timestamp of embed content |
+| color?       | integer                                                | color code of the embed    |
+| footer?      | [embed footer](#embed-footer-structure) object         | footer information         |
+| image?       | [embed image](#embed-image-structure) object           | image information          |
+| thumbnail?   | [embed thumbnail](#embed-thumbnail-structure) object   | thumbnail information      |
+| video?       | [embed video](#embed-video-structure) object           | video information          |
+| provider?    | [embed provider](#embed-provider-structure) object     | provider information       |
+| author?      | [embed author](#embed-author-structure) object         | author information         |
+| fields?      | array of [embed field](#embed-field-structure) objects | fields information         |
+
+###### Embed Thumbnail Structure
+
+| Field      | Type    | Description                                    |
+|------------|---------|------------------------------------------------|
+| url?       | string  | source url of thumbnail. only supports http(s) |
+| proxy_url? | string  | a proxied url of the thumbnail                 |
+| height?    | integer | height of thumbnail                            |
+| width?     | integer | width of thumbnail                             |
+
+###### Embed Video Structure
+
+| Field      | Type    | Description                |
+|------------|---------|----------------------------|
+| url?       | string  | source url of video        |
+| proxy_url? | string  | a proxied url of the video |
+| height?    | integer | height of video            |
+| width?     | integer | width of video             |
+
+###### Embed Image Structure
+
+| Field      | Type    | Description                                |
+|------------|---------|--------------------------------------------|
+| url?       | string  | source url of image. only supports http(s) |
+| proxy_url? | string  | a proxied url of the image                 |
+| height?    | integer | height of image                            |
+| width?     | integer | width of image                             |
+
+###### Embed Provider Structure
+
+| Field | Type   | Description      |
+|-------|--------|------------------|
+| name? | string | name of provider |
+| url?  | string | url of provider  |
+
+###### Embed Author Structure
+
+| Field           | Type   | Description                               |
+|-----------------|--------|-------------------------------------------|
+| name?           | string | name of author                            |
+| url?            | string | url of author                             |
+| icon_url?       | string | url of author icon. only supports http(s) |
+| proxy_icon_url? | string | a proxied url of author icon              |
+
+###### Embed Footer Structure
+
+| Field           | Type   | Description                               |
+|-----------------|--------|-------------------------------------------|
+| text            | string | footer text                               |
+| icon_url?       | string | url of footer icon. only supports http(s) |
+| proxy_icon_url? | string | a proxied url of footer icon              |
+
+###### Embed Field Structure
+
+| Field   | Type    | Description                                     |
+|---------|---------|-------------------------------------------------|
+| name    | string  | name of the field                               |
+| value   | string  | value of the field                              |
+| inline? | boolean | whether or not this field should display inline |
+
+## Get Embed for URL
+<span class="http-verb">GET</span><span class="http-path">/content/embed_info</span>
+
+Generate embed data for a specific URL. Returns a special ["unfurl embed" object](#unfurl-embed-object) on response.
+
+###### Query Params
+
+| Field | Type   | Description                  | Required |
+|-------|--------|------------------------------|----------|
+| url   | string | the url to get the embed for | true     |
+
+### Unfurl Embed Object
+
+###### Unfurl Embed Structure
+
+!!! info
+    All of the below fields are optional and nullable.
+
+| Field         | Type   | Description                          |
+|---------------|--------|--------------------------------------|
+| ogTitle       | string | og:title                             |
+| ogDescription | string | og:description                       |
+| ogSiteName    | string | og:site_name                         |
+| ogUrl         | string | og:url                               |
+| ogImage.url   | string | proxied og:image                     |
+| siteType      | string | doesn't seem to line up with og:type |
+
+###### Example Unfurl Embed
+
+```json
+{
+  "ogTitle": "Guilded - Chat for Gaming Communities",
+  "ogDescription": "Guilded upgrades your group chat and equips your server with integrated event calendars, forums, and more – 100% free.",
+  "ogSiteName": "Guilded - Chat for Gaming Communities",
+  "ogUrl": "https://www.guilded.gg/",
+  "ogImage": {
+    "url": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/ExternalOGEmbedImage/11066c41a2569c628f119f2b2e32aa00-Full.png?w=1024&h=1024"
+  },
+  "siteType": "guilded"
+}
+```
+
+## Embed Limits
+
+To facilitate showing rich content, rich embeds do not follow the traditional limits of message content. However, some limits are still in place to prevent excessively large embeds. The following table describes the limits:
+
+###### Limits
+
+!!! info
+    The following table is left for placeholder purposes. Embeds can be very expansive and I have yet to see what their limits are (as well as how many you can fit in a message).
+
+All of the following limits are measured inclusively. Leading and trailing whitespace characters are not included (they are trimmed automatically).
+
+| Field | Limit |
+|-------|-------|
+| title | ??? characters |
+| description | ??? characters |
+| fields | Up to ??? field objects |
+| [field.name](/resources/channel#embed-field-structure)   | ??? characters |
+| [field.value](/resources/channel#embed-field-structure)  | ??? characters |
+| [footer.text](/resources/channel#embed-footer-structure) | ??? characters |
+| [author.name](/resources/channel#embed-author-structure) | ??? characters |
+
+Additionally, the characters in all `title`, `description`, `field.name`, `field.value`, `footer.text`, and `author.name` fields must not exceed ***???*** characters in total.
+
+## Get Channel
+<span class="http-verb">GET</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}</span>
+
+Get a channel by ID. Returns a [channel object](#channel-object).
+
+## Modify Channel
+<span class="http-verb">PATCH</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}</span>
+
+Update a channel's settings. Requires the `MANAGE_CHANNELS` permission for the guild. Returns a [channel](/resources/channel#channel-object) on success, and a 400 BAD REQUEST on invalid parameters. Fires a [Channel Update](/topics/gateway#channel-update) Gateway event. If modifying a category, individual [Channel Update](/topics/gateway#channel-update) events will fire for each child channel that also changes. If modifying permission overwrites, the `MANAGE_ROLES` permission is required. Only permissions your bot has in the guild or channel can be allowed/denied (unless your bot has a `MANAGE_ROLES` overwrite in the channel). All JSON parameters are optional.
+
+###### JSON Params
+
+| Field                 | Type                                                                    | Description                                                                                                                                                                     | Channel Type             |
+|-----------------------|-------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
+| name                  | string                                                                  | 2-100 character channel name                                                                                                                                                    | All                      |
+| type                  | integer                                                                 | the [type of channel](/resources/channel#channel-object-channel-types); only conversion between text and news is supported and only in guilds with the "NEWS" feature      | Text, News               |
+| position              | ?integer                                                                | the position of the channel in the left-hand listing                                                                                                                            | All                      |
+| topic                 | ?string                                                                 | 0-1024 character channel topic                                                                                                                                                  | Text, News               |
+| nsfw                  | ?boolean                                                                | whether the channel is nsfw                                                                                                                                                     | Text, News, Store        |
+| rate_limit_per_user   | ?integer                                                                | amount of seconds a user has to wait before sending another message (0-21600); bots, as well as users with the permission `manage_messages` or `manage_channel`, are unaffected | Text                     |
+| bitrate               | ?integer                                                                | the bitrate (in bits) of the voice channel; 8000 to 96000 (128000 for VIP servers)                                                                                              | Voice                    |
+| user_limit            | ?integer                                                                | the user limit of the voice channel; 0 refers to no limit, 1 to 99 refers to a user limit                                                                                       | Voice                    |
+| parent_id             | ?snowflake                                                              | id of the new parent category for a channel                                                                                                                                     | Text, News, Store, Voice |
+
+## Delete/Close Channel
+<span class="http-verb">DELETE</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}</span>
+
+Delete a channel. Requires the `MANAGE_CHANNELS` permission for the team. Deleting a category does not delete its child channels; they will have their `categoryId` removed and a [Channel Update](/topics/gateway#channel-update) Gateway event will fire for each of them. Returns a [channel](/resources/channel#channel-object) object on success. Fires a [Channel Delete](/topics/gateway#channel-delete) Gateway event.
+
+!!! warn
+    Deleting a guild channel cannot be undone. Use this with caution, as it is impossible to undo this action when performed on a guild channel. In contrast, when used with a private message, it is possible to undo the action by opening a private message with the recipient again.
+
+!!! info
+    For Community guilds, the Rules or Guidelines channel and the Community Updates channel cannot be deleted.
+
+## Get Channel Messages
+<span class="http-verb">GET</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/messages</span>
+
+Returns the messages for a channel. Does not require authentication. Returns an array of [message](/resources/channel#message-object) objects and a boolean `hasPastMessages` detailing if there are messages preceeding this array on success.
+
+Query string parameter `limit` has been tested up to 50,000.
+
+###### Query String Params
+
+| Field  | Type    | Description                              | Required | Default |
+|--------|---------|------------------------------------------|----------|---------|
+| limit  | integer | max number of messages to return (0-???) | false    | 51      |
+
+## Get Channel Message
+<span class="http-verb">GET</span><span class="http-path">/content/route/metadata?route=//channels/{[channel.id](/resources/channel#channel-object)}/chat?messageId={[message.id](/resources/channel#message-object)}</span>
+
+Get a specific message in the channel. Returns a [message object](#message-object) on success.
+
+###### Query String Params
+
+| Field     | Type                          | Description                         | Required |
+|-----------|-------------------------------|-------------------------------------|----------|
+| route     | string (metadata path)        | the channel to get the message from | true     |
+| messageId | [message id](#message-object) | the message to get                  | true     |
+
+## Send Message
+<span class="http-verb">POST</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/messages</span>
+
+Post a message to a team channel or DM channel. Returns a [message](#message-object) object. Fires a [Message Create](/topics/gateway#ChatMessageCreated) Gateway event.
+
+The actual uploading of attachments is a separate endpoint. See [how to upload files](/reference#upload-a-file). Use a dynamicMediaTypeId of `ContentMedia`.
+
+The concept of "replies" do not exist, but you may [begin a new thread](#create-thread) with a `message` key to send your message as a new thread.
+
+###### JSON Params
+
+!!! info
+    Note that when sending `application/json` you must send at **least one of** `content` or `embed`.
+
+| Field             | Type                                                                               | Description                                             |
+|-------------------|------------------------------------------------------------------------------------|---------------------------------------------------------|
+| messageId         | [uuid](/reference#snowflakes-uuids)                                                | the id for this message                                 |
+| content           | [message content]                                                                  | the message contents (up to 4,000 characters of text)   |
+
+###### Example Request Body
+
+```json
+{
+  "messageId": "b943384a-d951-4323-8e26-8e3e6b7c431a",
+  "content": {
+    "object": "value",
+    "document": {
+      "object": "document",
+      "data": {},
+      "nodes": [
+        {
+          "object": "block",
+          "type": "paragraph",
+          "data": {},
+          "nodes": [
+            {
+              "object": "text",
+              "leaves": [
+                {
+                  "object": "leaf",
+                  "text": "cool message with an ",
+                  "marks": []
+                }
+              ]
+            },
+            {
+              "object": "inline",
+              "type": "reaction",
+              "data": {
+                "reaction": {
+                  "id": 90001815,
+                  "customReactionId": 90001815
+                }
+              },
+              "nodes": [
+                {
+                  "object": "text",
+                  "leaves": [
+                    {
+                      "object": "leaf",
+                      "text": ":tada:",
+                      "marks": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "object": "text",
+              "leaves": [
+                {
+                  "object": "leaf",
+                  "text": " emoji, some ",
+                  "marks": []
+                },
+                {
+                  "object": "leaf",
+                  "text": "bold formatting",
+                  "marks": [
+                    {
+                      "object": "mark",
+                      "type": "italic",
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "object": "leaf",
+                  "text": ", maybe even a ",
+                  "marks": []
+                }
+              ]
+            },
+            {
+              "object": "inline",
+              "type": "reaction",
+              "data": {
+                "reaction": {
+                  "id": 294637,
+                  "customReactionId": 294637
+                }
+              },
+              "nodes": [
+                {
+                  "object": "text",
+                  "leaves": [
+                    {
+                      "object": "leaf",
+                      "text": ":thinkingwithblobs:",
+                      "marks": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "object": "text",
+              "leaves": [
+                {
+                  "object": "leaf",
+                  "text": " custom emoji?",
+                  "marks": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+## Edit Message
+<span class="http-verb">PATCH</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/messages/{[message.id](/resources/channel#message-object)}</span>
+
+Edit a previously sent message. The fields `content`, `embed`, `allowed_mentions` and `flags` can be edited by the original message author. Other users can only edit `flags` and only if they have the `MANAGE_MESSAGES` permission in the corresponding channel. When specifying flags, ensure to include all previously set flags/bits in addition to ones that you are modifying. Only `flags` documented in the table below may be modified by users (unsupported flag changes are currently ignored without error).
+
+Returns a [message](/resources/channel#message-object) object. Fires a [Message Update](/topics/gateway#ChatMessageUpdated) Gateway event.
+
+!!! info
+    All parameters to this endpoint are optional and nullable.
+
+###### JSON Params
+
+| Field            | Type                                                                      | Description                                                                                                                             |
+|------------------|---------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| content          | string                                                                    | the new message contents (up to 2000 characters)                                                                                        |
+| embed            | [embed](/resources/channel#embed-object) object                      | embedded `rich` content                                                                                                                 |
+
+## Delete Message
+<span class="http-verb">DELETE</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/messages/{[message.id](/resources/channel#message-object)}</span>
+
+Delete a message. Fires a [Message Delete](/topics/gateway#ChatMessageDeleted) Gateway event.
+
+## Get Pinned Messages
+<span class="http-verb">GET</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/pins</span>
+
+Returns all pinned messages in the channel as an array of [message](/resources/channel#message-object) objects inside a `message` key.
+
+## Pin Message
+<span class="http-verb">POST</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/pins</span>
+
+!!! warning
+    The max pinned messages is ???.
+
+Pin a message in a channel.
+
+###### JSON Params
+
+| Field     | Type                          | Description             |
+|-----------|-------------------------------|-------------------------|
+| messageId | [message id](#message-object) | the message's id to pin | 
+
+## Unpin Message
+<span class="http-verb">DELETE</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/pins/{[message.id](/resources/channel#message-object)}</span>
+
+Delete a pinned message in a channel.
+
+## Create Thread
+<span class="http-verb">POST</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/threads</span>
+
+Create a new thread in a channel. Returns the created thread object on success.
+
+###### JSON Params
+
+| Field                | Type                                | Description                                                                                                                         |
+|----------------------|-------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| name                 | string                              | the name that this thread should have                                                                                               |
+| message              | [message](#example-request-body)    | the message to send when creating this thread                                                                                       |
+| channelId            | [uuid](/reference#snowflakes-uuids) | the id that this thread will have                                                                                                   |
+| threadMessageId      | [uuid](/reference#snowflakes-uuids) | ?                                                                                                                                   |
+| initialThreadMessage | [message](#message-object)          | the message that this thread is starting on                                                                                         |
+| contentType          | string                              | the [channel content type](#channel-content-types) that this thread should be. can probably only be 'chat', but try others and see! |
+| confirmed            | boolean                             | ?                                                                                                                                   |
+
+## Delete Thread
+<span class="http-verb">DELETE</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/groups/{[group.id](/resources/group#group-object)}/channels/{[thread.id](/resources/channel#channel-object)}</span>
+
+!!! info
+    `group.id` can be `undefined` if this is the base group.
+
+Delete a thread in a channel.
+
+## Post Team Announcement
+<span class="http-verb">POST</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/announcements</span>
+
+!!! warning
+    This posts an announcement to no specific channel. To post to a specific channel, see [Post Announcement](#post-announcement)
+
+Post an announcement to a team's overview page.
+
+###### JSON Params
+
+| Field   | Type                 | Description                                                                        |
+|---------|----------------------|------------------------------------------------------------------------------------|
+| title   | string               | the announcement's title                                                           |
+| content | announcement content | the announcement's content (similar to [message content](#message-content-object)) |
+
+## Post Announcement
+<span class="http-verb">POST</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/announcements</span>
+
+Post an announcement to an announcement channel.
+
+###### JSON Params
+
+| Field                 | Type                 | Description                                                                        |
+|-----------------------|----------------------|------------------------------------------------------------------------------------|
+| title                 | string               | the announcement's title                                                           |
+| content               | announcement content | the announcement's content (similar to [message content](#message-content-object)) |
+| dontSendNotifications | boolean              | whether to "notify all users" when the announcement is posted                      |
+

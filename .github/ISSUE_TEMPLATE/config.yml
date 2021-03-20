@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Developer Documentation
+    url: https://guildedapi.com
+    about: Documentation & examples for the API.
+  - name: Community Server
+    url: https://guilded.gg/guilded-api
+    about: Need help with the API? Ask us here!
