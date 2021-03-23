@@ -1,36 +1,39 @@
 # Images
 
-Here are a selection of "official images" collected from the Guilded client. They are owned by guilded.gg and are presented here unofficially and without approval from Guilded/guilded.gg.
+Here is an (incomplete) selection of "official images" collected from the Guilded client & website. They are owned by guilded.gg and are presented here without approval from Guilded/guilded.gg.
 
 ## Members
-![gil_members](https://img.guildedcdn.com/asset/TabEmptyStates/gil_members.png)
+![members](https://img.guildedcdn.com/asset/TabEmptyStates/gil_members.png)
+
+## Members (in color, from /jobs)
+![members](https://img.guildedcdn.com/asset/Jobs/jobs-hero.png)
 
 ## Recruitment
-![gil_recruitment](https://img.guildedcdn.com/asset/TabEmptyStates/gil_recruitment.png)
+![recruitment](https://img.guildedcdn.com/asset/TabEmptyStates/gil_recruitment.png)
 
 ## Overview
-![gil_overview](https://img.guildedcdn.com/asset/TabEmptyStates/gil_overview.png)
+![overview](https://img.guildedcdn.com/asset/TabEmptyStates/gil_overview.png)
 
 ## Forums
-![gil_forums](https://img.guildedcdn.com/asset/TabEmptyStates/gil_forums.png)
+![forums](https://img.guildedcdn.com/asset/TabEmptyStates/gil_forums.png)
 
 ## Calendar
-![gil_calendar](https://img.guildedcdn.com/asset/TabEmptyStates/gil_calendar.png)
+![calendar](https://img.guildedcdn.com/asset/TabEmptyStates/gil_calendar.png)
 
 ## Docs
-![gil_docs](https://img.guildedcdn.com/asset/TabEmptyStates/gil_docs.png)
+![docs](https://img.guildedcdn.com/asset/TabEmptyStates/gil_docs.png)
 
 ## Media
-![gil_media](https://img.guildedcdn.com/asset/TabEmptyStates/gil_media.png)
+![media](https://img.guildedcdn.com/asset/TabEmptyStates/gil_media.png)
 
 ## Roster
-![gil_roster](https://img.guildedcdn.com/asset/TabEmptyStates/gil_roster.png)
+![roster](https://img.guildedcdn.com/asset/TabEmptyStates/gil_roster.png)
 
 ## Streams
-![gil_streams](https://img.guildedcdn.com/asset/TabEmptyStates/gil_streams.png)
+![streams](https://img.guildedcdn.com/asset/TabEmptyStates/gil_streams.png)
 
 ## Matches
-![gil_matches](https://img.guildedcdn.com/asset/TabEmptyStates/gil_matches.png)
+![matches](https://img.guildedcdn.com/asset/TabEmptyStates/gil_matches.png)
 
 ## Nothing Here
 ![nothing-here](https://img.guildedcdn.com/asset/GenericMessages/nothing-here.png)
