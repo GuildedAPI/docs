@@ -53,10 +53,11 @@ Unlike Discord, Guilded uses [UUIDs](https://en.wikipedia.org/wiki/Universally_u
 For some endpoints, you will have to Bring Your Own UUID (BYOU). Worry not - this is typically a trivial task. Most languages should come with a way to generate a compliant UUID with ease, or have a 3rd-party library for such a purpose:
 
 | Method                                                                 | Language   |
-|------------------------------------------------------------------------|------------|
+|------------------------------------------------------------------------|:----------:|
 | [uuid.uuid1()](https://docs.python.org/3/library/uuid.html#uuid.uuid1) | Python     |
 | [uuid.uuidv4()](https://www.npmjs.com/package/uuid)                    | JavaScript |
 | [uuid-random.uuid()](https://www.npmjs.com/package/uuid-random)        | JavaScript |
+| System.Guid.NewGuid()                                                  |     C#     |
 
 ## Generic Object IDs
 
