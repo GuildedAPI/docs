@@ -2,9 +2,9 @@
 
 A group is a sub-section of a [team](/resources/team) that allows for custom membership based on roles. They can have a custom icon and name (under the main team's name) in the sidebar, making them somewhat of a middle ground between a permission-locked category and a separate team entirely.
 
-## Group Object
+### Group Object
 
-### Group Structure
+###### Group Structure
 
 | Field                           | Type                                         | Description                                                           |
 |---------------------------------|----------------------------------------------|-----------------------------------------------------------------------|

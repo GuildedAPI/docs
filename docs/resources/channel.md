@@ -493,6 +493,37 @@ Represents a message sent in a channel within Guilded.
 }
 ```
 
+### Unfurl Embed Object
+
+###### Unfurl Embed Structure
+
+!!! info
+    All of the below fields are optional and nullable.
+
+| Field         | Type   | Description                          |
+|---------------|--------|--------------------------------------|
+| ogTitle       | string | og:title                             |
+| ogDescription | string | og:description                       |
+| ogSiteName    | string | og:site_name                         |
+| ogUrl         | string | og:url                               |
+| ogImage.url   | string | proxied og:image                     |
+| siteType      | string | doesn't seem to line up with og:type |
+
+###### Example Unfurl Embed
+
+```json
+{
+  "ogTitle": "Guilded - Chat for Gaming Communities",
+  "ogDescription": "Guilded upgrades your group chat and equips your server with integrated event calendars, forums, and more – 100% free.",
+  "ogSiteName": "Guilded - Chat for Gaming Communities",
+  "ogUrl": "https://www.guilded.gg/",
+  "ogImage": {
+    "url": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/ExternalOGEmbedImage/11066c41a2569c628f119f2b2e32aa00-Full.png?w=1024&h=1024"
+  },
+  "siteType": "guilded"
+}
+```
+
 ### Embed Object
 
 Embeds objects in Guilded are the same as in Discord.
@@ -583,37 +614,6 @@ Generate embed data for a specific URL. Returns a special ["unfurl embed" object
 | Field | Type   | Description                  | Required |
 |-------|--------|------------------------------|----------|
 | url   | string | the url to get the embed for | true     |
-
-### Unfurl Embed Object
-
-###### Unfurl Embed Structure
-
-!!! info
-    All of the below fields are optional and nullable.
-
-| Field         | Type   | Description                          |
-|---------------|--------|--------------------------------------|
-| ogTitle       | string | og:title                             |
-| ogDescription | string | og:description                       |
-| ogSiteName    | string | og:site_name                         |
-| ogUrl         | string | og:url                               |
-| ogImage.url   | string | proxied og:image                     |
-| siteType      | string | doesn't seem to line up with og:type |
-
-###### Example Unfurl Embed
-
-```json
-{
-  "ogTitle": "Guilded - Chat for Gaming Communities",
-  "ogDescription": "Guilded upgrades your group chat and equips your server with integrated event calendars, forums, and more – 100% free.",
-  "ogSiteName": "Guilded - Chat for Gaming Communities",
-  "ogUrl": "https://www.guilded.gg/",
-  "ogImage": {
-    "url": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/ExternalOGEmbedImage/11066c41a2569c628f119f2b2e32aa00-Full.png?w=1024&h=1024"
-  },
-  "siteType": "guilded"
-}
-```
 
 ## Embed Limits
 
