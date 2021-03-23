@@ -12,5 +12,3 @@
 3. Additions that replicate or needlessly restructure current documentation.
 
 Contributions to this repository should conform to [Guilded's ToU](https://guilded.gg/terms), i.e. don't promote the breaching of ToU.
-
-Do not edit the `/build` directory. It exists for GitHub Pages to serve the documentation out of and is generated automatically.
