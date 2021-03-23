@@ -12,6 +12,4 @@ H6 headings should be used above tables and code blocks to properly label them.
 
 ## Join the Guilded API Server
 
-The API server is a common hangout for library and bot developers alike. It's a great starting point for those looking to dive in and learn bot-creation with the API.
-
-<iframe src="https://www.guilded.gg/canvas_index.html?route=%2Fcanvas%2Fembed%2Fteamcard%2F4R5q39VR&size=large" width="553" height="262" frameborder="0" scrolling="no"></iframe>
+The API server is a great place for library and bot developers to hang out and chat. It's also a great starting point for those looking to dive in and learn bot-creation with the API.
