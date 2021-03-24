@@ -12,7 +12,7 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
 | name                | string                                      | the user's username, not unique across the platform        |
 | subdomain           | ?string                                     | the user's unique profile url                              |
 | aliases             | array                                       | the linked games on the user's profile                     |
-| email               | ?string                                     | the user's email. null if this is not you                  |
+| email?              | ?string                                     | the user's email. null if this is not you                  |
 | serviceEmail        | ?string                                     | ?                                                          |
 | profilePicture      | string (url)                                | the user's avatar url                                      |
 | profilePictureSm    | string (url)                                | ^                                                          |
@@ -52,7 +52,6 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
       "playerInfo": null
     }
   ],
-  "email": null,
   "profilePictureSm": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/74bfc8be9425a926a1f48d9b078509bc-Large.png?w=450&h=450",
   "profilePicture": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/74bfc8be9425a926a1f48d9b078509bc-Large.png?w=450&h=450",
   "profilePictureLg": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/74bfc8be9425a926a1f48d9b078509bc-Large.png?w=450&h=450",
@@ -231,8 +230,93 @@ Passing a value of <1 or >4 will render with a transparent "presence circle" in 
 
 Status content is an example of "stacked" content, much like message data. It's pretty difficult to portray its structure in a table, so I've simply not done that. The useful part of the object is the `document.nodes[0].nodes` list. Refer to [this example](#example-user-status) and parse it as you will.
 
+### Me object
+
+###### Me Structure
+
+| Field           | Type                                      | Description                                                              |
+|-----------------|-------------------------------------------|--------------------------------------------------------------------------|
+| teams           | [team](/resources/team#team-object)[]     | Returns all client teams                                                 |
+| user            | [user](#user-object)                      | Returns this user                                                        |
+| updateMessage   | ?[update message](#update-message-object) | Guilded recent update's message                                          |
+| customReactions | emote[]                                   | A list of global emotes this user has                                    |
+| reactionUsages  | [emote use](#emote-use-object)[]          | A list of how many times a specific emote has been used by the this user |
+| friends         | [friend](#friend-object)[]                | A list of friends, friend requests and friend requests sent by this user |
+
+###### Me example
+
+```json
+
+```
+
+### Friend Object
+
+###### Friend Structure
+
+| Field        | Type                                        | Description                                         |
+|--------------|---------------------------------------------|-----------------------------------------------------|
+| friendUserId | [generic id](/reference#generic-object-ids) | ID of the user                                      |
+| friendStatus | [friend status](#friend-status)             | the current status of friendship                    |
+| createdAt    | date                                        | when the request was sent/when request got accepted |
+
+###### Example Friend
+
+```json
+{
+    "friendUserId": "R40Mp0Wd",
+    "friendStatus": "accepted",
+    "createdAt": "2021-01-01T15:00:00.000Z"
+}
+```
+
+###### Friend Status
+
+| Value     | Meaning                                |
+|-----------|----------------------------------------|
+| accepted  | the friend request was accepted        |
+| requested | this user has sent a friend request    |
+| pending   | a friend request was sent to this user |
+
+### Emote Use Object
+
+###### Emote Use Structure
+
+| Field | Type             | Description                     |
+|-------|------------------|---------------------------------|
+| id    | unsigned integer | ID of the emote                 |
+| total | unsigned integer | How many times it has been used |
+
+###### Example Emote Use
+
+```json
+{
+    "id": 90025666,
+    "total": 984
+}
+```
+
+### Update Message Object
+
+###### Update Message Structure
+
+| Field         | Type             | Description                                 |
+|---------------|------------------|---------------------------------------------|
+| id            | unsigned integer | ID of the update message                    |
+| content       | message content  | the content of the update message           |
+| createdAt     | date             | when the post was created                   |
+| updatedAt     | date             | when the post was edited                    |
+| publishedAt   | date             | when the post was published to everyone     |
+| ctaButtonText | string           | the text of the footer button               |
+| ctaButtonLink | url              | the link of the footer button               |
+
+###### Example Update Message
+
+```json
+
+```
+
 ## Get Current User
-<span class="http-verb">GET</span><span class="http-path">/me</span>
+<span class="http-verb">GET</span> <span class="http-path">/me</span>
 
 Returns the [user](#user-object) object of the requester's account.
 
@@ -245,7 +329,7 @@ Returns the [user](#user-object) object of the requester's account.
 ## Get User
 <span class="http-verb">GET</span><span class="http-path">/users/{[user.id](#user-object)}</span>
 
-Returns a [user](#user-object) object for a given user ID.
+Returns a [me-object](#me) object for a given user ID.
 
 ## Modify Current User
 <span class="http-verb">PUT</span><span class="http-path">/users/{[user.id](#user-object)}/profilev2</span>
