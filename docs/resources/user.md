@@ -251,7 +251,7 @@ Status content is an example of "stacked" content, much like message data. It's 
 | Field        | Type                                        | Description                                         |
 |--------------|---------------------------------------------|-----------------------------------------------------|
 | friendUserId | [generic id](/reference#generic-object-ids) | id of the user                                      |
-| friendStatus | [string](#friend-status)                    | the current status of friendship                    |
+| friendStatus | string                                      | the current [status of friendship](#friend-status)  |
 | createdAt    | ISO8601 timestamp                           | when the request was sent/when request got accepted |
 
 ###### Example Friend
@@ -294,15 +294,15 @@ Status content is an example of "stacked" content, much like message data. It's 
 
 ###### Update Message Structure
 
-| Field         | Type             | Description                                 |
-|---------------|------------------|---------------------------------------------|
-| id            | unsigned integer | ID of the update message                    |
-| content       | message content  | the content of the update message           |
-| createdAt     | date             | when the post was created                   |
-| updatedAt     | date             | when the post was edited                    |
-| publishedAt   | date             | when the post was published to everyone     |
-| ctaButtonText | string           | the text of the footer button               |
-| ctaButtonLink | url              | the link of the footer button               |
+| Field         | Type              | Description                                 |
+|---------------|-------------------|---------------------------------------------|
+| id            | unsigned integer  | ID of the update message                    |
+| content       | message content   | the content of the update message           |
+| createdAt     | ISO8601 timestamp | when the post was created                   |
+| updatedAt     | ISO8601 timestamp | when the post was edited                    |
+| publishedAt   | ISO8601 timestamp | when the post was published to everyone     |
+| ctaButtonText | string            | the text of the footer button               |
+| ctaButtonLink | url               | the link of the footer button               |
 
 ## Get Current User
 <span class="http-verb">GET</span><span class="http-path">/me</span>
