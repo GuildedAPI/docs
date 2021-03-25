@@ -235,14 +235,14 @@ Status content is an example of "stacked" content, much like message data. It's 
 
 ###### Me Structure
 
-| Field           | Type                                      | Description                                                              |
-|-----------------|-------------------------------------------|--------------------------------------------------------------------------|
-| teams           | [team](/resources/team#team-object)[]     | returns all client teams                                                 |
-| user            | [user](#user-object)                      | returns this user                                                        |
-| updateMessage   | ?[update message](#update-message-object) | guilded recent update's message                                          |
-| customReactions | array of emotes                           | a list of global emotes this user has                                    |
-| reactionUsages  | array of [emote uses](#emote-use-object)  | a list of how many times a specific emote has been used by the this user |
-| friends         | array of [friends](#friend-object)        | a list of friends, friend requests and friend requests sent by this user |
+| Field           | Type                                          | Description                                                              |
+|-----------------|-----------------------------------------------|--------------------------------------------------------------------------|
+| teams           | array of [teams](/resources/team#team-object) | returns all client teams                                                 |
+| user            | [user](#user-object)                          | returns this user                                                        |
+| updateMessage   | ?[update message](#update-message-object)     | guilded's update message                                                 |
+| customReactions | array of emotes                               | a list of global emotes this user has                                    |
+| reactionUsages  | array of [emote uses](#emote-use-object)      | a list of how many times a specific emote has been used by the this user |
+| friends         | array of [friends](#friend-object)            | a list of friends, friend requests and friend requests sent by this user |
 
 ### Friend Object
 
