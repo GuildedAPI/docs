@@ -12,17 +12,19 @@ The rest of the event's data is included top-level with the event payload (e.g. 
 
 ```json
 {
-    "type": "EventName",  // your saving grace of consistency in Guilded payloads
-    "somethingId": "ffd717d5-73f1-11eb-8d50-6245b4f631c5",
-    "listOfThings": [],
-    "needlesslyComplicatedObject": {
-        "content": {
-            "messageContent": "I feel bad for the devs who had to make the client."
-        }
-    },
-    "happenedAt": "ISO8601.T.ime:sta:mp",
-    "imageLink": "https://the-entire-url.to-the-file-on.aws/because_lol-Large.webp",
-    "madeBy": "5A2B60"
+  "type": "EventName",
+  "somethingId": "ffd717d5-73f1-11eb-8d50-6245b4f631c5",
+  "listOfThings": [],
+  "stackedContentObject": {
+    "nodes": [{
+      "leaves": [{
+        "content": "hey go write something funny for the docs"
+      }]
+    }]
+  },
+  "happenedAt": "ISO8601.T.ime:sta:mpZ",
+  "imageLink": "https://the-entire-url.to-the-file-on.aws/because_lol-Large.webp",
+  "madeBy": "5A2B60"
 }
 ```
 
@@ -39,7 +41,7 @@ The rest of the event's data is included top-level with the event payload (e.g. 
 | transport  | string  | The type of transport           | 'websocket'     |
 | ?teamId \* | string  | The team's socket to connect to | a team ID       |
 
-\* This is for team-specific events like member and channel updates. I have yet to get this to work personally, but it supposedly does.
+\* This is for team-specific events like member and channel updates. I have yet to get this to work personally, but it's what the client does.
 
 ###### Gateway Headers
 
