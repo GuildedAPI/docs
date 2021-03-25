@@ -86,7 +86,8 @@ todo: verify that above applies
 
 ## Rate Limiting
 
-> This section is about Gateway rate limits, not [HTTP API rate limits](/reference/#rate-limiting).
+!!! info
+    This section is about Gateway rate limits, not [HTTP API rate limits](/reference/#rate-limiting).
 
 Currently unknown. See above.
 
@@ -107,7 +108,8 @@ Events are payloads sent over the socket to a client that correspond to events i
 
 ###### Gateway Events
 
-> The `TeamSocketReconnected` event may be misspelled.
+!!! info
+    The `TeamSocketReconnected` event may be misspelled.
 
 | Name                                  | Description     |
 |---------------------------------------|-----------------|
