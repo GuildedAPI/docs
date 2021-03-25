@@ -231,10 +231,83 @@ Passing a value of <1 or >4 will render with a transparent "presence circle" in 
 
 Status content is an example of "stacked" content, much like message data. It's pretty difficult to portray its structure in a table, so I've simply not done that. The useful part of the object is the `document.nodes[0].nodes` list. Refer to [this example](#example-user-status) and parse it as you will.
 
+### Me Object
+
+###### Me Structure
+
+| Field           | Type                                          | Description                                                              |
+|-----------------|-----------------------------------------------|--------------------------------------------------------------------------|
+| teams           | array of [teams](/resources/team#team-object) | returns all client teams                                                 |
+| user            | [user](#user-object)                          | returns this user                                                        |
+| updateMessage   | ?[update message](#update-message-object)     | guilded's update message                                                 |
+| customReactions | array of emotes                               | a list of global emotes this user has                                    |
+| reactionUsages  | array of [emote uses](#emote-use-object)      | a list of how many times a specific emote has been used by the this user |
+| friends         | array of [friends](#friend-object)            | a list of friends, friend requests and friend requests sent by this user |
+
+### Friend Object
+
+###### Friend Structure
+
+| Field        | Type                                        | Description                                         |
+|--------------|---------------------------------------------|-----------------------------------------------------|
+| friendUserId | [generic id](/reference#generic-object-ids) | id of the user                                      |
+| friendStatus | string                                      | the current [status of friendship](#friend-status)  |
+| createdAt    | ISO8601 timestamp                           | when the request was sent/when request got accepted |
+
+###### Example Friend
+
+```json
+{
+    "friendUserId": "R40Mp0Wd",
+    "friendStatus": "accepted",
+    "createdAt": "2021-01-01T15:00:00.000Z"
+}
+```
+
+###### Friend Status
+
+| Value     | Meaning                                |
+|-----------|----------------------------------------|
+| accepted  | the friend request was accepted        |
+| requested | this user has sent a friend request    |
+| pending   | a friend request was sent to this user |
+
+### Emote Use Object
+
+###### Emote Use Structure
+
+| Field | Type             | Description                     |
+|-------|------------------|---------------------------------|
+| id    | unsigned integer | ID of the emote                 |
+| total | unsigned integer | How many times it has been used |
+
+###### Example Emote Use
+
+```json
+{
+    "id": 90025666,
+    "total": 984
+}
+```
+
+### Update Message Object
+
+###### Update Message Structure
+
+| Field         | Type              | Description                                 |
+|---------------|-------------------|---------------------------------------------|
+| id            | unsigned integer  | ID of the update message                    |
+| content       | message content   | the content of the update message           |
+| createdAt     | ISO8601 timestamp | when the post was created                   |
+| updatedAt     | ISO8601 timestamp | when the post was edited                    |
+| publishedAt   | ISO8601 timestamp | when the post was published to everyone     |
+| ctaButtonText | string            | the text of the footer button               |
+| ctaButtonLink | url               | the link of the footer button               |
+
 ## Get Current User
 <span class="http-verb">GET</span><span class="http-path">/me</span>
 
-Returns the [user](#user-object) object of the requester's account.
+Returns the [me](#me-object) object of the requester's account.
 
 ###### Query Params
 
