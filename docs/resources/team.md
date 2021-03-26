@@ -635,7 +635,7 @@ Returns a [team member](#team-member-object) object for the specified user.
 ## List Team Members
 <span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](#team-object)}/members</span>
 
-Returns a list of [team member](#team-member-object) objects that are members of the guild.
+Returns a list of partial [team members](#team-member-object), flow bots, and [webhooks](/topics/webhook#webhook-object) under `members`, `bots`, and `webhooks` keys respectively. A partial team member object includes, at minimum, `id` and `name`, but may also include one or multiple of `profilePicture`, `roleIds`, `userPresenceStatus`, and `nickname`.
 
 ## Change Team Member Nickname
 <span class="http-verb">PUT</span><span class="http-path">/teams/{[team.id](#team-object)}/members/{[user.id](/resources/user#user-object)}/nickname</span>
@@ -692,7 +692,7 @@ Create a team ban (ban somebody), and optionally delete previous messages sent b
 ## Remove Team Ban
 <span class="http-verb">PUT</span><span class="http-path">/teams/{[team.id](#team-object)}/members/{[user.id](/users#user-object)}/ban</span>
 
-Remove the ban for a user. Requires the `BAN_MEMBERS` permissions. Returns an empty dictionary on success.
+Remove the ban for a user. Returns an empty dictionary on success.
 
 ###### JSON Params
 
@@ -703,78 +703,57 @@ Remove the ban for a user. Requires the `BAN_MEMBERS` permissions. Returns an em
 
 ###### Delete History Options
 
-| Value | Description |
+| Value | Meaning     |
 |-------|-------------|
 | -1    | no messages |
 | 0     | |
-| 1     | 
+| 1     | |
 
-## Get Team Roles
-<span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](#team-object)}/roles</span>
+## Get Team Invites
+<span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](#team-object)}/hash_invites</span>
 
-Returns a list of [role](#DOCS_TOPICS_PERMISSIONS/role-object) objects for the guild.
+Returns a list of invite objects inside of an `invites` key on success.
 
-## Create Team Role
-<span class="http-verb">POST</span><span class="http-path">/teams/{[team.id](#team-object)}/roles</span>
+###### Example Response
 
-Create a new [role](#DOCS_TOPICS_PERMISSIONS/role-object) for the guild. Requires the `MANAGE_ROLES` permission. Returns the new [role](#DOCS_TOPICS_PERMISSIONS/role-object) object on success. Fires a [Guild Role Create](/topics/gateway#guild-role-create) Gateway event. All JSON params are optional.
-
-###### JSON Params
-
-| Field       | Type              | Description                                                    | Default                        |
-| ----------- | ----------------- | -------------------------------------------------------------- | ------------------------------ |
-| name        | string            | name of the role                                               | "new role"                     |
-| permissions | string            | bitwise value of the enabled/disabled permissions              | @everyone permissions in guild |
-| color       | integer           | RGB color value                                                | 0                              |
-| hoist       | boolean           | whether the role should be displayed separately in the sidebar | false                          |
-| mentionable | boolean           | whether the role should be mentionable                         | false                          |
-
-## Modify Guild Role Positions
-<span class="http-verb">PATCH</span><span class="http-path">/teams/{[team.id](#team-object)}/roles</span>
-
-Modify the positions of a set of [role](#DOCS_TOPICS_PERMISSIONS/role-object) objects for the guild. Requires the `MANAGE_ROLES` permission. Returns a list of all of the guild's [role](#DOCS_TOPICS_PERMISSIONS/role-object) objects on success. Fires multiple [Guild Role Update](/topics/gateway#guild-role-update) Gateway events.
-
-This endpoint takes a JSON array of parameters in the following format:
-
-###### JSON Params
-
-| Field     | Type      | Description                  |
-| --------- | --------- | ---------------------------- |
-| id        | snowflake | role                         |
-| ?position | ?integer  | sorting position of the role |
-
-## Modify Guild Role
-<span class="http-verb">PATCH</span><span class="http-path">/teams/{[team.id](#team-object)}/roles/{role.id#DOCS_TOPICS_PERMISSIONS/role-object}</span>
-
-Modify a guild role. Requires the `MANAGE_ROLES` permission. Returns the updated [role](#DOCS_TOPICS_PERMISSIONS/role-object) on success. Fires a [Guild Role Update](/topics/gateway#guild-role-update) Gateway event.
-
-!!! Info
-    All parameters to this endpoint are optional and nullable.
-
-###### JSON Params
-
-| Field       | Type              | Description                                                    |
-| ----------- | ----------------- | -------------------------------------------------------------- |
-| name        | string            | name of the role                                               |
-| permissions | string            | bitwise value of the enabled/disabled permissions              |
-| color       | integer           | RGB color value                                                |
-| hoist       | boolean           | whether the role should be displayed separately in the sidebar |
-| mentionable | boolean           | whether the role should be mentionable                         |
-
-## Delete Guild Role
-<span class="http-verb">DELETE</span><span class="http-path">/teams/{[team.id](#team-object)}/roles/{role.id#DOCS_TOPICS_PERMISSIONS/role-object}</span>
-
-Delete a guild role. Requires the `MANAGE_ROLES` permission. Returns a 204 empty response on success. Fires a [Guild Role Delete](/topics/gateway#guild-role-delete) Gateway event.
-
-## Get Guild Invites
-<span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](#team-object)}/invites</span>
-
-Returns a list of [invite](#DOCS_RESOURCES_INVITE/invite-object) objects (with [invite metadata](#DOCS_RESOURCES_INVITE/invite-metadata-object)) for the guild. Requires the `MANAGE_GUILD` permission.
+```json
+{
+  "invites": [
+    {
+      "id": "XENGAmn2",
+      "createdAt": "2021-02-26T22:43:52.380Z",
+      "teamId": "4R5q39VR",
+      "invitedBy": "EdVMVKR4",
+      "usedBy": null,
+      "gameId": null,
+      "useCount": 0
+    },
+    {
+      "id": "4E6rm5AE",
+      "createdAt": "2020-08-16T20:47:12.733Z",
+      "teamId": "4R5q39VR",
+      "invitedBy": "w4WMRR1m",
+      "usedBy": "8d8aEOgm",
+      "gameId": null,
+      "useCount": 1
+    },
+    {
+      "id": "Mkd7zGN2",
+      "createdAt": "2020-08-14T12:45:09.322Z",
+      "teamId": "4R5q39VR",
+      "invitedBy": "w4WMRR1m",
+      "usedBy": "EdVMVnR4",
+      "gameId": null,
+      "useCount": 1
+    }
+  ]
+}
+```
 
 ## Create Team Invite
 <span class="http-verb">POST</span><span class="http-path">/teams/{[team.id](#team-object)}/invites</span>
 
-Returns `{"invite": {"id": invite_code}}`, where invite_code is the generated invite code (a string, does not include `https://guilded.gg/i/`), on success.
+Returns `{"invite": {"id": invite_code}}`, where invite_code is the generated invite code on success (a string, does not include `https://guilded.gg/i/`).
 
 ###### JSON Params
 
