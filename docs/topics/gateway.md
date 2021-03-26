@@ -41,7 +41,7 @@ The rest of the event's data is included top-level with the event payload (e.g. 
 | transport  | string  | The type of transport           | 'websocket'     |
 | ?teamId \* | string  | The team's socket to connect to | a team ID       |
 
-\* This is for team-specific events like member and channel updates. I have yet to get this to work personally, but it's what the client does.
+\* This is for team-specific events like member and channel updates. In order to receive a team's events, you will need to open a separate connection for it, which you should treat just like the main websocket - heartbeat and all.
 
 ###### Gateway Headers
 
