@@ -14,10 +14,13 @@ The meat of communication on Guilded. They are referred to as "servers" in the U
 | bio            | ?string                                      | team bio                                                           |
 | profilePicture | ?string                                      | team icon url                                                      |
 | ownerId        | [user id](/reference#generic-object-ids)     | id of owner                                                        |
+| members?       | array of [members](#team-member-object)      | the members in this team                                           |
+| bots?          | array of flow-bots                           | the flow-bots in this team                                         |
+| webhooks?      | array of [webhooks](/resources/webhook#webhook-object) | the webhooks in this team                                |
 
 ###### Example Team
 
-Refer to [Get Team's example response](#example-response)
+Refer to [Get Team's example response](#get-team)
 
 ### Team Member Object
 

@@ -172,6 +172,7 @@ Returns `{"url": "https://a_url_to_your_uploaded_file.png"}` on success.
 | UserBanner     | profile banner      |
 | TeamAvatar     | team icon           |
 | TeamBanner     | team banner         |
+| GroupAvatar    | group icon          |
 
 ###### Binary File Data
 

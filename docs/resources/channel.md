@@ -643,35 +643,10 @@ Additionally, the characters in all `title`, `description`, `field.name`, `field
 
 Get a channel by ID. Returns a [channel object](#channel-object).
 
-## Modify Channel
-<span class="http-verb">PATCH</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}</span>
-
-Update a channel's settings. Requires the `MANAGE_CHANNELS` permission for the guild. Returns a [channel](/resources/channel#channel-object) on success, and a 400 BAD REQUEST on invalid parameters. Fires a [Channel Update](/topics/gateway#channel-update) Gateway event. If modifying a category, individual [Channel Update](/topics/gateway#channel-update) events will fire for each child channel that also changes. If modifying permission overwrites, the `MANAGE_ROLES` permission is required. Only permissions your bot has in the guild or channel can be allowed/denied (unless your bot has a `MANAGE_ROLES` overwrite in the channel). All JSON parameters are optional.
-
-###### JSON Params
-
-| Field                 | Type                                                                    | Description                                                                                                                                                                     | Channel Type             |
-|-----------------------|-------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
-| name                  | string                                                                  | 2-100 character channel name                                                                                                                                                    | All                      |
-| type                  | integer                                                                 | the [type of channel](/resources/channel#channel-object-channel-types); only conversion between text and news is supported and only in guilds with the "NEWS" feature      | Text, News               |
-| position              | ?integer                                                                | the position of the channel in the left-hand listing                                                                                                                            | All                      |
-| topic                 | ?string                                                                 | 0-1024 character channel topic                                                                                                                                                  | Text, News               |
-| nsfw                  | ?boolean                                                                | whether the channel is nsfw                                                                                                                                                     | Text, News, Store        |
-| rate_limit_per_user   | ?integer                                                                | amount of seconds a user has to wait before sending another message (0-21600); bots, as well as users with the permission `manage_messages` or `manage_channel`, are unaffected | Text                     |
-| bitrate               | ?integer                                                                | the bitrate (in bits) of the voice channel; 8000 to 96000 (128000 for VIP servers)                                                                                              | Voice                    |
-| user_limit            | ?integer                                                                | the user limit of the voice channel; 0 refers to no limit, 1 to 99 refers to a user limit                                                                                       | Voice                    |
-| parent_id             | ?snowflake                                                              | id of the new parent category for a channel                                                                                                                                     | Text, News, Store, Voice |
-
 ## Delete/Close Channel
-<span class="http-verb">DELETE</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}</span>
+<span class="http-verb">DELETE</span><span class="http-path">/teams/{team.id}/groups/{group.id}/channels/{[channel.id](/resources/channel#channel-object)}</span>
 
-Delete a channel. Requires the `MANAGE_CHANNELS` permission for the team. Deleting a category does not delete its child channels; they will have their `categoryId` removed and a [Channel Update](/topics/gateway#channel-update) Gateway event will fire for each of them. Returns a [channel](/resources/channel#channel-object) object on success. Fires a [Channel Delete](/topics/gateway#channel-delete) Gateway event.
-
-!!! warn
-    Deleting a guild channel cannot be undone. Use this with caution, as it is impossible to undo this action when performed on a guild channel. In contrast, when used with a private message, it is possible to undo the action by opening a private message with the recipient again.
-
-!!! info
-    For Community guilds, the Rules or Guidelines channel and the Community Updates channel cannot be deleted.
+Delete a channel. Deleting a category does not delete its child channels; they will have their `categoryId` nullified.
 
 ## Get Channel Messages
 <span class="http-verb">GET</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/messages</span>
@@ -832,14 +807,9 @@ The concept of "replies" do not exist, but you may [begin a new thread](#create-
 ```
 
 ## Edit Message
-<span class="http-verb">PATCH</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/messages/{[message.id](/resources/channel#message-object)}</span>
+<span class="http-verb">PUt</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/messages/{[message.id](/resources/channel#message-object)}</span>
 
-Edit a previously sent message. The fields `content`, `embed`, `allowed_mentions` and `flags` can be edited by the original message author. Other users can only edit `flags` and only if they have the `MANAGE_MESSAGES` permission in the corresponding channel. When specifying flags, ensure to include all previously set flags/bits in addition to ones that you are modifying. Only `flags` documented in the table below may be modified by users (unsupported flag changes are currently ignored without error).
-
-Returns a [message](/resources/channel#message-object) object. Fires a [Message Update](/topics/gateway#ChatMessageUpdated) Gateway event.
-
-!!! info
-    All parameters to this endpoint are optional and nullable.
+Edit a previously sent message.
 
 ###### JSON Params
 

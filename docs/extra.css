@@ -1,12 +1,12 @@
 :root>* {
     --md-default-fg-color: #ececee;
+    --md-primary-fg-color: #f5c400;
+    --md-primary-fg-color--dark: #f5c400;
     --md-default-fg-color--light: #ececee;
     --md-default-fg-color--lighter: #1F2126;
     --md-primary-bg-color: black;
     --md-default-bg-color: #3c3e48;
     --md-accent-fg-color: #EDD658;
-
-    --md-primary-fg-color: #f5c400;
 
     --md-code-bg-color: #292b32;
     --md-code-fg-color: hsla(0, 0%, 96%, 1);
