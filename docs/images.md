@@ -60,3 +60,6 @@ Here is an (incomplete) selection of "official images" collected from the Guilde
 
 ## Denied
 ![denied](https://img.guildedcdn.com/asset/GenericMessages/denied.png)
+
+## Stonks Rising
+![stonks-rising](https://img.guildedcdn.com/asset/Referral/gil_stonks-rising.png)

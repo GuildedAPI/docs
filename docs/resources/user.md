@@ -6,29 +6,30 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
 
 ###### User Structure
 
-| Field               | Type                                         | Description                                                |
-|---------------------|----------------------------------------------|------------------------------------------------------------|
-| id                  | [generic id](/reference#generic-object-ids)  | the user's id                                              |
-| name                | string                                       | the user's username, not unique across the platform        |
-| subdomain           | ?string                                      | the user's unique profile url                              |
-| aliases             | array                                        | the linked games on the user's profile                     |
-| email               | ?string                                      | the user's email. null if this is not you                  |
-| serviceEmail        | ?string                                      | ?                                                          |
-| profilePicture      | string (url)                                 | the user's avatar url                                      |
-| profilePictureSm    | string (url)                                 | ^                                                          |
-| profilePictureLg    | string (url)                                 | ^                                                          |
-| profilePictureBlur  | string (url)                                 | ^                                                          |
-| profileBannerSm     | ?string (url)                                | the user's banner url                                      |
-| profileBannerLg     | ?string (url)                                | ^                                                          |
-| profileBannerBlur   | ?string (url)                                | ^                                                          |
-| joinDate            | ISO8601 timestamp                            | when this user's account was created                       |
-| steamId             | ?string                                      | this user's steam id, if linked                            |
-| userStatus          | [user status object](#user-status-object)    | this user's current activity/"status"                      |
-| userPresenceStatus  | integer                                      | this [user's presence](#user-presence) (online, idle, etc) |
-| userTransientStatus | [transient status object](#transient-status) | this user's transient status (game, streaming, ?) |
-| moderationStatus    | ?                                            | ?                                                          |
-| aboutInfo           | [about info object](#about-info-object)      | this user's bio and tagline                                |
-| lastOnline          | ISO8601 timestamp                            | when this user was last online                             |
+| Field               | Type                                         | Description                                                  |
+|---------------------|----------------------------------------------|--------------------------------------------------------------|
+| id                  | [generic id](/reference#generic-object-ids)  | the user's id                                                |
+| name                | string                                       | the user's username, not unique across the platform          |
+| subdomain           | ?string                                      | the user's unique profile url                                |
+| aliases             | array                                        | the linked games on the user's profile                       |
+| email               | ?string                                      | the user's email. null if this is not you                    |
+| serviceEmail        | ?string                                      | ?                                                            |
+| profilePicture      | string (url)                                 | the user's avatar url                                        |
+| profilePictureSm    | string (url)                                 | ^                                                            |
+| profilePictureLg    | string (url)                                 | ^                                                            |
+| profilePictureBlur  | string (url)                                 | ^                                                            |
+| profileBannerSm     | ?string (url)                                | the user's banner url                                        |
+| profileBannerLg     | ?string (url)                                | ^                                                            |
+| profileBannerBlur   | ?string (url)                                | ^                                                            |
+| joinDate            | ISO8601 timestamp                            | when this user's account was created                         |
+| steamId             | ?string                                      | this user's steam id, if linked                              |
+| userStatus          | [user status object](#user-status-object)    | this user's current activity/"status"                        |
+| userPresenceStatus  | integer                                      | this [user's presence](#user-presence) (online, idle, etc)   |
+| userTransientStatus | [transient status object](#transient-status) | this user's transient status (game, streaming, ?)            |
+| moderationStatus    | ?                                            | ?                                                            |
+| aboutInfo           | [about info object](#about-info-object)      | this user's bio and tagline                                  |
+| lastOnline          | ISO8601 timestamp                            | when this user was last online                               |
+| stonks?             | integer                                      | number of "stonks" this user has gotten from inviting people |
 
 ###### Example User
 
@@ -81,11 +82,12 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
   "lastOnline": "2021-03-08T00:24:49.144Z",
   "serviceEmail": null,
   "userPresenceStatus": 1,
-  "userTransientStatus": null
+  "userTransientStatus": null,
+  "stonks": 2
 }
 ```
 
-###### User Presence
+### User Presence
 
 Passing a value of <1 or >4 will render with a transparent "presence circle" in the client.
 
@@ -96,15 +98,27 @@ Passing a value of <1 or >4 will render with a transparent "presence circle" in 
 | 3     | dnd               |
 | 4     | offline/invisible |
 
-###### Transient Status
+### Transient Status Object
 
-| Field           | Type                                | Description                            |
-|-----------------|-------------------------------------|----------------------------------------|
-| id              | integer                             |                                        |
-| gameId          | ?integer                            |                                        |
-| type            | enum                                | the type of status ("gamepresence", ?) |
-| startedAt       | ISO8601 timestamp                   | when this status started               |
-| guildedClientId | [uuid](/reference#snowflakes-uuids) |                                        |
+| Field           | Type                                | Description                              |
+|-----------------|-------------------------------------|------------------------------------------|
+| id              | integer                             |                                          |
+| gameId          | ?integer                            | the game's id this status is for (see the game ids table below for known valid values) |
+| type            | string                              | the type of status ("gamepresence", ?)   |
+| startedAt       | ISO8601 timestamp                   | when this status started                 |
+| guildedClientId | [uuid](/reference#snowflakes-uuids) | the client's id that this status is from |
+
+###### Game IDs
+
+!!! info
+    This list is very incomplete. Feel free to [create a PR](https://git.guildedapi.com/docs/pulls) if there are any we missed here.
+
+| ID     | Game                           |
+|--------|--------------------------------|
+| 10500  | Minecraft (Windows 10/Bedrock) |
+| 220032 | Escape from Tarkov             |
+| 103000 | EVE Online                     |
+| 102700 | Rocket League                  |
 
 ### User Status Object
 
@@ -388,3 +402,48 @@ Get the list of posts this user has on their profile.
 |----------|---------|-----------------------------------------------|----------|---------------|
 | maxPosts | integer | the maximum amount of posts to return (0-???) | false    | 7             |
 | offset   | integer | ?                                             | false    | 0             |
+
+## Set User Transient Status
+<span class="http-verb">POST</span><span class="http-path">/users/me/status/transient</span>
+
+Set your transient status. Returns your new [transient status object](#transient-status-object) on success.
+
+###### JSON Params
+
+| Field  | Type     | Description                                                                                        |
+|--------|----------|----------------------------------------------------------------------------------------------------|
+| id     | integer  | ?                                                                                                  |
+| gameId | ?integer | the game's id this status is for (see [game ids](#transient-status-object) for known valid values) |
+| type   | string   | the type of transient status. should be one of `gamepresence`, ?                                   |
+
+## Delete User Transient Status
+<span class="http-verb">DELETE</span><span class="http-path">/users/me/status/transient</span>
+
+Remove your transient status.
+
+## Get Referral Statistics
+<span class="http-verb">GET</span><span class="http-path">/users/me/referrals</span>
+
+Get your statistics for "stonks". From the client:
+
+> For every 5 people you invite, you will get an exclusive Stonks flair to show off to everyone.
+
+"Stonks" don't do anything on their own, and are simply a profile decoration.
+
+###### Response Structure
+
+| Field                | Type    | Description                                                                                        |
+|----------------------|---------|----------------------------------------------------------------------------------------------------|
+| referrals            | integer | how many people have used your invite link (https://guilded.gg?r={user.id}) to sign up for guilded |
+| stonks               | integer | how many "stonks" you currently have                                                               |
+| requiredForNextStonk | integer | how many more people need to sign up with your invite link for you to gain another "stonk"         |
+
+###### Example Response
+
+```json
+{
+  "referrals": 10,
+  "stonks": 2,
+  "requiredForNextStonk": 5
+}
+```
