@@ -104,6 +104,7 @@ Passing a value of <1 or >4 will render with a transparent "presence circle" in 
 |-----------------|-------------------------------------|------------------------------------------|
 | id              | integer                             |                                          |
 | gameId          | ?integer                            | the game's id this status is for (see the game ids table below for known valid values) |
+| name?           | string                              | the game's name (should be included if gameId is null)                                 |
 | type            | string                              | the type of status ("gamepresence", ?)   |
 | startedAt       | ISO8601 timestamp                   | when this status started                 |
 | guildedClientId | [uuid](/reference#snowflakes-uuids) | the client's id that this status is from |
@@ -119,6 +120,22 @@ Passing a value of <1 or >4 will render with a transparent "presence circle" in 
 | 220032 | Escape from Tarkov             |
 | 103000 | EVE Online                     |
 | 102700 | Rocket League                  |
+| 334074 | Forza Horizon 4                |
+| 10600  | World of Tanks                 |
+| 103700 | Elite Dangerous                |
+| 220044 | Roblox                         |
+| 323074 | osu!                           |
+| 102900 | Grand Theft Auto V             |
+| 10200  | League of Legends              |
+| 102400 | Diablo III                     |
+| 101500 | Final Fantasy XIV              |
+| 101400 | Guild Wars 2                   |
+| 350074 | WoW Classic                    |
+| 462074 | Genshin Impact                 |
+| 255074 | VRChat                         |
+| 220029 | Crowfall                       |
+| 10100  | Overwatch                      |
+| 220019 | Stellaris                      |
 
 ### User Status Object
 

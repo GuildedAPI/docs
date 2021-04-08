@@ -5,7 +5,8 @@ Here is an (incomplete) selection of "official images" collected from the Guilde
 ## Members
 ![members](https://img.guildedcdn.com/asset/TabEmptyStates/gil_members.png)
 
-## Members (in color, from /jobs)
+## Members (in color)
+from [/jobs](https://guilded.gg/jobs)
 ![members](https://img.guildedcdn.com/asset/Jobs/jobs-hero.png)
 
 ## Recruitment
@@ -62,4 +63,9 @@ Here is an (incomplete) selection of "official images" collected from the Guilde
 ![denied](https://img.guildedcdn.com/asset/GenericMessages/denied.png)
 
 ## Stonks Rising
+from the referral popup
 ![stonks-rising](https://img.guildedcdn.com/asset/Referral/gil_stonks-rising.png)
+
+## Desktop Screenshot
+from [/downloads](https://guilded.gg/downloads)
+![desktop_screenshot](https://img.guildedcdn.com/asset/App/Desktop_Screenshot.png)
