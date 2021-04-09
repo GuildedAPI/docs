@@ -136,6 +136,9 @@ Passing a value of <1 or >4 will render with a transparent "presence circle" in 
 | 220029 | Crowfall                       |
 | 10100  | Overwatch                      |
 | 220019 | Stellaris                      |
+| 104300 | Rust                           |
+| 104200 | R6 Siege                       |
+| 10900  | CoD: Black Ops III             |
 
 ### User Status Object
 
