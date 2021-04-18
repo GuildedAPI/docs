@@ -114,31 +114,31 @@ Passing a value of <1 or >4 will render with a transparent "presence circle" in 
 !!! info
     This list is very incomplete. Feel free to [create a PR](https://git.guildedapi.com/docs/pulls) if there are any we missed here.
 
-| ID     | Game                           |
-|--------|--------------------------------|
-| 10500  | Minecraft (Windows 10/Bedrock) |
-| 220032 | Escape from Tarkov             |
-| 103000 | EVE Online                     |
-| 102700 | Rocket League                  |
-| 334074 | Forza Horizon 4                |
-| 10600  | World of Tanks                 |
-| 103700 | Elite Dangerous                |
-| 220044 | Roblox                         |
-| 323074 | osu!                           |
-| 102900 | Grand Theft Auto V             |
-| 10200  | League of Legends              |
-| 102400 | Diablo III                     |
-| 101500 | Final Fantasy XIV              |
-| 101400 | Guild Wars 2                   |
-| 350074 | WoW Classic                    |
-| 462074 | Genshin Impact                 |
-| 255074 | VRChat                         |
-| 220029 | Crowfall                       |
-| 10100  | Overwatch                      |
-| 220019 | Stellaris                      |
-| 104300 | Rust                           |
-| 104200 | R6 Siege                       |
-| 10900  | CoD: Black Ops III             |
+| ID     | Game               |
+|--------|--------------------|
+| 10500  | Minecraft          |
+| 220032 | Escape from Tarkov |
+| 103000 | EVE Online         |
+| 102700 | Rocket League      |
+| 334074 | Forza Horizon 4    |
+| 10600  | World of Tanks     |
+| 103700 | Elite Dangerous    |
+| 220044 | Roblox             |
+| 323074 | osu!               |
+| 102900 | Grand Theft Auto V |
+| 10200  | League of Legends  |
+| 102400 | Diablo III         |
+| 101500 | Final Fantasy XIV  |
+| 101400 | Guild Wars 2       |
+| 350074 | WoW Classic        |
+| 462074 | Genshin Impact     |
+| 255074 | VRChat             |
+| 220029 | Crowfall           |
+| 10100  | Overwatch          |
+| 220019 | Stellaris          |
+| 104300 | Rust               |
+| 104200 | R6 Siege           |
+| 10900  | CoD: Black Ops III |
 
 ### User Status Object
 
