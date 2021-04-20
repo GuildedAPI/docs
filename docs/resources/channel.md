@@ -626,15 +626,15 @@ To facilitate showing rich content, rich embeds do not follow the traditional li
 
 All of the following limits are measured inclusively. Leading and trailing whitespace characters are not included (they are trimmed automatically).
 
-| Field | Limit |
-|-------|-------|
-| title | ??? characters |
-| description | ??? characters |
-| fields | Up to ??? field objects |
-| [field.name](/resources/channel#embed-field-structure)   | ??? characters |
-| [field.value](/resources/channel#embed-field-structure)  | ??? characters |
-| [footer.text](/resources/channel#embed-footer-structure) | ??? characters |
-| [author.name](/resources/channel#embed-author-structure) | ??? characters |
+| Field                                                    | Limit                  |
+|----------------------------------------------------------|------------------------|
+| title                                                    | ??? characters         |
+| description                                              | ??? characters         |
+| fields                                                   | Up to 25 field objects |
+| [field.name](/resources/channel#embed-field-structure)   | ??? characters         |
+| [field.value](/resources/channel#embed-field-structure)  | ??? characters         |
+| [footer.text](/resources/channel#embed-footer-structure) | ??? characters         |
+| [author.name](/resources/channel#embed-author-structure) | ??? characters         |
 
 Additionally, the characters in all `title`, `description`, `field.name`, `field.value`, `footer.text`, and `author.name` fields must not exceed ***???*** characters in total.
 
