@@ -30,7 +30,7 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
 | aboutInfo           | [about info object](#about-info-object)      | this user's bio and tagline                                  |
 | lastOnline          | ISO8601 timestamp                            | when this user was last online                               |
 | stonks?             | integer                                      | number of "stonks" the user has gotten from inviting people  |
-| flairinfos?         | array of [flair objects](#flair-object)      | the flairs the user has on their profile                     |
+| flairInfos?         | array of [flair objects](#flair-object)      | the flairs the user has on their profile                     |
 
 ###### Example User
 
