@@ -29,7 +29,8 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
 | moderationStatus    | ?                                            | ?                                                            |
 | aboutInfo           | [about info object](#about-info-object)      | this user's bio and tagline                                  |
 | lastOnline          | ISO8601 timestamp                            | when this user was last online                               |
-| stonks?             | integer                                      | number of "stonks" this user has gotten from inviting people |
+| stonks?             | integer                                      | number of "stonks" the user has gotten from inviting people  |
+| flairinfos?         | array of [flair objects](#flair-object)      | the flairs the user has on their profile                     |
 
 ###### Example User
 
@@ -265,6 +266,17 @@ Passing a value of <1 or >4 will render with a transparent "presence circle" in 
 
 Status content is an example of "stacked" content, much like message data. It's pretty difficult to portray its structure in a table, so I've simply not done that. The useful part of the object is the `document.nodes[0].nodes` list. Refer to [this example](#example-user-status) and parse it as you will.
 
+### Flair Object
+
+Represents a profile flair. Does not include stonks, those can be found at [`user.stonks`](#user-object).
+
+###### Flair Structure
+
+| Field  | Type    | Description                                                            | Known Values |
+|--------|---------|------------------------------------------------------------------------|--------------|
+| flair  | string  | name of the flair                                                      | `'gil_gang'` |
+| amount | integer | quantity of this flair that the user has, probably intended for stonks | |
+
 ### Me Object
 
 ###### Me Structure
@@ -345,9 +357,9 @@ Returns the [me](#me-object) object of the requester's account.
 
 ###### Query Params
 
-| Field   | Type    | Description                                 | Required | Default Value |
-|---------|---------|---------------------------------------------|----------|---------------|
-| isLogin | boolean | whether or not you are logging in (i guess) | false    | false         |
+| Field   | Type    | Description                                  | Required | Default Value |
+|---------|---------|----------------------------------------------|----------|---------------|
+| isLogin | boolean | whether or not you are logging in (probably) | false    | false         |
 
 ## Get User
 <span class="http-verb">GET</span><span class="http-path">/users/{[user.id](#user-object)}</span>
