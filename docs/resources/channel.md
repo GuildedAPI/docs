@@ -684,13 +684,10 @@ The concept of "replies" do not exist, but you may [begin a new thread](#create-
 
 ###### JSON Params
 
-!!! info
-    Note that when sending `application/json` you must send at **least one of** `content` or `embed`.
-
 | Field             | Type                                                                               | Description                                             |
 |-------------------|------------------------------------------------------------------------------------|---------------------------------------------------------|
 | messageId         | [uuid](/reference#snowflakes-uuids)                                                | the id for this message                                 |
-| content           | [message content]                                                                  | the message contents (up to 4,000 characters of text)   |
+| content           | message content (see below)                                                        | the message contents (up to 4,000 characters of text)   |
 
 ###### Example Request Body
 
@@ -807,16 +804,21 @@ The concept of "replies" do not exist, but you may [begin a new thread](#create-
 ```
 
 ## Edit Message
-<span class="http-verb">PUt</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/messages/{[message.id](/resources/channel#message-object)}</span>
+<span class="http-verb">PUT</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/messages/{[message.id](/resources/channel#message-object)}</span>
 
 Edit a previously sent message.
 
+!!! note
+    Due to how the content structure works, sending new content will entirely replace the old content. This means that in order to keep old nodes, you will have to send them with the new request.
+
 ###### JSON Params
 
-| Field            | Type                                                                      | Description                                                                                                                             |
-|------------------|---------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| content          | string                                                                    | the new message contents (up to 2000 characters)                                                                                        |
-| embed            | [embed](/resources/channel#embed-object) object                      | embedded `rich` content                                                                                                                 |
+!!! note
+    This endpoint takes the same structure of `content` as [Send Message](#send-message), so for brevity, its elaboration is not included here.
+
+| Field   | Type            | Description                                               |
+|---------|-----------------|-----------------------------------------------------------|
+| content | message content | the new message contents (up to 4,000 characters of text) |
 
 ## Delete Message
 <span class="http-verb">DELETE</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/messages/{[message.id](/resources/channel#message-object)}</span>
