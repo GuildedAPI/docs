@@ -20,7 +20,7 @@ The meat of communication on Guilded. They are referred to as "servers" in the U
 
 ###### Example Team
 
-Refer to [Get Team's example response](#get-team)
+Refer to [Get Team](#get-team)'s example response
 
 ### Team Member Object
 
@@ -46,7 +46,7 @@ Refer to [Get Team's example response](#get-team)
 | socialLinks         | array of dictionaries                                       | each item has `type` - the platform, `handle` - the user's username on that platform, and `additionalInfo` - unknown |
 | teamXp              | integer                                                     | how much xp the member has in this team                                   |
 
-###### Example Guild Member
+###### Example Team Member
 
 ```json
 {
@@ -104,8 +104,8 @@ Refer to [Get Team's example response](#get-team)
 | Field     | Type                                            | Description                                          |
 |-----------|-------------------------------------------------|------------------------------------------------------|
 | reason    | string                                          | the reason for the ban (can be empty, won't be null) |
-| userId    | [user id](/resources/user#user-object)                    | the banned user's id                                 |
-| bannedBy  | [user id](/resources/user#user-object)                    | the moderator who banned this user                   |
+| userId    | [user id](/resources/user#user-object)          | the banned user's id                                 |
+| bannedBy  | [user id](/resources/user#user-object)          | the moderator who banned this user                   |
 | createdAt | ISO8601 timestamp                               | when this ban was created                            |
 
 ###### Example Ban
@@ -116,6 +116,34 @@ Refer to [Get Team's example response](#get-team)
   "userId": "2d2Wg8Pm",
   "bannedBy": "EdVMVKR4",
   "createdAt": "2021-03-13T18:15:53.622Z"
+}
+```
+
+### Invite Object
+
+###### Invite Structure
+
+| Field     | Type                                        | Description                                                    |
+|-----------|---------------------------------------------|----------------------------------------------------------------|
+| id        | [generic id](/reference#generic-object-ids) | the invite's id, referred to as an 'invite code' in the client |
+| createdAt | ISO8601 timestamp                           | when the invite was created                                    |
+| teamId    | [team id](#team-object)                     | the team's id that the invite is for                           |
+| invitedBy | [user id](/resources/user#user-object)      | the user's id who created the invite                           |
+| userBy    | ?[user id](/resources/user#user-object)     | a user's id who used the invite?                               |
+| gameId    | ?integer                                    | the game's id that the invite is for                           |
+| useCount  | integer                                     | how many times the invite has been used                        |
+
+###### Example Invite
+
+```json
+{
+  "id": "XENGAmn2",
+  "createdAt": "2021-02-26T22:43:52.380Z",
+  "teamId": "4R5q39VR",
+  "invitedBy": "EdVMVKR4",
+  "usedBy": null,
+  "gameId": null,
+  "useCount": 0
 }
 ```
 
@@ -712,10 +740,15 @@ Remove the ban for a user. Returns an empty dictionary on success.
 | 0     | |
 | 1     | |
 
+## Join Team
+<span class="http-verb">PUT</span><span class="http-path">/teams/{[team.id](#team-object)}/members/{[user.id](/resources/user#user-object)}/join</span>
+
+Join a team that has open entry enabled. `user.id` should be the client user's own id.
+
 ## Get Team Invites
 <span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](#team-object)}/hash_invites</span>
 
-Returns a list of invite objects inside of an `invites` key on success.
+Returns an array of [invite object](#invite-object)s under an `invites` key on success.
 
 ###### Example Response
 
@@ -760,7 +793,52 @@ Returns `{"invite": {"id": invite_code}}`, where invite_code is the generated in
 
 ###### JSON Params
 
-| Field  | Type                    | Description                                      |
-|--------|-------------------------|--------------------------------------------------|
-| gameId | ?integer                | the game's id to make this invite for (??? what) |
-| teamId | [team id](#team-object) | the team's id to make this invite for (why)      |
+| Field  | Type                    | Description                           |
+|--------|-------------------------|---------------------------------------|
+| gameId | ?integer                | the game's id to make this invite for |
+| teamId | [team id](#team-object) | the team's id to make this invite for |
+
+## Get Invite
+<span class="http-verb">GET</span><span class="http-path">/invites/{[invite.id](#invite-object)}</span>
+
+Get an invite by its id (invite code). Returns an object with a [`team`](#team-object) (the team the invite is for) and a [`user`](/resources/user#user-object) (the user who created the invite) on success.
+
+###### Query Params
+
+| Field       | Type    | Description                                                                     | Required | Default |
+|-------------|---------|---------------------------------------------------------------------------------|----------|---------|
+| loadAvatars | boolean | whether to include `invite.team.members`. it is `false` if `true` is not passed | false    | true    |
+
+## Use Invite
+<span class="http-verb">PUT</span><span class="http-path">/invites/{[invite.id](#invite-object)}</span>
+
+Join a team via an invite. Returns a special object on success, similar to a regular [invite object](#invite-object) but with extra data and an unrecognized `id` value.
+
+###### Query Params
+
+| Field                 | Type                    | Description                                | Required | Default                         |
+|-----------------------|-------------------------|--------------------------------------------|----------|---------------------------------|
+| teamId                | [team id](#team-object) | the invite team's id                       | false    | [invite.teamId](#invite-object) |
+| includeLandingChannel | boolean                 | whether to include `invite.landingChannel` | false    | false                           |
+
+###### Response Example
+
+```json
+{
+  "id": 2830449,
+  "createdAt": "2021-04-21T18:51:51.558Z",
+  "teamId": "4R5q39VR",
+  "invitedBy": "EdVMVKR4",
+  "usedBy": null,
+  "additionalInfo": {
+    "source": "clientRequest"
+  },
+  "gameId": null,
+  "useCount": 0,
+  "landingChannel": {
+    "groupId": "l3GmAe9d",
+    "id": "ae12b25a-eb79-48e5-a5a4-1ce83c62f86d",
+    "contentType": "chat"
+  }
+}
+```
