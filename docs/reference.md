@@ -59,6 +59,7 @@ For some endpoints, you will have to Bring Your Own UUID (BYOU). Worry not - thi
 | [uuid-random.uuid()](https://www.npmjs.com/package/uuid-random)                  | JavaScript |
 | System.Guid.NewGuid()                                                            | C#         |
 | [Uuid::new_v4()](https://docs.rs/uuid/0.8.2/uuid/struct.Uuid.html#method.new_v4) | Rust       |
+| [UUID.random](https://crystal-lang.org/api/1.0.0/UUID.html)                      | Crystal    |
 
 ## Generic Object IDs
 
