@@ -884,11 +884,30 @@ Create a new thread in a channel. Returns the created thread object on success.
 
 Leave a thread. Guilded will also stop sending you notifications from the thread.
 
-## Delete Thread
+## Archive Team Thread
+<span class="http-verb">PUT</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/groups/{[group.id](/resources/group#group-object)}/channels/{[thread.id](/resources/channel#channel-object)}/archive</span>
+
+!!! info
+    `group.id` can be `undefined` if this is the base group.
+
+Archive a thread. The thread can be restored at any time with [Restore Thread](#restore-thread).
+
+## Restore Team Thread
+<span class="http-verb">PUT</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/groups/{[group.id](/resources/group#group-object)}/channels/{[thread.id](/resources/channel#channel-object)}/restore</span>
+
+!!! info
+    `group.id` can be `undefined` if this is the base group.
+
+Restore a thread after it has been archived. It can be archived again with [Archive Thread](#archive-thread)
+
+## Delete Team Thread
 <span class="http-verb">DELETE</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/groups/{[group.id](/resources/group#group-object)}/channels/{[thread.id](/resources/channel#channel-object)}</span>
 
 !!! info
     `group.id` can be `undefined` if this is the base group.
+
+!!! info
+    This endpoint can also be used to delete normal channels.
 
 Delete a thread in a channel.
 
