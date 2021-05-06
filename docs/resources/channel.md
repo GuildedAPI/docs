@@ -882,7 +882,7 @@ Create a new thread in a channel. Returns the created thread object on success.
 !!! info
     `user.id` should be the current user's ID. Attempting to use this endpoint to remove someone else from a thread results in a 403 Forbidden response.
 
-Leave a thread and stop receiving notifications from it.
+Leave a thread. Guilded will also stop sending you notifications from the thread.
 
 ## Delete Thread
 <span class="http-verb">DELETE</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/groups/{[group.id](/resources/group#group-object)}/channels/{[thread.id](/resources/channel#channel-object)}</span>
