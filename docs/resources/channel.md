@@ -880,9 +880,9 @@ Create a new thread in a channel. Returns the created thread object on success.
 <span class="http-verb">DELETE</span><span class="http-path">/users/{[user.id](/resources/user#user-object)}/channels/{[thread.id](/resources/channel#channel-object)}</span>
 
 !!! info
-    `user.id` should be your ID.
-    
-Leaves the thread and you no longer get notifications in it.
+    `user.id` should be the current user's ID. Attempting to use this endpoint to remove someone else from a thread results in a 403 Forbidden response.
+
+Leave a thread and stop receiving notifications from it.
 
 ## Delete Thread
 <span class="http-verb">DELETE</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/groups/{[group.id](/resources/group#group-object)}/channels/{[thread.id](/resources/channel#channel-object)}</span>
