@@ -876,6 +876,14 @@ Create a new thread in a channel. Returns the created thread object on success.
 | contentType          | string                              | the [channel content type](#channel-content-types) that this thread should be. can probably only be 'chat', but try others and see! |
 | confirmed            | boolean                             | ?                                                                                                                                   |
 
+## Leave Thread
+<span class="http-verb">DELETE</span><span class="http-path">/users/{[user.id](/resources/user#user-object)}/channels/{[thread.id](/resources/channel#channel-object)}</span>
+
+!!! info
+    `user.id` should be your ID.
+    
+Leaves the thread and you no longer get notifications in it.
+
 ## Delete Thread
 <span class="http-verb">DELETE</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/groups/{[group.id](/resources/group#group-object)}/channels/{[thread.id](/resources/channel#channel-object)}</span>
 
