@@ -662,7 +662,7 @@ Query string parameter `limit` has been tested up to 50,000.
 | limit  | integer | max number of messages to return (0-???) | false    | 51      |
 
 ## Get Channel Message
-<span class="http-verb">GET</span><span class="http-path">/content/route/metadata?route=//channels/{[channel.id](/resources/channel#channel-object)}/chat?messageId={[message.id](/resources/channel#message-object)}</span>
+<span class="http-verb">GET</span><span class="http-path">/content/route/metadata?route=//channels/{[channel.id](/resources/channel#channel-object)}/messages?messageId={[message.id](/resources/channel#message-object)}</span>
 
 Get a specific message in the channel. Returns a [message object](#message-object) on success.
 
