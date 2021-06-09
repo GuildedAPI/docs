@@ -45,7 +45,7 @@ wss://api.guilded.gg
 | jwt             | string  | authentication stuff?           | 'undefined'                              |
 | EIO             | integer | Engine.IO version               | 3                                        |
 | transport       | string  | the type of transport           | 'websocket'                              |
-| guildedClientId | string  | used for authentication         | the `guilded_mid` header received when [logging in via REST](/reference#quick-authentication-how-to) |
+| guildedClientId | string  | used for authentication         | the `guilded_mid` cookie received when [logging in via REST](/reference#quick-authentication-how-to) |
 | ?teamId \*      | string  | the team's socket to connect to | a [team ID](/resources/team#team-object) |
 
 \* This is for team-specific events like member and channel updates. In order to receive a team's events, you will need to open a separate connection for it, which you should treat just like the main websocket - heartbeat and all.
