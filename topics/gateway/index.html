@@ -617,6 +617,12 @@
 <td>'websocket'</td>
 </tr>
 <tr>
+<td>guildedClientId</td>
+<td>string</td>
+<td>used for authentication</td>
+<td>the <code>guilded_mid</code> header received when <a href="/reference#quick-authentication-how-to">logging in via REST</a></td>
+</tr>
+<tr>
 <td>?teamId *</td>
 <td>string</td>
 <td>the team's socket to connect to</td>
@@ -625,25 +631,8 @@
 </tbody>
 </table>
 <p>* This is for team-specific events like member and channel updates. In order to receive a team's events, you will need to open a separate connection for it, which you should treat just like the main websocket - heartbeat and all.</p>
-<h6>Gateway Headers</h6>
-<table>
-<thead>
-<tr>
-<th>Header</th>
-<th>Description</th>
-<th>Accepted Values</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>cookie</td>
-<td>your authentication cookie</td>
-<td>a cookie gotten from <a href="/reference#quick-authentication-how-to">logging in via REST</a></td>
-</tr>
-</tbody>
-</table>
-<p>The first step in establishing connectivity to the gateway is to construct your gateway URL. Options are pretty limited, so you should end up with something like <code>wss://api.guilded.gg/socket.io/?jwt=undefined&amp;EIO=3&amp;transport=websocket</code> (assuming you don't want to connect to a team websocket).</p>
-<p>You can now open a websocket connection to the URL you have created (or copied from this page).</p>
+<p>The first step in establishing connectivity to the gateway is to construct your gateway URL. Options are pretty limited, so you should end up with something like <code>wss://api.guilded.gg/socket.io/?jwt=undefined&amp;EIO=3&amp;transport=websocket&amp;guildedClientId={guilded_mid_header}</code> (assuming you don't want to connect to a team websocket).</p>
+<p>You can now open a websocket connection to the URL you have created.</p>
 <p>Once connected, the client should immediately receive <a href="#example-gateway-hello">a "hello"-type payload</a>, with information on the connection's heartbeat interval.</p>
 <h6>Example Gateway Hello</h6>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>

@@ -614,7 +614,7 @@
 <p>For the HTTP API, authentication is not passed through the headers, but the JSON body. </p>
 <h2 id="quick-authentication-how-to">Quick Authentication How-To<a class="headerlink" href="#quick-authentication-how-to" title="Permanent link">🔗</a></h2>
 <p><span class="http-verb">POST</span><span class="http-path">/login</span></p>
-<p>Logs you into Guilded. Important data here is the returned <code>Set-Cookie</code> header, which you need to pass as a <code>cookie</code> header when <a href="/topics/gateway#connecting-to-the-gateway">connecting to the gateway</a>.</p>
+<p>Logs you into Guilded. Important data here is the returned <code>guilded_mid</code> cookie, which you need to pass as a <code>guildedClientId</code> query argument when <a href="/topics/gateway#connecting-to-the-gateway">connecting to the gateway</a>.</p>
 <h6>JSON Parameters</h6>
 <table>
 <thead>
