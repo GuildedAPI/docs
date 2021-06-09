@@ -40,24 +40,19 @@ wss://api.guilded.gg
 
 ###### Gateway URL Params
 
-| Field      | Type    | Description                     | Accepted Values                          |
-|------------|---------|---------------------------------|------------------------------------------|
-| jwt        | string  | authentication stuff?           | 'undefined'                              |
-| EIO        | integer | Engine.IO version               | 3                                        |
-| transport  | string  | the type of transport           | 'websocket'                              |
-| ?teamId \* | string  | the team's socket to connect to | a [team ID](/resources/team#team-object) |
+| Field           | Type    | Description                     | Accepted Values                          |
+|-----------------|---------|---------------------------------|------------------------------------------|
+| jwt             | string  | authentication stuff?           | 'undefined'                              |
+| EIO             | integer | Engine.IO version               | 3                                        |
+| transport       | string  | the type of transport           | 'websocket'                              |
+| guildedClientId | string  | used for authentication         | the `guilded_mid` header received when [logging in via REST](/reference#quick-authentication-how-to) |
+| ?teamId \*      | string  | the team's socket to connect to | a [team ID](/resources/team#team-object) |
 
 \* This is for team-specific events like member and channel updates. In order to receive a team's events, you will need to open a separate connection for it, which you should treat just like the main websocket - heartbeat and all.
 
-###### Gateway Headers
+The first step in establishing connectivity to the gateway is to construct your gateway URL. Options are pretty limited, so you should end up with something like `wss://api.guilded.gg/socket.io/?jwt=undefined&EIO=3&transport=websocket&guildedClientId={guilded_mid_header}` (assuming you don't want to connect to a team websocket).
 
-| Header | Description                | Accepted Values                                              |
-|--------|----------------------------|--------------------------------------------------------------|
-| cookie | your authentication cookie | a cookie gotten from [logging in via REST](/reference#quick-authentication-how-to) |
-
-The first step in establishing connectivity to the gateway is to construct your gateway URL. Options are pretty limited, so you should end up with something like `wss://api.guilded.gg/socket.io/?jwt=undefined&EIO=3&transport=websocket` (assuming you don't want to connect to a team websocket).
-
-You can now open a websocket connection to the URL you have created (or copied from this page).
+You can now open a websocket connection to the URL you have created.
 
 Once connected, the client should immediately receive [a "hello"-type payload](#example-gateway-hello), with information on the connection's heartbeat interval.
 

@@ -31,7 +31,7 @@ For the HTTP API, authentication is not passed through the headers, but the JSON
 ## Quick Authentication How-To
 <span class="http-verb">POST</span><span class="http-path">/login</span>
 
-Logs you into Guilded. Important data here is the returned `Set-Cookie` header, which you need to pass as a `cookie` header when [connecting to the gateway](/topics/gateway#connecting-to-the-gateway).
+Logs you into Guilded. Important data here is the returned `guilded_mid` cookie, which you need to pass as a `guildedClientId` query argument when [connecting to the gateway](/topics/gateway#connecting-to-the-gateway).
 
 ###### JSON Parameters
 
