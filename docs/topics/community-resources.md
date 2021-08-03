@@ -20,7 +20,7 @@ Many of these libraries are represented in the [community-driven server for deve
 | [guilded.js](https://github.com/guildedjs/guilded.js)      | TypeScript | Client            |
 | [guilded.py](https://github.com/shayypy/guilded.py)        | Python     | Client, Official* |
 
-* As the official API is currently in early access, none of the wrappers marked as supporting it will offer interactive functionality with it just yet.
+\* As the official API is currently in early access, none of the wrappers marked as supporting it will offer interactive functionality with it just yet.
 
 ## Embed Visualizers
 
