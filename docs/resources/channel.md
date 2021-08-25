@@ -547,30 +547,27 @@ Embeds objects in Guilded are the same as in Discord.
 
 ###### Embed Thumbnail Structure
 
-| Field      | Type    | Description                                    |
-|------------|---------|------------------------------------------------|
-| url?       | string  | source url of thumbnail. only supports http(s) |
-| proxy_url? | string  | a proxied url of the thumbnail                 |
-| height?    | integer | height of thumbnail                            |
-| width?     | integer | width of thumbnail                             |
+| Field   | Type    | Description                                    |
+|---------|---------|------------------------------------------------|
+| url?    | string  | source url of thumbnail. only supports http(s) |
+| height? | integer | height of thumbnail                            |
+| width?  | integer | width of thumbnail                             |
 
 ###### Embed Video Structure
 
-| Field      | Type    | Description                |
-|------------|---------|----------------------------|
-| url?       | string  | source url of video        |
-| proxy_url? | string  | a proxied url of the video |
-| height?    | integer | height of video            |
-| width?     | integer | width of video             |
+| Field   | Type    | Description                |
+|---------|---------|----------------------------|
+| url?    | string  | source url of video        |
+| height? | integer | height of video            |
+| width?  | integer | width of video             |
 
 ###### Embed Image Structure
 
-| Field      | Type    | Description                                |
-|------------|---------|--------------------------------------------|
-| url?       | string  | source url of image. only supports http(s) |
-| proxy_url? | string  | a proxied url of the image                 |
-| height?    | integer | height of image                            |
-| width?     | integer | width of image                             |
+| Field   | Type    | Description                                |
+|---------|---------|--------------------------------------------|
+| url?    | string  | source url of image. only supports http(s) |
+| height? | integer | height of image                            |
+| width?  | integer | width of image                             |
 
 ###### Embed Provider Structure
 
@@ -581,20 +578,24 @@ Embeds objects in Guilded are the same as in Discord.
 
 ###### Embed Author Structure
 
-| Field           | Type   | Description                               |
-|-----------------|--------|-------------------------------------------|
-| name?           | string | name of author                            |
-| url?            | string | url of author                             |
-| icon_url?       | string | url of author icon. only supports http(s) |
-| proxy_icon_url? | string | a proxied url of author icon              |
+| Field       | Type   | Description                               |
+|-------------|--------|-------------------------------------------|
+| name?       | string | name of author                            |
+| url?        | string | url of author                             |
+| iconUrl?\*  | string | url of author icon. only supports http(s) |
+| icon_url?\* | string | url of author icon. only supports http(s) |
+
+\* You may provide either `iconUrl` or `icon_url`, but `icon_url` will only show up on mobile devices. For this reason, `iconUrl` is recommend instead.
 
 ###### Embed Footer Structure
 
-| Field           | Type   | Description                               |
-|-----------------|--------|-------------------------------------------|
-| text            | string | footer text                               |
-| icon_url?       | string | url of footer icon. only supports http(s) |
-| proxy_icon_url? | string | a proxied url of footer icon              |
+| Field       | Type   | Description                               |
+|-------------|--------|-------------------------------------------|
+| text        | string | footer text                               |
+| iconUrl?\*  | string | url of footer icon. only supports http(s) |
+| icon_url?\* | string | url of footer icon. only supports http(s) |
+
+\* You may provide either `iconUrl` or `icon_url`, but `icon_url` will only show up on mobile devices. For this reason, `iconUrl` is recommend instead.
 
 ###### Embed Field Structure
 
