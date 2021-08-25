@@ -17,7 +17,7 @@ Many of these libraries are represented in the [community-driven server for deve
 | [Guildedeno](https://github.com/Scientific-Guy/guildedeno) | Deno       | Client             |
 | [gapi](https://github.com/Skillz4Killz/gapi)               | TypeScript | Client             |
 | [guilded.gg.js](https://github.com/Sxmurai/guilded.gg.js)  | JavaScript | Client             |
-| [guilded.js](https://github.com/guildedjs/guilded.js)      | TypeScript | Client             |
+| [guilded.js](https://github.com/zaida04/guilded.js)        | JavaScript | Client             |
 | [guilded.py](https://github.com/shayypy/guilded.py)        | Python     | Client, Official\* |
 
 \* The official API is currently in early access, so you will need explicit approval from a Guilded staff member to use it, and by extension, the libraries that wrap it.
