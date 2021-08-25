@@ -8,19 +8,19 @@ Many of these libraries are represented in the [community-driven server for deve
 
 ###### Guilded Libraries (alphabetical)
 
-| Name                                                       | Language   | API Support       |
-|------------------------------------------------------------|------------|-------------------|
-| [Guild.js](https://github.com/Guild-js/guild.js)           | JavaScript | Official*         |
-| [GuildScript](https://github.com/GuildScript/GuildScript)  | JavaScript | Client            |
-| [Guildava](https://github.com/somefriggnidiot/Guildava)    | Java       | Client            |
-| [Guilded.NET](https://github.com/Guilded-NET/Guilded.NET)  | C#         | Client            |
-| [Guildedeno](https://github.com/Scientific-Guy/guildedeno) | Deno       | Client            |
-| [gapi](https://github.com/Skillz4Killz/gapi)               | TypeScript | Client            |
-| [guilded.gg.js](https://github.com/Sxmurai/guilded.gg.js)  | JavaScript | Client            |
-| [guilded.js](https://github.com/guildedjs/guilded.js)      | TypeScript | Client            |
-| [guilded.py](https://github.com/shayypy/guilded.py)        | Python     | Client, Official* |
+| Name                                                       | Language   | API Support        |
+|------------------------------------------------------------|------------|--------------------|
+| [Guild.js](https://github.com/Guild-js/guild.js)           | JavaScript | Official\*         |
+| [GuildScript](https://github.com/GuildScript/GuildScript)  | JavaScript | Client             |
+| [Guildava](https://github.com/somefriggnidiot/Guildava)    | Java       | Client             |
+| [Guilded.NET](https://github.com/Guilded-NET/Guilded.NET)  | C#         | Official\*         |
+| [Guildedeno](https://github.com/Scientific-Guy/guildedeno) | Deno       | Client             |
+| [gapi](https://github.com/Skillz4Killz/gapi)               | TypeScript | Client             |
+| [guilded.gg.js](https://github.com/Sxmurai/guilded.gg.js)  | JavaScript | Client             |
+| [guilded.js](https://github.com/guildedjs/guilded.js)      | TypeScript | Client             |
+| [guilded.py](https://github.com/shayypy/guilded.py)        | Python     | Client, Official\* |
 
-\* As the official API is currently in early access, none of the wrappers marked as supporting it will offer interactive functionality with it just yet.
+\* The official API is currently in early access, so you will need explicit approval from a Guilded staff member to use it, and by extension, the libraries that wrap it.
 
 ## Embed Visualizers
 
