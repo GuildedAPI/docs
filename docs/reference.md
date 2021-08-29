@@ -52,14 +52,15 @@ Unlike Discord, Guilded uses [UUIDs](https://en.wikipedia.org/wiki/Universally_u
 
 For some endpoints, you will have to Bring Your Own UUID (BYOU). Worry not - this is typically a trivial task. Most languages should come with a way to generate a compliant UUID with ease, or have a 3rd-party library for such a purpose:
 
-| Method                                                                           | Language   |
-|----------------------------------------------------------------------------------|------------|
-| [uuid.uuid1()](https://docs.python.org/3/library/uuid.html#uuid.uuid1)           | Python     |
-| [uuid.uuidv4()](https://www.npmjs.com/package/uuid)                              | JavaScript |
-| [uuid-random.uuid()](https://www.npmjs.com/package/uuid-random)                  | JavaScript |
-| System.Guid.NewGuid()                                                            | C#         |
-| [Uuid::new_v4()](https://docs.rs/uuid/0.8.2/uuid/struct.Uuid.html#method.new_v4) | Rust       |
-| [UUID.random](https://crystal-lang.org/api/1.0.0/UUID.html)                      | Crystal    |
+| Method                                                                                                             | Language   |
+|--------------------------------------------------------------------------------------------------------------------|------------|
+| [uuid.uuid1()](https://docs.python.org/3/library/uuid.html#uuid.uuid1)                                             | Python     |
+| [uuid.uuidv4()](https://www.npmjs.com/package/uuid)                                                                | JavaScript |
+| [uuid-random.uuid()](https://www.npmjs.com/package/uuid-random)                                                    | JavaScript |
+| System.Guid.NewGuid()                                                                                              | C#         |
+| [Uuid::new_v4()](https://docs.rs/uuid/0.8.2/uuid/struct.Uuid.html#method.new_v4)                                   | Rust       |
+| [UUID.random](https://crystal-lang.org/api/1.0.0/UUID.html)                                                        | Crystal    |
+| [UUID.randomUUID()](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/UUID.html#randomUUID()) | Java       |
 
 ## Generic Object IDs
 
