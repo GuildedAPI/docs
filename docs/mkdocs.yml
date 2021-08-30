@@ -1,0 +1,27 @@
+site_name: Guilded API Documentation
+site_description: Unofficial documentation for Guilded's REST and WebSocket APIs.
+site_author: Guilded Developer Resources
+repo_url: https://github.com/guildedapi/docs
+repo_name: GitHub
+edit_uri: blob/main/docs/
+copyright: Copyright © shay (shayypy) 2021
+site_dir: build
+theme: 
+  name: material
+  custom_dir: overrides
+  logo: guilded.svg
+  favicon: logo.png
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.instant
+    - toc.integrate
+extra_css: [extra.css]
+dev_addr: 127.0.0.1:80
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - toc:
+      permalink: 🔗
+      toc_depth: 3
