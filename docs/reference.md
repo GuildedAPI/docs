@@ -64,7 +64,7 @@ For some endpoints, you will have to Bring Your Own UUID (BYOU). Worry not - thi
 
 ## Generic Object IDs
 
-These are 8-character, probably-meaningless IDs that Guilded uses in lieu of Snowflakes or UUIDs. They are used for objects like [Teams](/resources/teams#team-object), [Groups](/resources/groups#group-object), and [Users](/resources/users#user-object).
+These are 8-character, probably-meaningless IDs that Guilded uses in lieu of Snowflakes or UUIDs. They are used for objects like [Teams](/resources/team#team-object), [Groups](/resources/group#group-object), and [Users](/resources/user#user-object).
 
 ## ISO8601 Date/Time
 
