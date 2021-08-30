@@ -17,5 +17,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CUSTOM_DOMAIN: guildedapi.com
-          CONFIG_FILE: docs/mkdocs.yml
+          CONFIG_FILE: config.yml
           EXTRA_PACKAGES: build-base
