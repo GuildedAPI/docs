@@ -5,7 +5,8 @@ repo_url: https://github.com/guildedapi/docs
 repo_name: GitHub
 edit_uri: blob/main/docs/
 copyright: Copyright © shay (shayypy) 2021
-site_dir: build
+site_dir: /build
+docs_dir: /docs
 theme: 
   name: material
   custom_dir: overrides
