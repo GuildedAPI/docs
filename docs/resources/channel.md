@@ -681,20 +681,26 @@ Post a message to a team channel or DM channel. Returns a [message](#message-obj
 
 The actual uploading of attachments is a separate endpoint. See [how to upload files](/reference#upload-a-file). Use a dynamicMediaTypeId of `ContentMedia`.
 
-The concept of "replies" do not exist, but you may [begin a new thread](#create-thread) with a `message` key to send your message as a new thread.
-
 ###### JSON Params
 
-| Field             | Type                                                                               | Description                                             |
-|-------------------|------------------------------------------------------------------------------------|---------------------------------------------------------|
-| messageId         | [uuid](/reference#snowflakes-uuids)                                                | the id for this message                                 |
-| content           | message content (see below)                                                        | the message contents (up to 4,000 characters of text)   |
+| Field         | Type                                          | Description                                                                   |
+|---------------|-----------------------------------------------|-------------------------------------------------------------------------------|
+| messageId     | [uuid](/reference#snowflakes-uuids)           | the id for this message                                                       |
+| content       | message content (see below)                   | the message contents (up to 4,000 characters of text)                         |
+| repliesToIds? | array of [uuids](/reference#snowflakes-uuids) | up to 5 messages ids to reply to                                              |
+| isSilent?     | boolean                                       | this reply should notify the authors of the messages it is replying to        |
+| isPrivate?    | boolean                                       | this reply should be "private" (only visible to people involved in the reply) |
+
+!!! note
+    Setting both `isSilent` and `isPrivate` to `true` (a private reply with no mention) will not send the reply to the author of the message(s).
 
 ###### Example Request Body
 
 ```json
 {
   "messageId": "b943384a-d951-4323-8e26-8e3e6b7c431a",
+  "repliesToIds": ["6354da62-09b9-11ec-9907-6245b4f631c5", "71fd7df4-09b9-11ec-8127-6245b4f631c5"],
+  "isPrivate": true,
   "content": {
     "object": "value",
     "document": {
