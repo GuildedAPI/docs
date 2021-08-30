@@ -10,14 +10,14 @@ docs_dir: docs/
 theme: 
   name: material
   custom_dir: docs/overrides
-  logo: docs/guilded.svg
-  favicon: docs/logo.png
+  logo: guilded.svg
+  favicon: logo.png
   features:
     - navigation.sections
     - navigation.expand
     - navigation.instant
     - toc.integrate
-extra_css: [docs/extra.css]
+extra_css: [extra.css]
 dev_addr: 127.0.0.1:80
 markdown_extensions:
   - admonition
