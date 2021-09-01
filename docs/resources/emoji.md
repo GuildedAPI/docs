@@ -43,7 +43,7 @@ A "custom reaction" refers to a custom server emoji in Guilded. However, since t
 ### Emoji Pack Object
 
 !!! info
-    Emoji packs can include a maximum of 30 emojis.
+    Emoji packs can include a maximum of 50 emojis.
 
 ###### Emoji Pack Structure
 
