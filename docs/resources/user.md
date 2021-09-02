@@ -988,11 +988,11 @@ Set your transient status. Returns your new [transient status object](#transient
 
 ###### JSON Params
 
-| Field  | Type     | Description                                                                                        |
-|--------|----------|----------------------------------------------------------------------------------------------------|
-| id     | integer  | ?                                                                                                  |
-| gameId | ?integer | the game's id this status is for (see [game ids](#transient-status-object) for known valid values) |
-| type   | string   | the type of transient status. should be one of `gamepresence`, ?                                   |
+| Field  | Type     | Description                                                                         |
+|--------|----------|-------------------------------------------------------------------------------------|
+| id     | integer  | ?                                                                                   |
+| gameId | ?integer | the game's id this status is for (see [game ids](#game-ids) for known valid values) |
+| type   | string   | the type of transient status. should be one of `gamepresence`, ?                    |
 
 ## Delete User Transient Status
 <span class="http-verb">DELETE</span><span class="http-path">/users/me/status/transient</span>
