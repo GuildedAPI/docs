@@ -654,13 +654,15 @@ Delete a channel. Deleting a category does not delete its child channels; they w
 
 Returns the messages for a channel. Does not require authentication. Returns an array of [message](/resources/channel#message-object) objects and a boolean `hasPastMessages` detailing if there are messages preceeding this array on success.
 
-Query string parameter `limit` has been tested up to 50,000.
+Query string parameter `limit` is interpreted as a bigint value and therefore can be as high as 2^63. Anything over this value will quickly return a 500 error code.
 
 ###### Query String Params
 
 | Field  | Type    | Description                              | Required | Default |
 |--------|---------|------------------------------------------|----------|---------|
-| limit  | integer | max number of messages to return (0-???) | false    | 51      |
+| limit  | integer | max number of messages to return (0-2^63) | false    | 51      |
+| beforeDate | timestamp | filters messages by those made before a certain timestamp | false | now |
+| afterDate | timestamp | filters messages by those made after a certain timestamp | false | epoch? |
 
 ## Get Channel Message
 <span class="http-verb">GET</span><span class="http-path">/content/route/metadata?route=//channels/{[channel.id](/resources/channel#channel-object)}/chat?messageId={[message.id](/resources/channel#message-object)}</span>
