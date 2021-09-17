@@ -90,8 +90,6 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
 
 ### User Presence
 
-Passing a value of <1 or >4 will render with a transparent "presence circle" in the client.
-
 | Value | Meaning           |
 |-------|-------------------|
 | 1     | online            |
