@@ -46,7 +46,7 @@ The REST and WebSocket APIs are 'secure' (HTTPS, WSS). I am unsure of any other 
 
 ## Snowflakes & UUIDs
 
-Unlike Discord, Guilded uses [UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier) for its unique IDs. Because of this, none of the same properties apply as to Snowflakes.
+Unlike Discord, Guilded uses [UUIDs](https://wikipedia.org/wiki/Universally_unique_identifier) for many of its unique IDs ([Channels](/channel#channel-object) (all types), [Messages](/channel#message-object), and [Webhooks](/resources/webhook#webhook-object) use UUIDs). Because of this, none of the same properties apply as to Snowflakes.
 
 ### Generating UUIDs
 
@@ -57,7 +57,7 @@ For some endpoints, you will have to Bring Your Own UUID (BYOU). Worry not - thi
 | [uuid.uuid1()](https://docs.python.org/3/library/uuid.html#uuid.uuid1)                                             | Python     |
 | [uuid.uuidv4()](https://www.npmjs.com/package/uuid)                                                                | JavaScript |
 | [uuid-random.uuid()](https://www.npmjs.com/package/uuid-random)                                                    | JavaScript |
-| System.Guid.NewGuid()                                                                                              | C#         |
+| [System.Guid.NewGuid](https://docs.microsoft.com/dotnet/api/system.guid.newguid)                                   | C#         |
 | [Uuid::new_v4()](https://docs.rs/uuid/0.8.2/uuid/struct.Uuid.html#method.new_v4)                                   | Rust       |
 | [UUID.random](https://crystal-lang.org/api/1.0.0/UUID.html)                                                        | Crystal    |
 | [UUID.randomUUID()](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/UUID.html#randomUUID()) | Java       |
