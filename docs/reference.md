@@ -46,7 +46,7 @@ The REST and WebSocket APIs are 'secure' (HTTPS, WSS). I am unsure of any other 
 
 ## Snowflakes & UUIDs
 
-Unlike Discord, Guilded uses [UUIDs](https://wikipedia.org/wiki/Universally_unique_identifier) for many of its unique IDs ([Channels](/channel#channel-object) (all types), [Messages](/channel#message-object), and [Webhooks](/resources/webhook#webhook-object) use UUIDs). Because of this, none of the same properties apply as to Snowflakes.
+Unlike Discord, Guilded uses [UUIDs](https://wikipedia.org/wiki/Universally_unique_identifier) for many of its unique IDs ([Channels](/resources/channel#channel-object) (all types), [Messages](/resources/channel#message-object), and [Webhooks](/resources/webhook#webhook-object) use UUIDs). Because of this, none of the same properties apply as to Snowflakes.
 
 ### Generating UUIDs
 
