@@ -57,7 +57,7 @@ For some endpoints, you will have to Bring Your Own UUID (BYOU). Worry not - thi
 | [uuid.uuid1()](https://docs.python.org/3/library/uuid.html#uuid.uuid1)                                             | Python     |
 | [uuid.uuidv4()](https://www.npmjs.com/package/uuid)                                                                | JavaScript |
 | [uuid-random.uuid()](https://www.npmjs.com/package/uuid-random)                                                    | JavaScript |
-| [System.Guid.NewGuid](https://docs.microsoft.com/dotnet/api/system.guid.newguid)                                   | C#         |
+| [System.Guid.NewGuid()](https://docs.microsoft.com/dotnet/api/system.guid.newguid)                                 | C#         |
 | [Uuid::new_v4()](https://docs.rs/uuid/0.8.2/uuid/struct.Uuid.html#method.new_v4)                                   | Rust       |
 | [UUID.random](https://crystal-lang.org/api/1.0.0/UUID.html)                                                        | Crystal    |
 | [UUID.randomUUID()](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/UUID.html#randomUUID()) | Java       |
