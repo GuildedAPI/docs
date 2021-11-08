@@ -15,7 +15,6 @@ Many of these libraries are represented in the [community-driven server for deve
 | [GuildScript](https://github.com/GuildScript/GuildScript)    | JavaScript | Client             |
 | [Guilded.NET](https://github.com/Guilded-NET/Guilded.NET)    | C#         | Official\*         |
 | [Guilded4J](https://github.com/MCUmbrella/Guilded4J)         | Java       | Official\*         |
-| [GuildedSharp](https://github.com/xXBuilderBXx/GuildedSharp) | C#         | Official\*         |
 | [Guildedeno](https://github.com/Scientific-Guy/guildedeno)   | Deno       | Client             |
 | [gapi](https://github.com/Skillz4Killz/gapi)                 | TypeScript | Client             |
 | [guilded.js](https://github.com/zaida04/guilded.js)          | JavaScript | Client             |
