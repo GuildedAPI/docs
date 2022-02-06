@@ -620,7 +620,7 @@ Embeds objects in Guilded are the same as in Discord, with the exception of `ico
 ## Get Embed for URL
 <span class="http-verb">GET</span><span class="http-path">/content/embed_info</span>
 
-Generate embed data for a specific URL. Returns a special [unfurl embed object](#unfurl-embed-object) on response.
+Generate embed data for a specific URL. Returns a special [unfurl embed object](#unfurl-embed-object) on success. On failure, this will return an empty dictionary with status code 200.
 
 ###### Query Params
 
