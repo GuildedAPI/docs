@@ -11,12 +11,11 @@ Many of these libraries are represented in the [community-driven server for deve
 | Name                                                       | Language   | API Support        |
 | ---------------------------------------------------------- | ---------- | ------------------ |
 | [Gdd.js](https://github.com/RemyK888/gdd.js/)              | TypeScript | Official\*         |
-| [GuildScript](https://github.com/GuildScript/GuildScript)  | JavaScript | Client             |
 | [Guilded.NET](https://github.com/Guilded-NET/Guilded.NET)  | C#         | Official\*         |
 | [Guilded4J](https://github.com/MCUmbrella/Guilded4J)       | Java       | Official\*         |
 | [Guildedeno](https://github.com/Scientific-Guy/guildedeno) | Deno       | Client             |
 | [gapi](https://github.com/Skillz4Killz/gapi)               | TypeScript | Client             |
-| [guilded.js](https://github.com/zaida04/guilded.js)        | JavaScript | Client             |
+| [guilded.js](https://github.com/zaida04/guilded.js)        | JavaScript | Client, Official\* |
 | [guilded.py](https://github.com/shayypy/guilded.py)        | Python     | Client, Official\* |
 | [deck](https://github.com/SrGaabriel/deck)                 | Kotlin     | Client             |
 
