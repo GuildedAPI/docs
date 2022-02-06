@@ -500,14 +500,14 @@ Represents a message sent in a channel within Guilded.
 !!! info
     All of the below fields are optional and nullable.
 
-| Field         | Type   | Description                          |
-|---------------|--------|--------------------------------------|
-| ogTitle       | string | og:title                             |
-| ogDescription | string | og:description                       |
-| ogSiteName    | string | og:site_name                         |
-| ogUrl         | string | og:url                               |
-| ogImage.url   | string | proxied og:image                     |
-| siteType      | string | doesn't seem to line up with og:type |
+| Field         | Type   | Description                                  |
+|---------------|--------|----------------------------------------------|
+| ogTitle       | string | og:title                                     |
+| ogDescription | string | og:description                               |
+| ogSiteName    | string | og:site_name                                 |
+| ogUrl         | string | og:url                                       |
+| ogImage.url   | string | proxied og:image                             |
+| siteType      | string | the [type of site](#unfurl-embed-site-types) |
 
 ###### Example Unfurl Embed
 
@@ -524,9 +524,22 @@ Represents a message sent in a channel within Guilded.
 }
 ```
 
+### Unfurl Embed Site Types
+
+| Value    | Domain         |
+|----------|----------------|
+| facebook | facebook.com   |
+| github   | github.com     |
+| guilded  | guilded.gg     |
+| reddit   | www.reddit.com |
+| twitch   | twitch.tv      |
+| twitter  | twitter.com/\* |
+| vimeo    | vimeo.com      |
+| youtube  | youtube.com/\* |
+
 ### Embed Object
 
-Embeds objects in Guilded are the same as in Discord.
+Embeds objects in Guilded are the same as in Discord, with the exception of `iconUrl` being preferred over `icon_url` for `embed.author`s and `embed.footer`s.
 
 ###### Embed Structure
 
@@ -608,36 +621,29 @@ Embeds objects in Guilded are the same as in Discord.
 ## Get Embed for URL
 <span class="http-verb">GET</span><span class="http-path">/content/embed_info</span>
 
-Generate embed data for a specific URL. Returns a special ["unfurl embed" object](#unfurl-embed-object) on response.
+Generate embed data for a specific URL. Returns a special [unfurl embed object](#unfurl-embed-object) on response.
 
 ###### Query Params
 
 | Field | Type   | Description                  | Required |
 |-------|--------|------------------------------|----------|
-| url   | string | the url to get the embed for | true     |
+| url   | string | the url to get an embed for  | true     |
 
 ## Embed Limits
 
-To facilitate showing rich content, rich embeds do not follow the traditional limits of message content. However, some limits are still in place to prevent excessively large embeds. The following table describes the limits:
+Leading and trailing whitespace characters are included in the following limits; they are kept intact despite not being visible in the desktop client.
 
-###### Limits
+| Field                                                    | Limit            |
+|----------------------------------------------------------|------------------|
+| title                                                    | 256 characters   |
+| description                                              | 2048 characters  |
+| fields                                                   | 25 field objects |
+| [field.name](/resources/channel#embed-field-structure)   | 256 characters   |
+| [field.value](/resources/channel#embed-field-structure)  | 1024 characters  |
+| [footer.text](/resources/channel#embed-footer-structure) | 2048 characters  |
+| [author.name](/resources/channel#embed-author-structure) | 256 characters   |
 
-!!! info
-    The following table is left for placeholder purposes. Embeds can be very expansive and I have yet to see what their limits are (as well as how many you can fit in a message).
-
-All of the following limits are measured inclusively. Leading and trailing whitespace characters are not included (they are trimmed automatically).
-
-| Field                                                    | Limit                  |
-|----------------------------------------------------------|------------------------|
-| title                                                    | ??? characters         |
-| description                                              | ??? characters         |
-| fields                                                   | Up to 25 field objects |
-| [field.name](/resources/channel#embed-field-structure)   | ??? characters         |
-| [field.value](/resources/channel#embed-field-structure)  | ??? characters         |
-| [footer.text](/resources/channel#embed-footer-structure) | ??? characters         |
-| [author.name](/resources/channel#embed-author-structure) | ??? characters         |
-
-Additionally, the characters in all `title`, `description`, `field.name`, `field.value`, `footer.text`, and `author.name` fields must not exceed ***???*** characters in total.
+There is no explicit character limit for the sum of all the above fields, however utilizing every text slot you may fit a total of 36,608 characters per embed.
 
 ## Get Channel
 <span class="http-verb">GET</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}</span>

@@ -23,7 +23,7 @@ Many of these libraries are represented in the [community-driven server for deve
 
 ## Embed Visualizers
 
-From an API standpoint, Discord and Guilded use the exact same Embed format. They do look a bit different in the client, but you can use the following resources to easily make some neato JSON for use in your Guilded messages.
+From an API standpoint, Discord and Guilded use relatively the same [embed formats](/resources/channel/#embed-object). They look a bit different in the client, but you can use the following resources to easily compose some JSON for use in your Guilded messages.
 
 - [LeoV's Embed Visualizer](https://leovoel.github.io/embed-visualizer)
 - [Discohook](https://discohook.app) (click on "JSON Data Editor" when you're done)
