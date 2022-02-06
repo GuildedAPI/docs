@@ -11,7 +11,6 @@ Many of these libraries are represented in the [community-driven server for deve
 | Name                                                       | Language   | API Support        |
 | ---------------------------------------------------------- | ---------- | ------------------ |
 | [Gdd.js](https://github.com/RemyK888/gdd.js/)              | TypeScript | Official\*         |
-| [Guild.js](https://github.com/Guild-js/guild.js)           | JavaScript | Official\*         |
 | [GuildScript](https://github.com/GuildScript/GuildScript)  | JavaScript | Client             |
 | [Guilded.NET](https://github.com/Guilded-NET/Guilded.NET)  | C#         | Official\*         |
 | [Guilded4J](https://github.com/MCUmbrella/Guilded4J)       | Java       | Official\*         |
