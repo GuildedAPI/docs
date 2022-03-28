@@ -87,16 +87,17 @@ Delete a webhook. Returns a partial [webhook](#webhook-object) object on success
     This endpoint is supposedly [similar enough](/images/webhooks_identical.png) to Discord's [`POST /webhooks/{webhook.id}/{webhook.token}`](https://discord.dev/resources/webhook#execute-webhook) that all you have to do is "change a url". However, many of the same fields are not supported (although they will not raise).
 
 !!! info
-    You do not have to append `/github` onto your webhook URL for use with GitHub repos and organizations. The URL by itself will work as intended.
+    You do not have to append `/github` onto your webhook URL for use with GitHub. The URL by itself will work as intended. It is recommended not to choose all events as many of them are unsupported and will result in error messages being sent through the webhook.
 
-!!! warning
-    It is recommended not to choose all events for GitHub webhooks, as many of them are not supported and will result in an `Error: event type [...] not supported` whenever it happens.
-
-Send a message through a webhook.
+Send a message through a webhook. Returns a [message](/resources/channel#message-object) object.
 
 ###### JSON/Form Params
 
-| Field   | Type   | Description                                               | Required               |
-|---------|--------|-----------------------------------------------------------|------------------------|
-| content | string | the message contents (up to 2000 characters)              | one of content, embeds |
-| embeds  | array  | up to 10 [embed](/resources/channel#embed-object) objects | one of content, embeds |
+| Field          | Type                                               | Description                                  | Required                   |
+|----------------|----------------------------------------------------|----------------------------------------------|----------------------------|
+| content        | string                                             | the message contents (up to 2000 characters) | one of content, embeds     |
+| embeds         | array of [embeds](/resources/channel#embed-object) | up to 10 embeds                              | one of content, embeds     |
+| files[n]\*     | file contents                                      | up to 10 files                               | false                      |
+| payload_json\* | string                                             | JSON encoded body of non-file params         | `multipart/form-data` only |
+
+\* See [Uploading Files](https://discord.dev/reference#uploading-files) for details.
