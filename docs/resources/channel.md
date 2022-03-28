@@ -671,7 +671,7 @@ Delete a channel. Deleting a category does not delete its child channels; they w
 ## Get Channel Messages
 <span class="http-verb">GET</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}/messages</span>
 
-Returns the messages for a channel. Does not require authentication. Returns an array of [message](/resources/channel#message-object) objects and a boolean `hasPastMessages` detailing if there are messages preceeding this array on success.
+Returns the messages for a channel. Does not require authentication if a channel is public. Returns an array of [message](/resources/channel#message-object) objects and a boolean `hasPastMessages` detailing if there are messages preceeding this array on success.
 
 ###### Query String Params
 
