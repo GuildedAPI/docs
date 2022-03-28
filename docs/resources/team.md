@@ -80,11 +80,6 @@ Refer to [Get Team](#get-team)'s example response
   "subscriptionType": null,
   "socialLinks": [
     {
-      "type": "patreon",
-      "handle": "Shahayhay ",
-      "additionalInfo": {}
-    },
-    {
       "type": "twitter",
       "handle": "GuildedAPI",
       "additionalInfo": {}

@@ -6,31 +6,34 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
 
 ###### User Structure
 
-| Field               | Type                                         | Description                                                  |
-|---------------------|----------------------------------------------|--------------------------------------------------------------|
-| id                  | [generic id](/reference#generic-object-ids)  | the user's id                                                |
-| name                | string                                       | the user's username, not unique across the platform          |
-| subdomain           | ?string                                      | the user's unique profile url                                |
-| aliases             | array                                        | the linked games on the user's profile                       |
-| email               | ?string                                      | the user's email. null if this is not you                    |
-| serviceEmail        | ?string                                      | ?                                                            |
-| profilePicture      | string (url)                                 | the user's avatar url                                        |
-| profilePictureSm    | string (url)                                 | ^                                                            |
-| profilePictureLg    | string (url)                                 | ^                                                            |
-| profilePictureBlur  | string (url)                                 | ^                                                            |
-| profileBannerSm     | ?string (url)                                | the user's banner url                                        |
-| profileBannerLg     | ?string (url)                                | ^                                                            |
-| profileBannerBlur   | ?string (url)                                | ^                                                            |
-| joinDate            | ISO8601 timestamp                            | when this user's account was created                         |
-| steamId             | ?string                                      | this user's steam id, if linked                              |
-| userStatus          | [user status object](#user-status-object)    | this user's current activity/"status"                        |
-| userPresenceStatus  | integer                                      | this [user's presence](#user-presence) (online, idle, etc)   |
-| userTransientStatus | [transient status object](#transient-status) | this user's transient status (game, streaming, ?)            |
-| moderationStatus    | ?                                            | ?                                                            |
-| aboutInfo           | [about info object](#about-info-object)      | this user's bio and tagline                                  |
-| lastOnline          | ISO8601 timestamp                            | when this user was last online                               |
-| stonks?             | integer                                      | number of "stonks" the user has gotten from inviting people  |
-| flairInfos?         | array of [flair objects](#flair-object)      | the flairs the user has on their profile                     |
+| Field                  | Type                                                   | Description                                                           |
+|------------------------|--------------------------------------------------------|-----------------------------------------------------------------------|
+| id                     | [generic id](/reference#generic-object-ids)            | the user's id                                                         |
+| name                   | string                                                 | the user's username, not unique across the platform                   |
+| type                   | string                                                 | the [type of user](#user-types)                                       |
+| subdomain              | ?string                                                | the user's unique profile url                                         |
+| aliases                | array                                                  | the linked games on the user's profile                                |
+| email                  | ?string                                                | the user's email. null if this is not you                             |
+| serviceEmail           | ?string                                                | ?                                                                     |
+| profilePicture         | string (url)                                           | the user's avatar url                                                 |
+| profilePictureSm       | string (url)                                           | ^                                                                     |
+| profilePictureLg       | string (url)                                           | ^                                                                     |
+| profilePictureBlur     | string (url)                                           | ^                                                                     |
+| profileBannerSm        | ?string (url)                                          | the user's banner url                                                 |
+| profileBannerLg        | ?string (url)                                          | ^                                                                     |
+| profileBannerBlur      | ?string (url)                                          | ^                                                                     |
+| createdAt              | ISO8601 timestamp                                      | when the user's account was created                                   |
+| joinDate? (deprecated) | ISO8601 timestamp                                      | when the user's account was created. `createdAt` may appear instead   |
+| steamId                | ?string                                                | this user's steam id, if linked                                       |
+| userStatus             | [user status object](#user-status-object)              | this user's current activity/"status"                                 |
+| userPresenceStatus     | integer                                                | this [user's presence](#user-presence) (online, idle, etc)            |
+| userTransientStatus    | [transient status object](#transient-status)           | this user's transient status (game, streaming, ?)                     |
+| moderationStatus       | ?                                                      | ?                                                                     |
+| aboutInfo              | [about info object](#about-info-object)                | this user's bio and tagline                                           |
+| lastOnline             | ISO8601 timestamp                                      | when this user was last online                                        |
+| stonks?                | integer                                                | number of "stonks" the user has gotten from inviting people           |
+| flairInfos?            | array of [flair objects](#flair-object)                | the flairs the user has on their profile                              |
+| teams?                 | boolean, array of [teams](/resources/team#team-object) | `false` if the user is not yourself, otherwise an array of your teams |
 
 ###### Example User
 
@@ -38,6 +41,7 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
 {
   "id": "EdVMVKR4",
   "name": "shay",
+  "type": "user",
   "subdomain": "shayy",
   "aliases": [
     {
@@ -55,14 +59,9 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
     }
   ],
   "email": null,
-  "profilePictureSm": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/74bfc8be9425a926a1f48d9b078509bc-Large.png?w=450&h=450",
   "profilePicture": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/74bfc8be9425a926a1f48d9b078509bc-Large.png?w=450&h=450",
-  "profilePictureLg": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/74bfc8be9425a926a1f48d9b078509bc-Large.png?w=450&h=450",
-  "profilePictureBlur": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/74bfc8be9425a926a1f48d9b078509bc-Large.png?w=450&h=450",
-  "profileBannerBlur": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserBanner/acaa9d0f78dd8cdd93f3ce44d14c0260-Hero.png?w=1500&h=500",
-  "profileBannerLg": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserBanner/acaa9d0f78dd8cdd93f3ce44d14c0260-Hero.png?w=1500&h=500",
-  "profileBannerSm": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserBanner/acaa9d0f78dd8cdd93f3ce44d14c0260-Hero.png?w=1500&h=500",
-  "joinDate": "2020-07-27T14:07:28.336Z",
+  // Some profilePicture and banner keys removed for brevity
+  "createdAt": "2020-07-27T14:07:28.336Z",
   "steamId": null,
   "userStatus": {
     "content": null,
@@ -77,7 +76,6 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
   },
   "moderationStatus": null,
   "aboutInfo": {
-    "bio": "i own the guilded API server, go join for bot discussion, libraries, and general programming whatnot guilded.gg/guilded-api",
     "tagLine": "computer user"
   },
   "lastOnline": "2021-03-08T00:24:49.144Z",
@@ -87,6 +85,13 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
   "stonks": 2
 }
 ```
+
+##### User Types
+
+| Type | Description            |
+|------|------------------------|
+| user | the account is a human |
+| bot  | the account is a bot   |
 
 ### User Presence
 
@@ -930,12 +935,12 @@ Modify the requester's user account settings. Returns a [user](#user-object) obj
 ###### aboutInfo Params
 
 !!! info
-    All parameters here are nullable. When posting this to the API, this should go inside of a dictionary passed to [Modify Current User](#modify-current-user).
+    When posting this to the API, this should go inside of a dictionary passed to [Modify Current User](#modify-current-user).
 
-| Field   | Type   | Description                                                  |
-|---------|--------|--------------------------------------------------------------|
-| bio     | string | the user's bio ("About")                                     |
-| tagLine | string | the user's tagline (appears under their name on the profile) |
+| Field   | Type   | Description                                                    |
+|---------|--------|----------------------------------------------------------------|
+| bio?    | string | the user's bio ("About")                                       |
+| tagLine | string | the user's tagline (appears under their name on their profile) |
 
 ## Leave Team
 <span class="http-verb">DELETE</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/members/{[user.id](#user-object)}</span>
