@@ -659,9 +659,13 @@ Leading and trailing whitespace characters are included in the following limits;
 There is no explicit character limit for the sum of all the above fields, however utilizing every text slot you may fit a total of 36,608 characters per embed.
 
 ## Get Channel
-<span class="http-verb">GET</span><span class="http-path">/channels/{[channel.id](/resources/channel#channel-object)}</span>
+<span class="http-verb">GET</span><span class="http-path">/content/route/metadata?route=//channels/{[channel.id](/resources/channel#channel-object)}/chat</span>
 
-Get a channel by ID. Returns a [channel object](#channel-object).
+Get a channel by ID. Returns a [channel](#channel-object) object wrapped in `metadata.channel` on success.
+
+| Field     | Type                          | Description                         | Required |
+|-----------|-------------------------------|-------------------------------------|----------|
+| route     | string (metadata path)        | the channel to get the message from | true     |
 
 ## Delete/Close Channel
 <span class="http-verb">DELETE</span><span class="http-path">/teams/{team.id}/groups/{group.id}/channels/{[channel.id](/resources/channel#channel-object)}</span>
@@ -686,7 +690,7 @@ Returns the messages for a channel. Does not require authentication if a channel
 ## Get Channel Message
 <span class="http-verb">GET</span><span class="http-path">/content/route/metadata?route=//channels/{[channel.id](/resources/channel#channel-object)}/chat?messageId={[message.id](/resources/channel#message-object)}</span>
 
-Get a specific message in the channel. Returns a [message object](#message-object) on success.
+Get a specific message in the channel. On success, returns a [message](#message-object) object (`metadata.message`) and the message's [channel](#channel-object) object (`metadata.channel`).
 
 ###### Query String Params
 
