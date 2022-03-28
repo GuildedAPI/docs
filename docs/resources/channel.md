@@ -73,12 +73,19 @@ Represents a team or DM channel.
 
 ###### Channel Content Types
 
-| Type  | Description           |
-|-------|-----------------------|
-| chat  | a chat (text) channel |
-| voice | a voice channel       |
-| forum | a forum channel       |
-| doc   | a docs channel        |
+| Type           | Description              |
+|----------------|--------------------------|
+| announcement   | an announcement channel  |
+| chat\*         | a chat channel or thread |
+| doc            | a docs channel           |
+| forum          | a forum channel          |
+| media          | a media channel          |
+| list           | a list channel           |
+| scheduling     | a scheduling channel     |
+| streaming\*    | a streaming channel      |
+| voice\*        | a voice channel          |
+
+\* Voice channels and streaming channels are messageable just like chat channels. Threads inside these channels will have the `chat` content type despite their parent's content type.
 
 ###### Example Team Chat Channel
 
