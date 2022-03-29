@@ -1,26 +1,217 @@
 # Teams
 
-The meat of communication on Guilded. They are referred to as "servers" in the UI, and sometimes "guilds".
+The meat of communication on Guilded. They are referred to as "servers" in the UI.
 
 ### Team Object
 
 ###### Team Structure
 
-| Field          | Type                                         | Description                                                        |
-|----------------|----------------------------------------------|--------------------------------------------------------------------|
-| id             | [generic id](/reference#generic-object-ids)  | team id                                                            |
-| name           | string                                       | team name                                                          |
-| subdomain      | ?string                                      | custom "url" of the team. equivalent to vanity_url_code on discord |
-| bio            | ?string                                      | team bio                                                           |
-| profilePicture | ?string                                      | team icon url                                                      |
-| ownerId        | [user id](/reference#generic-object-ids)     | id of owner                                                        |
-| members?       | array of [members](#team-member-object)      | the members in this team                                           |
-| bots?          | array of flow-bots                           | the flow-bots in this team                                         |
-| webhooks?      | array of [webhooks](/resources/webhook#webhook-object) | the webhooks in this team                                |
+| Field                 | Type                                                   | Description                                                                     |
+|-----------------------|--------------------------------------------------------|---------------------------------------------------------------------------------|
+| id                    | [generic id](/reference#generic-object-ids)            | the team's id                                                                   |
+| name                  | string                                                 | the team's name                                                                 |
+| subdomain             | ?string                                                | custom "url" of the team. equivalent to discord's `vanity_url_code`             |
+| description           | ?string                                                | the team's description                                                          |
+| bio (deprecated)      | ?string                                                | the team's bio - deprecated in favor of `description`                           |
+| profilePicture        | ?string                                                | the team's avatar url                                                           |
+| teamDashImage         | ?string                                                | the team's banner url                                                           |
+| ownerId               | [user id](/reference#generic-object-ids)               | id of the team's owner                                                          |
+| createdAt             | ISO8601 timestamp                                      | when the team was created                                                       |
+| type                  | string                                                 | the [type of team](#team-types)                                                 |
+| members?\*            | array of [members](#team-member-object)                | the members in this team                                                        |
+| bots?\*\*             | array of flow-bots                                     | the flow-bots in this team                                                      |
+| webhooks?\*\*         | array of [webhooks](/resources/webhook#webhook-object) | the webhooks in this team                                                       |
+| baseGroup             | [group](/resources/group#group-object)                 | the team's base group                                                           |
+| visibility            | string                                                 | the team's [visibility setting](#team-visibility)                               |
+| isRecruiting          | boolean                                                | whether the team is accepting new applications                                  |
+| isVerified            | boolean                                                | whether the team is verified                                                    |
+| isPro                 | boolean                                                | whether the team is "pro" - probably deprecated                                 |
+| isPublic              | boolean                                                | whether the team is public. true when `visibility` is `open-entry`              |
+| isDiscoverable        | boolean                                                | whether the team will show up in search results & the server directory          |
+| rolesById             | object                                                 | mapping of role id (string) to role, plus a duplicate `baseRole`                |
+| userFollowsTeam       | boolean                                                | whether the current users follows the team                                      |
+| isUserApplicant?      | boolean                                                | whether the current user has a pending application in the team                  |
+| isUserInvited?        | boolean                                                | whether the current user has been invited to the team                           |
+| isUserBannedFromTeam? | boolean                                                | whether the current user is banned from the team                                |
+| followerCount         | ?integer                                               | the number of followers the team has (approximate)                              |
+| memberCount           | ?string                                                | the number of members the team has (approximate)                                |
+| onlineMemberCount?    | ?string                                                | the number of non-offline members in the team                                   |
+| measurements?         | object                                                 | a [team measurements](#team-measurements-object) object for the team            |
+| games?                | array of [games ids](/resources/user#game-ids)         | the games that the team plays                                                   |
+| additionalGameInfo    | object                                                 | mapping of game id to `region` and `platformps4,xbox,pc`, both optional strings |
+
+\* `members` will contain every member in the server for the [Get Team](#get-team) response, but it will only contain the current user's member data for the [Get Team Info](#get-team-info) response.
+
+\*\* `bots` and `webhooks` are not present for the [Get Team Info](#get-team-info) response.
 
 ###### Example Team
 
-Refer to [Get Team](#get-team)'s example response
+```json
+{
+    "id": "4R5q39VR",
+    "name": "Guilded-API",
+    "subdomain": "guilded-api",
+    "bio": null,
+    "status": null,
+    "timezone": "America/New York (EST/EDT)",
+    "description": "The unofficial resource hub for all API-related projects and development to do with the Guilded API. API docs: guildedapi.com",
+    "type": "community",
+    "visibility": "open-entry",
+    "createdAt": "2020-07-31T18:10:35.302Z",
+    "ownerId": "EdVMVKR4",
+    "profilePicture": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamAvatar/a66e23924a4bc49fbf9242a98d955a7c-Large.png?w=450&h=450",
+    "teamDashImage": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamBanner/62d94db23c910fa3a209b5edf2cf7387-Hero.png?w=1067&h=600",
+    "homeBannerImageSm": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamBanner/62d94db23c910fa3a209b5edf2cf7387-Hero.png?w=1067&h=600",
+    "homeBannerImageMd": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamBanner/62d94db23c910fa3a209b5edf2cf7387-Hero.png?w=1067&h=600",
+    "homeBannerImageLg": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamBanner/62d94db23c910fa3a209b5edf2cf7387-Hero.png?w=1067&h=600",
+    "additionalInfo": {
+        "platform": "native"
+    },
+    "additionalGameInfo": {},
+    "teamPreferences": null,
+    "socialInfo": {
+        "twitter": "@GuildedAPI"
+    },
+    "isRecruiting": false,
+    "isVerified": false,
+    "isPro": false,
+    "isPublic": true,
+    "notificationPreference": null,
+    "isDiscoverable": true,
+    "baseGroup": {
+        "id": "l3GmAe9d",
+        "type": "team",
+        "name": "Server home",
+        "description": null,
+        "avatar": null,
+        "banner": null,
+        "priority": 1,
+        "teamId": "4R5q39VR",
+        "gameId": null,
+        "visibilityTeamRoleId": 23138884,
+        "membershipTeamRoleId": 23138884,
+        "isBase": true,
+        "isPublic": true,
+        "additionalGameInfo": {},
+        "createdBy": null,
+        "createdAt": "2020-07-31T18:10:35.376Z",
+        "updatedBy": "EdVMVKR4",
+        "customReactionId": null,
+        "updatedAt": "2021-05-03T19:20:08.249Z",
+        "deletedAt": null,
+        "archivedAt": null,
+        "archivedBy": null
+    },
+    "followingGroups": [],
+    "rolesById": {
+        "26302427": {
+            "id": 26302427,
+            "name": "Bot",
+            "color": "#ffffff",
+            "permissions": {"xp":1,"bots":1,"chat":503,"docs":15,"forms":18,"lists":63,"media":15,"voice":8179,"forums":123,"general":130100,"streams":51,"brackets":3,"calendar":31,"scheduling":11,"matchmaking":21,"recruitment":55,"announcements":7,"customization":49},
+            "priority": 17,
+            "teamId": "4R5q39VR",
+            "createdAt": "2021-12-01T17:11:43.610Z",
+            "updatedAt": "2022-03-02T22:47:11.473Z",
+            "isBase": false,
+            "discordRoleId": null,
+            "discordSyncedAt": null,
+            "isMentionable": false,
+            "isSelfAssignable": false,
+            "isDisplayedSeparately": false,
+            "botScope": {"userId":null}
+        },
+        "baseRole": {
+            "id": 23138884,
+            "name": "Member",
+            "color": "#ececee",
+            "permissions": {"chat":243,"docs":2,"forms":16,"lists":2,"media":2,"voice":6211,"forums":67,"streams":51,"calendar":2,"scheduling":3,"announcements":2,"customization":16},
+            "priority": 1,
+            "teamId": "4R5q39VR",
+            "createdAt": "2020-07-31T18:10:35.350Z",
+            "updatedAt": "2022-03-02T22:47:11.473Z",
+            "isBase": true,
+            "discordRoleId": null,
+            "discordSyncedAt": null,
+            "isMentionable": true,
+            "isSelfAssignable": false,
+            "isDisplayedSeparately": true,
+            "botScope": null
+        }
+    },
+    "userFollowsTeam": false,
+    "followerCount": 88,
+    "memberCount": "1958",
+    "members": [
+        {
+            "id": "EdVMVKR4",
+            "name": "shay",
+            "type": "user",
+            "membershipRole": "admin",
+            "profilePicture": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/c2da767cf9795e7c73facc399159fefc-Large.png?w=450&h=450",
+            "roleIds": [23138891,23281097,23138936,23139118,23138883]
+        }
+    ],
+    "upsell": null,
+    "serverSubscriptionPlans": [],
+    "teamPaymentInfo": null,
+    "games": [],
+    "bannerImages": {},
+    "lfmStatusByGameId": {},
+    "drawbridgeGateEnabled": false,
+    "flair": [
+        {
+            "id": 3
+        }
+    ],
+    "socialLinks": []
+}
+```
+
+##### Team Types
+
+Team types are probably used in server discovery.
+
+| Value        |
+|--------------|
+| team         |
+| organization |
+| community    |
+| clan         |
+| guild        |
+| friends      |
+| streaming    |
+| other        |
+
+##### Team Visibility
+
+Reflects the team's [privacy setting](https://www.guilded.gg/blog/server-privacy).
+
+| Value      | Meaning                                                                                                           | Default |
+|------------|-------------------------------------------------------------------------------------------------------------------|---------|
+| private    | the team is not visible through its direct link and cannot show up in search results                              | false   |
+| default    | the team is visible through its direct link and will show up in search results if `team.isDiscoverable` is `true` | true    |
+| open-entry | `default`, but the team does not require an invite to join                                                        | false   |
+
+### Team Measurements Object
+
+This object contains some statistics about the team. When available, you should prefer this object's `numMembers` over `team.memberCount` because it is more accurate.
+
+###### Team Measurements Structure
+
+| Field                                    | Type              | Description                                                                                                             |
+|------------------------------------------|-------------------|-------------------------------------------------------------------------------------------------------------------------|
+| numMembers                               | integer           | the number of members the team has                                                                                      |
+| numFollowers                             | integer or string | the number of followers the team has                                                                                    |
+| numRecentMatches                         | integer           | the number of matches the team has participated in recently                                                             |
+| numRecentMatchWins                       | integer           | the number of matches the team has won recently                                                                         |
+| matchmakingGameRanks                     | array             |                                                                                                                         |
+| numFollowersAndMembers                   | integer           | `numMembers` + `numFollowers`                                                                                           |
+| numMembersAddedInLastDay                 | integer           | the number of members who have joined the team in the last 24 hours                                                     |
+| numMembersAddedInLastWeek                | integer           | the number of members who have joined the team in the last 7 days                                                       |
+| numMembersAddedInLastMonth               | integer           | the number of members who have joined the team in the last 30 days                                                      |
+| mostRecentMemberLastOnline               | integer           | unix timestamp of the last time a member was not offline in the team                                                    |
+| subscriptionMonthsRemaining (deprecated) | ?integer          | the number of months remaining on the team's [guilded gold subscription](https://www.guilded.gg/p/new-feature-november) |
 
 ### Team Member Object
 
@@ -163,455 +354,14 @@ Create a new team. Returns a [team](#team-object) object wrapped in a `team` key
 <span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](#team-object)}</span>
 
 !!! Warning
-    Performing this request on a ~380-member team resulted in a 343 KB file. Expect Guilded to return less information in a single request in the future.
+    This endpoint is likely deprecated; the client does not use it anymore. Consider instead [Get Team Info](#get-team-info) and, if necessary for your use case, [List Team Members](#list-team-members).
 
-    The inefficiency of Guilded's client-server communication (and thus how much you should expect this change) cannot be overstated. For example, try this request on the [Guilded Official](https://guilded.gg/guilded-official) server (id: wlVr3Ggl) and see how large the resulting request is (**7.6 MB** as of Mar. 9, 2021).
+Returns a [team](#team-object) object wrapped in a `team` key on success. If the team ID is invalid, this returns an array of the current user's teams wrapped in a `teams` key.
 
-Returns the [team](#team-object) object for the given id.
+## Get Team Info
+<span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](#team-object)}/info</span>
 
-###### Example Response
-
-!!! Info
-    Many list items were redacted for brevity, such as most of the member list (the entire list is returned) and most of the roles (only the base role, which is included twice, and one custom role, are visible now).
-
-```json
-{
-    "team": {
-        "id": "4R5q39VR",
-        "name": "Guilded-API",
-        "subdomain": "guilded-api",
-        "bio": null,
-        "status": null,
-        "timezone": "America/New York (EST/EDT)",
-        "description": "The unofficial resource hub for all API-related projects and development to do with the Guilded API.",
-        "type": "community",
-        "games": [],
-        "characteristics": null,
-        "measurements": {
-            "numMembers": 424,
-            "numFollowers": "21",
-            "numRecentMatches": 0,
-            "numRecentMatchWins": 0,
-            "matchmakingGameRanks": [],
-            "numFollowersAndMembers": 445,
-            "numMembersAddedInLastDay": 0,
-            "numMembersAddedInLastWeek": 15,
-            "mostRecentMemberLastOnline": 1615082895464,
-            "numMembersAddedInLastMonth": 102,
-            "subscriptionMonthsRemaining": null
-        },
-        "members": [
-            {
-                "id": "EdVMVKR4",
-                "name": "shay",
-                "nickname": null,
-                "badges": null,
-                "joinDate": "2020-07-31T18:10:35.302Z",
-                "membershipRole": "admin",
-                "lastOnline": "2021-03-07T05:22:09.597Z",
-                "profilePicture": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/74bfc8be9425a926a1f48d9b078509bc-Large.png?w=450&h=450",
-                "profileBannerBlur": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserBanner/acaa9d0f78dd8cdd93f3ce44d14c0260-Hero.png?w=1500&h=500",
-                "userStatus": {
-                    "content": {
-                        "object": "value",
-                        "document": {
-                            "data": {},
-                            "nodes": [
-                                {
-                                    "data": {},
-                                    "type": "paragraph",
-                                    "nodes": [
-                                        {
-                                            "leaves": [
-                                                {
-                                                    "text": "g.gg/guilded-api",
-                                                    "marks": [],
-                                                    "object": "leaf"
-                                                }
-                                            ],
-                                            "object": "text"
-                                        },
-                                        {
-                                            "data": {
-                                                "reaction": {
-                                                    "id": 294745,
-                                                    "customReaction": {
-                                                        "id": 294745,
-                                                        "name": "blobcouple",
-                                                        "png": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/448cff53087b93e72298bae9d47708f1-Full.webp?w=120&h=120",
-                                                        "webp": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/448cff53087b93e72298bae9d47708f1-Full.webp?w=120&h=120",
-                                                        "apng": null
-                                                    },
-                                                    "customReactionId": 294745
-                                                }
-                                            },
-                                            "type": "reaction",
-                                            "nodes": [
-                                                {
-                                                    "leaves": [
-                                                        {
-                                                            "text": ":blobcouple:",
-                                                            "marks": [],
-                                                            "object": "leaf"
-                                                        }
-                                                    ],
-                                                    "object": "text"
-                                                }
-                                            ],
-                                            "object": "inline"
-                                        },
-                                        {
-                                            "leaves": [
-                                                {
-                                                    "text": "g.gg/blob-emoji ",
-                                                    "marks": [],
-                                                    "object": "leaf"
-                                                }
-                                            ],
-                                            "object": "text"
-                                        },
-                                        {
-                                            "data": {
-                                                "reaction": {
-                                                    "id": 294677,
-                                                    "customReaction": {
-                                                        "id": 294677,
-                                                        "name": "blobpats",
-                                                        "png": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/ff03be6efe491bc934b1c217d70da9ce-Full.webp?w=120&h=120",
-                                                        "webp": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/ff03be6efe491bc934b1c217d70da9ce-Full.webp?w=120&h=120",
-                                                        "apng": null
-                                                    },
-                                                    "customReactionId": 294677
-                                                }
-                                            },
-                                            "type": "reaction",
-                                            "nodes": [
-                                                {
-                                                    "leaves": [
-                                                        {
-                                                            "text": ":blobpats:",
-                                                            "marks": [],
-                                                            "object": "leaf"
-                                                        }
-                                                    ],
-                                                    "object": "text"
-                                                }
-                                            ],
-                                            "object": "inline"
-                                        }
-                                    ],
-                                    "object": "block"
-                                }
-                            ],
-                            "object": "document"
-                        }
-                    },
-                    "customReactionId": 294765,
-                    "customReaction": {
-                        "id": 294765,
-                        "name": "ablobwobwork",
-                        "png": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/d7cf013a4d01460a81186e65f1f8c12a-Full.webp?w=120&h=120&ia=1",
-                        "webp": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/d7cf013a4d01460a81186e65f1f8c12a-Full.webp?w=120&h=120&ia=1",
-                        "apng": null
-                    }
-                },
-                "roleIds": [
-                    23138883,
-                    23138891,
-                    23138936,
-                    23139118,
-                    23281097
-                ],
-                "subscriptionType": null,
-                "socialLinks": [
-                    {
-                        "type": "patreon",
-                        "handle": "Shahayhay ",
-                        "additionalInfo": {}
-                    },
-                    {
-                        "type": "twitter",
-                        "handle": "GuildedAPI",
-                        "additionalInfo": {}
-                    }
-                ],
-                "aliases": [],
-                "userPresenceStatus": 1,
-                "userTransientStatus": null,
-                "teamXp": 0
-            }
-        ],
-        "memberCount": null,
-        "webhooks": [
-            {
-                "id": "56a9dde0-aba3-4afd-85b8-05cda9942c93",
-                "name": "GitHub",
-                "channelId": "80bbb4b1-a880-490c-87e9-5c7edf179d5a",
-                "teamId": "4R5q39VR",
-                "iconUrl": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/3f8e4273b8b9dcacd57379a637a773f4-Large.png?w=450&h=450",
-                "createdBy": "EdVMVKR4",
-                "createdAt": "2020-08-16T04:12:56.664Z",
-                "deletedAt": null
-            }
-        ],
-        "bots": [
-            {
-                "id": "da26bb64-0c17-422f-bd81-6e2dff6b7daa",
-                "name": "bearger",
-                "enabled": true,
-                "flows": [
-                    {
-                        "id": "aabc65b8-50ce-42e2-aa0d-c601b1b1ea26",
-                        "enabled": true,
-                        "error": false,
-                        "botId": "da26bb64-0c17-422f-bd81-6e2dff6b7daa",
-                        "teamId": "4R5q39VR",
-                        "createdBy": "EdVMVKR4",
-                        "createdAt": "2020-11-11T05:57:50.811348+00:00",
-                        "deletedAt": null,
-                        "triggerType": "BotTriggerSendMessageToTeamChannel",
-                        "triggerMeta": {
-                            "content": "-hello"
-                        },
-                        "actionType": "SendMessageToTeamChannel",
-                        "actionMeta": {
-                            "content": {
-                                "object": "value",
-                                "document": {
-                                    "data": {},
-                                    "nodes": [
-                                        {
-                                            "data": {},
-                                            "type": "paragraph",
-                                            "nodes": [
-                                                {
-                                                    "leaves": [
-                                                        {
-                                                            "text": "hello ",
-                                                            "marks": [],
-                                                            "object": "leaf"
-                                                        }
-                                                    ],
-                                                    "object": "text"
-                                                },
-                                                {
-                                                    "data": {
-                                                        "templateParameterId": "BotActionTriggeringUser"
-                                                    },
-                                                    "type": "template-parameter",
-                                                    "nodes": [
-                                                        {
-                                                            "leaves": [
-                                                                {
-                                                                    "text": "$TriggeringUser",
-                                                                    "marks": [],
-                                                                    "object": "leaf"
-                                                                }
-                                                            ],
-                                                            "object": "text"
-                                                        }
-                                                    ],
-                                                    "object": "inline"
-                                                },
-                                                {
-                                                    "leaves": [
-                                                        {
-                                                            "text": "! i'm bearger, one of the first custom bots made with Guilded's public API (though it seems to just be server flows at the moment). ",
-                                                            "marks": [],
-                                                            "object": "leaf"
-                                                        }
-                                                    ],
-                                                    "object": "text"
-                                                }
-                                            ],
-                                            "object": "block"
-                                        }
-                                    ],
-                                    "object": "document"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "teamId": "4R5q39VR",
-                "iconUrl": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/26584f8d26eeec8396d28f22678f06dc-Large.png?w=450&h=450",
-                "createdBy": "EdVMVKR4",
-                "createdAt": "2020-11-11T05:57:50.811Z",
-                "deletedAt": null
-            }
-        ],
-        "rolesById": {
-            "23138883": {
-                "id": 23138883,
-                "name": "Admin",
-                "color": "#8ad1ff",
-                "priority": 13,
-                "permissions": {
-                    "xp": 1,
-                    "chat": 119,
-                    "docs": 15,
-                    "forms": 18,
-                    "lists": 63,
-                    "media": 15,
-                    "voice": 8179,
-                    "forums": 123,
-                    "general": 31796,
-                    "streams": 51,
-                    "calendar": 31,
-                    "scheduling": 11,
-                    "matchmaking": 1,
-                    "recruitment": 55,
-                    "announcements": 7,
-                    "customization": 49
-                },
-                "isBase": false,
-                "teamId": "4R5q39VR",
-                "createdAt": "2020-07-31T18:10:35.328621+00:00",
-                "updatedAt": "2021-03-06T18:03:16.052954+00:00",
-                "isMentionable": false,
-                "discordRoleId": null,
-                "discordSyncedAt": null,
-                "isSelfAssignable": false,
-                "isDisplayedSeparately": false
-            },
-            "23138884": {
-                "id": 23138884,
-                "name": "Member",
-                "color": "#ececee",
-                "priority": 1,
-                "permissions": {
-                    "chat": 115,
-                    "docs": 2,
-                    "forms": 16,
-                    "lists": 2,
-                    "media": 2,
-                    "voice": 6211,
-                    "forums": 67,
-                    "streams": 51,
-                    "calendar": 2,
-                    "scheduling": 3,
-                    "announcements": 2,
-                    "customization": 16
-                },
-                "isBase": true,
-                "teamId": "4R5q39VR",
-                "createdAt": "2020-07-31T18:10:35.350927+00:00",
-                "updatedAt": "2021-03-06T18:03:16.052954+00:00",
-                "isMentionable": true,
-                "discordRoleId": null,
-                "discordSyncedAt": null,
-                "isSelfAssignable": false,
-                "isDisplayedSeparately": true
-            },
-            "baseRole": {
-                "id": 23138884,
-                "name": "Member",
-                "color": "#ececee",
-                "priority": 1,
-                "permissions": {
-                    "chat": 115,
-                    "docs": 2,
-                    "forms": 16,
-                    "lists": 2,
-                    "media": 2,
-                    "voice": 6211,
-                    "forums": 67,
-                    "streams": 51,
-                    "calendar": 2,
-                    "scheduling": 3,
-                    "announcements": 2,
-                    "customization": 16
-                },
-                "isBase": true,
-                "teamId": "4R5q39VR",
-                "createdAt": "2020-07-31T18:10:35.350927+00:00",
-                "updatedAt": "2021-03-06T18:03:16.052954+00:00",
-                "isMentionable": true,
-                "discordRoleId": null,
-                "discordSyncedAt": null,
-                "isSelfAssignable": false,
-                "isDisplayedSeparately": true
-            }
-        },
-        "rolesVersion": 32,
-        "bannerImages": {},
-        "createdAt": "2020-07-31T18:10:35.302Z",
-        "ownerId": "EdVMVKR4",
-        "rankNames": null,
-        "profilePicture": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamAvatar/a66e23924a4bc49fbf9242a98d955a7c-Large.png?w=450&h=450",
-        "teamDashImage": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamBanner/62d94db23c910fa3a209b5edf2cf7387-Hero.png?w=1067&h=600",
-        "additionalInfo": {
-            "platform": "native"
-        },
-        "teamPreferences": null,
-        "additionalGameInfo": {},
-        "discordGuildId": null,
-        "discordServerName": null,
-        "customizationInfo": {},
-        "socialInfo": {
-            "twitter": "@GuildedAPI"
-        },
-        "homeBannerImageSm": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamBanner/62d94db23c910fa3a209b5edf2cf7387-Hero.png?w=1067&h=600",
-        "homeBannerImageMd": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamBanner/62d94db23c910fa3a209b5edf2cf7387-Hero.png?w=1067&h=600",
-        "homeBannerImageLg": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamBanner/62d94db23c910fa3a209b5edf2cf7387-Hero.png?w=1067&h=600",
-        "insightsInfo": {},
-        "alphaInfo": {},
-        "isRecruiting": true,
-        "isVerified": false,
-        "isPublic": true,
-        "alwaysShowTeamHome": false,
-        "isPro": false,
-        "autoSyncDiscordRoles": false,
-        "notificationPreference": null,
-        "followingGroups": null,
-        "baseGroup": {
-            "id": "l3GmAe9d",
-            "name": "Server home",
-            "description": null,
-            "priority": 1,
-            "type": "team",
-            "avatar": null,
-            "banner": null,
-            "teamId": "4R5q39VR",
-            "gameId": null,
-            "visibilityTeamRoleId": 23138884,
-            "membershipTeamRoleId": 23138884,
-            "isBase": true,
-            "additionalGameInfo": {},
-            "createdBy": null,
-            "createdAt": "2020-07-31T18:10:35.376187+00:00",
-            "updatedBy": null,
-            "updatedAt": null,
-            "deletedAt": null,
-            "customReactionId": null,
-            "isPublic": true,
-            "archivedAt": null,
-            "archivedBy": null
-        },
-        "subscriptionInfo": null,
-        "followerCount": 21,
-        "userFollowsTeam": false,
-        "isUserApplicant": false,
-        "hasImportedDiscordServer": false,
-        "isUserInvited": false,
-        "lfmStatusByGameId": {},
-        "flair": [
-            {
-                "id": 1,
-                "amount": 15
-            }
-        ],
-        "isUserBannedFromTeam": false,
-        "mutedMembers": [],
-        "deafenedMembers": [],
-        "upsell": null,
-        "serverSubscriptionsGateEnabled": false,
-        "serverSubscriptionPlans": [],
-        "teamPaymentInfo": null,
-        "socialLinks": []
-    }
-}
-```
+Returns a [team](#team-object) object wrapped in a `team` key on success. If the team ID is invalid, this stalls and eventually times out with a 504 status code.
 
 ## Modify Team
 <span class="http-verb">PUT</span><span class="http-path">/teams/{[team.id](#team-object)}/games/null/settings</span>
