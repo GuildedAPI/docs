@@ -54,7 +54,7 @@ For some endpoints, you will have to Bring Your Own UUID (BYOU). Worry not - thi
 
 | Method                                                                                                             | Language   |
 |--------------------------------------------------------------------------------------------------------------------|------------|
-| [uuid.uuid1()](https://docs.python.org/3/library/uuid.html#uuid.uuid1)                                             | Python     |
+| [uuid.uuid4()](https://docs.python.org/3/library/uuid.html#uuid.uuid4)                                             | Python     |
 | [uuid.uuidv4()](https://www.npmjs.com/package/uuid)                                                                | JavaScript |
 | [uuid-random.uuid()](https://www.npmjs.com/package/uuid-random)                                                    | JavaScript |
 | [System.Guid.NewGuid()](https://docs.microsoft.com/dotnet/api/system.guid.newguid)                                 | C#         |
