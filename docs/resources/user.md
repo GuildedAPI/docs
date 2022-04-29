@@ -972,17 +972,14 @@ Returns a `{"channel": dm_channel_object}`, where [dm_channel_object](/resources
 ## Get User Posts
 <span class="http-verb">GET</span><span class="http-path">/users/{[user.id](#user-object)}/posts</span>
 
-!!! bug
-    This endpoint returns an empty list.
-
 Get the list of posts this user has on their profile.
 
 ###### Query Params
 
-| Field    | Type    | Description                                   | Required | Default Value |
-|----------|---------|-----------------------------------------------|----------|---------------|
-| maxPosts | integer | the maximum amount of posts to return (0-???) | false    | 7             |
-| offset   | integer | ?                                             | false    | 0             |
+| Field    | Type    | Description                           | Required | Default Value |
+|----------|---------|---------------------------------------|----------|---------------|
+| maxPosts | integer | the maximum amount of posts to return | false    | 7             |
+| offset   | integer | ?                                     | false    | 0             |
 
 ## Set User Transient Status
 <span class="http-verb">POST</span><span class="http-path">/users/me/status/transient</span>
