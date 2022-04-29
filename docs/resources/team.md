@@ -40,7 +40,7 @@ The meat of communication on Guilded. They are referred to as "servers" in the U
 | games?                | array of [games ids](/resources/user#game-ids)         | the games that the team plays                                                   |
 | additionalGameInfo    | object                                                 | mapping of game id to `region` and `platformps4,xbox,pc`, both optional strings |
 
-\* `members` will contain every member in the server for the [Get Team](#get-team) response, but it will only contain the current user's member data for the [Get Team Info](#get-team-info) response.
+\* `members` will only contain the current user's member data for the [Get Team Info](#get-team-info) response.
 
 \*\* `bots` and `webhooks` are not present for the [Get Team Info](#get-team-info) response.
 
@@ -350,18 +350,10 @@ Create a new team. Returns a [team](#team-object) object wrapped in a `team` key
 | teamName | string                                 | name of the team (3-30 characters, [not unique across the platform](#check-team-name-availability)) |
 | userId?  | [user id](/resources/user#user-object) | the user's id who is creating this team                                                             |
 
-## Get Team
-<span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](#team-object)}</span>
-
-!!! Warning
-    This endpoint is likely deprecated; the client does not use it anymore. Consider instead [Get Team Info](#get-team-info) and, if necessary for your use case, [List Team Members](#list-team-members).
-
-Returns a [team](#team-object) object wrapped in a `team` key on success. If the team ID is invalid, this returns an array of the current user's teams wrapped in a `teams` key.
-
 ## Get Team Info
 <span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](#team-object)}/info</span>
 
-Returns a [team](#team-object) object wrapped in a `team` key on success. If the team ID is invalid, this stalls and eventually times out with a 504 status code.
+Returns a [team](#team-object) object wrapped in a `team` key on success. If the team is invalid or private, this returns HTTP 404.
 
 ## Modify Team
 <span class="http-verb">PUT</span><span class="http-path">/teams/{[team.id](#team-object)}/games/null/settings</span>
