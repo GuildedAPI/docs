@@ -52,7 +52,7 @@ Create a new webhook. Returns a [webhook](#webhook-object) object on success.
 <span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/channels/{[channel.id](/resources/channel#channel-object)}/webhooks</span>
 
 !!! bug
-    This endpoint returns an empty list; `{"webhooks": []}`. Instead, use [team.webhooks](/resources/team#get-team).
+    This endpoint returns an empty list. Instead, use [`webhooks` from List Team Members](/resources/team#list-team-members).
 
 Get a list of [webhook](#webhook-object) objects.
 
