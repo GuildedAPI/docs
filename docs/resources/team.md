@@ -400,6 +400,47 @@ Create a new [channel](/resources/channel#channel-object) object. Requires the `
 
 Returns a list of partial [team members](#team-member-object), flow bots, and [webhooks](/topics/webhook#webhook-object) under `members`, `bots`, and `webhooks` keys respectively. A partial team member object includes, at minimum, `id` and `name`, but may also include one or multiple of `profilePicture`, `roleIds`, `userPresenceStatus`, and `nickname`.
 
+## Detail Team Members
+<span class="http-verb">POST</span><span class="http-path">/teams/{[team.id](#team-object)}/members/detail</span>
+
+Returns an object of provided user IDs to [team members](#team-member-object).
+
+###### JSON Params
+
+| Field            | Type    | Description                                                                                                                                 |
+|------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| userIds          | array of [generic ids](/reference#generic-object-ids) | the members' IDs to get member details for                                                    |
+| idsForBasicInfo? | array of [generic ids](/reference#generic-object-ids) | if an ID is included here, its entry in the response will also include basic user information |
+
+###### Example Response
+
+```json
+{
+  "EdVMVKR4": {
+    "userStatus": {
+      "content": null,
+      "customReactionId": 925765,
+      "customReaction": {
+        "id": 925765,
+        "name": "blobspider",
+        "png": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/b721e28333392c335fcff52eb27997fd-Full.webp?w=120&h=120",
+        "webp": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/b721e28333392c335fcff52eb27997fd-Full.webp?w=120&h=120",
+        "apng": null
+      }
+    },
+    "id": "EdVMVKR4",
+    "name": "shay",
+    "membershipRole": "admin",
+    "profilePicture": "https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/c2da767cf9795e7c73facc399159fefc-Large.png?w=450&h=450",
+    "userTransientStatus": null,
+    "teamXp": 117,
+    "lastOnline": "2022-04-29T21:10:42.120Z",
+    "joinDate": "2020-07-31T18:10:35.302Z",
+    "stonks": 56
+  }
+}
+```
+
 ## Change Team Member Nickname
 <span class="http-verb">PUT</span><span class="http-path">/teams/{[team.id](#team-object)}/members/{[user.id](/resources/user#user-object)}/nickname</span>
 
