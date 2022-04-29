@@ -365,11 +365,11 @@ Modify a team's settings. Returns `{"updated": true}` on success. Fires a [Team 
 
 ###### JSON Params
 
-| Field                         | Type                                      | Description                      |
-|-------------------------------|-------------------------------------------|----------------------------------|
-| name                          | string                                    | new name for the team            |
-| gameId                        | integer                                   | the main game's id for the team  |
-| description                   | string                                    | the "about" section for the team |
+| Field       | Type    | Description                      |
+|-------------|---------|----------------------------------|
+| name        | string  | new name for the team            |
+| gameId      | integer | the main game's id for the team  |
+| description | string  | the "about" section for the team |
 
 ## Disband Team
 <span class="http-verb">DELETE</span><span class="http-path">/teams/{[team.id](#team-object)}</span>
