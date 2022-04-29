@@ -395,11 +395,6 @@ Create a new [channel](/resources/channel#channel-object) object. Requires the `
 | channelCategoryId | integer | the category's ID to create this channel under. omit to create without a category | false    | null    |
 | isPublic          | boolean | whether or not this channel should be visible to users who aren't in the team     | false    | false   |
 
-## Get Team Member
-<span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](#team-object)}/members/{[user.id](/resources/user#user-object)}</span>
-
-Returns a [team member](#team-member-object) object for the specified user.
-
 ## List Team Members
 <span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](#team-object)}/members</span>
 
