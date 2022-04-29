@@ -12,6 +12,7 @@ Many of these libraries have dedicated groups in the [community API server](http
 | ---------------------------------------------------------- | ---------- | ------------------ |
 | [deck](https://github.com/SrGaabriel/deck)                 | Kotlin     | Client             |
 | [gapi](https://github.com/Skillz4Killz/gapi)               | TypeScript | Client             |
+| [Guilded.TS](https://github.com/guildedts/guilded.ts)      | TypeScript | Official\*         |
 | [Gdd.js](https://github.com/RemyK888/gdd.js/)              | TypeScript | Official\*         |
 | [guilded.js](https://github.com/guildedjs/guilded.js)      | JavaScript | Official\*         |
 | [Guilded.NET](https://github.com/Guilded-NET/Guilded.NET)  | C#         | Official\*         |
