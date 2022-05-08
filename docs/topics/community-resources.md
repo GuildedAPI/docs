@@ -15,6 +15,7 @@ Many of these libraries have dedicated groups in the [community API server](http
 | [guilded.js](https://github.com/guildedjs/guilded.js)      | JavaScript | Official\*         |
 | [Guilded.NET](https://github.com/Guilded-NET/Guilded.NET)  | C#         | Official\*         |
 | [guilded.py](https://github.com/shayypy/guilded.py)        | Python     | Client, Official\* |
+| [Guilded.TS](https://github.com/guildedts/guilded.ts)      | TypeScript | Official\*         |
 | [Guilded4J](https://github.com/MCUmbrella/Guilded4J)       | Java       | Official\*         |
 | [Guildedeno](https://github.com/Scientific-Guy/guildedeno) | Deno       | Client             |
 
