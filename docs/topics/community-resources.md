@@ -18,6 +18,7 @@ Many of these libraries have dedicated groups in the [community API server](http
 | [Guilded.TS](https://github.com/guildedts/guilded.ts)      | TypeScript | Official\*         |
 | [Guilded4J](https://github.com/MCUmbrella/Guilded4J)       | Java       | Official\*         |
 | [Guildedeno](https://github.com/Scientific-Guy/guildedeno) | Deno       | Client             |
+| [Guildeno](https://github.com/guildeno/guildeno)           | TypeScript | Official\*         |
 
 \* The official API is currently in early access, so you will need explicit approval from a Guilded staff member to use it, and by extension, the libraries that wrap it.
 
