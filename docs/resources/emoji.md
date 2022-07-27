@@ -176,31 +176,9 @@ Returns a list of [emoji](#custom-emoji-object) objects for the given team.
 | searchTerm       | string                                 | search emoji names with a string                          | false | |
 | beforeId         | [emoji id](#custom-emoji-object)       | return emojis created before this emoji was created (potentially something to do with pagination) | false | |
 
-## Get Custom Emoji Pack
-<span class="http-verb">POST</span><span class="http-path">https://media.guilded.gg/media/fetch_emote_pack</span>
+## Emoji Packs
 
-Get the contents of an emoji pack.
-
-###### JSON Params
-
-| Field | Type   | Description                                                       |
-|-------|--------|-------------------------------------------------------------------|
-| url   | string | the emoji pack to get (must link to a valid emoji pack JSON file) |
-
-## Upload Custom Emoji Pack
-<span class="http-verb">POST</span><span class="http-path">https://media.guilded.gg/media/import_emote_pack</span>
-
-!!! info
-    After doing this, call [Bulk Create Custom Emoji](#bulk-create-custom-emoji) to actually import the emojis.
-
-Upload the contents of an emoji pack to Guilded. Returns an array of `{url: url, name: name}` on success, where `url` is the URL to the uploaded image on Guilded's CDN, and `name` is the name of the emoji from the emoji pack.
-
-###### JSON Params
-
-| Field             | Type   | Description                                                          |
-|-------------------|--------|----------------------------------------------------------------------|
-| url               | string | the emoji pack to import (must link to a valid emoji pack JSON file) |
-| uploadTrackingId? | string | unknown. looks like "r-0123456-7891234"                              |
+This section has been moved to [Media Endpoints](/topics/media#get-custom-emoji-pack).
 
 ## Get Team Emoji Creators
 <span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/customReactionCreators</span>
