@@ -167,14 +167,14 @@ Returns a list of [emoji](#custom-emoji-object) objects for the given team.
 
 ###### Query Params
 
-| Field            | Type                                   | Description | Required | Default |
-|------------------|----------------------------------------|-------------|----------|---------|
-| maxItems         | integer                                | maximum number of emojis to return                        | | |
-| when[upperValue] | ISO8601 timestamp                      | return emojis created after this time                     | false | |
-| when[lowerValue] | ISO8601 timestamp                      | return emojis created before this time                    | false | |
-| createdBy        | [user id](/resources/user#user-object) | return emojis created by this user's id                   | false | |
-| searchTerm       | string                                 | search emoji names with a string                          | false | |
-| beforeId         | [emoji id](#custom-emoji-object)       | return emojis created before this emoji was created (potentially something to do with pagination) | false | |
+| Field            | Type                                   | Description                                                          | Required | Default |
+|------------------|----------------------------------------|----------------------------------------------------------------------|----------|---------|
+| maxItems         | integer                                | the maximum number of emojis to return                               |          | |
+| when[upperValue] | ISO8601 timestamp                      | return emojis created after this time                                | false    | |
+| when[lowerValue] | ISO8601 timestamp                      | return emojis created before this time                               | false    | |
+| createdBy        | [user id](/resources/user#user-object) | return emojis created by this user's id                              | false    | |
+| searchTerm       | string                                 | search emoji names with a string                                     | false    | |
+| beforeId         | [emoji id](#custom-emoji-object)       | return emojis created before this emoji was created (for pagination) | false    | |
 
 ## Emoji Packs
 
