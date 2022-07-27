@@ -1,7 +1,6 @@
 # Reference
 
-On a conceptual level, Discord and Guilded's APIs both function similarly. To quote [Discord's reference documentation](https://discord.com/developers/docs/reference):
-> [The API] is based around two core layers, a HTTPS/REST API for general operations, and persistent secure WebSocket based connection for sending and subscribing to real-time events.
+Guilded's API features a WebSocket gateway for receiving live events, but it requires user authentication and thus will not be covered here.
 
 ###### Base URL
 
@@ -15,52 +14,20 @@ Your typical error message should look like this:
 
 ```json
 {
-    "code": "YouDidBadError",
-    "message": "you did bad. here is how you did bad. do better."
+    "code": "BadRequestError",
+    "message": "That's no good. Try again with a different payload."
 }
 ```
 
 ... along with an appropriate [HTTP status code](/topics/status-codes#http).
 
-## Authentication
-
-As mentioned in [the Intro page](/#userbots-you), there is no bot API. In order to automate an application on the API, you would have to use a user account.
-
-For the HTTP API, authentication is not passed through the headers, but the JSON body. 
-
-## Quick Authentication How-To
-<span class="http-verb">POST</span><span class="http-path">/login</span>
-
-Logs you into Guilded. Important data here is the returned `guilded_mid` cookie, which you need to pass as a `guildedClientId` query argument when [connecting to the gateway](/topics/gateway#connecting-to-the-gateway).
-
-###### JSON Parameters
-
-| Field    | Type   | Description            | Required |
-|----------|--------|------------------------|----------|
-| email    | string | the account's email    | true     |
-| password | string | the account's password | true     |
-
 ## Encryption
 
-The REST and WebSocket APIs are 'secure' (HTTPS, WSS). I am unsure of any other steps Guilded takes to secure data, if any.
+The REST API is 'secure' (HTTPS). I am unsure of any other steps Guilded takes to secure data, if any.
 
 ## Snowflakes & UUIDs
 
 Unlike Discord, Guilded uses [UUIDs](https://wikipedia.org/wiki/Universally_unique_identifier) for many of its unique IDs ([Channels](/resources/channel#channel-object) (all types), [Messages](/resources/channel#message-object), and [Webhooks](/resources/webhook#webhook-object) use UUIDs). Because of this, none of the same properties apply as to Snowflakes.
-
-### Generating UUIDs
-
-For some endpoints, you will have to Bring Your Own UUID (BYOU). Worry not - this is typically a trivial task. Most languages should come with a way to generate a compliant UUID with ease, or have a 3rd-party library for such a purpose:
-
-| Method                                                                                                             | Language   |
-|--------------------------------------------------------------------------------------------------------------------|------------|
-| [uuid.uuid4()](https://docs.python.org/3/library/uuid.html#uuid.uuid4)                                             | Python     |
-| [uuid.uuidv4()](https://www.npmjs.com/package/uuid)                                                                | JavaScript |
-| [uuid-random.uuid()](https://www.npmjs.com/package/uuid-random)                                                    | JavaScript |
-| [System.Guid.NewGuid()](https://docs.microsoft.com/dotnet/api/system.guid.newguid)                                 | C#         |
-| [Uuid::new_v4()](https://docs.rs/uuid/0.8.2/uuid/struct.Uuid.html#method.new_v4)                                   | Rust       |
-| [UUID.random](https://crystal-lang.org/api/1.0.0/UUID.html)                                                        | Crystal    |
-| [UUID.randomUUID()](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/UUID.html#randomUUID()) | Java       |
 
 ## Generic Object IDs
 
@@ -87,11 +54,7 @@ Resource fields that are optional have names that are suffixed with a question m
 
 ### Rate Limiting
 
-The HTTP API has very loose rate limits, most likely due to it not being written for automation. Because of this, we do not know much about how rate limiting works on Guilded. A good rule of thumb is to not spam the API with repetitive requests and to simply stay reasonable.
-
-## Gateway (WebSocket) API
-
-The Gateway API is used for maintaining persistent, stateful websocket connections between your client and Guilded servers. These connections are used for receiving real-time events your client can use to track and update local state. For information on opening Gateway connections, please see the [Gateway API](/topics/gateway) section.
+The HTTP API has very loose rate limits. Because of this, we do not know much about how rate limiting works on Guilded. A good rule of thumb is to not spam the API with repetitive requests and to simply stay reasonable.
 
 ## Message Formatting
 

@@ -1,10 +1,10 @@
 site_name: Guilded API Documentation
-site_description: Unofficial documentation for Guilded's REST and WebSocket APIs.
+site_description: Unofficial documentation for Guilded's REST API.
 site_author: Guilded Developer Resources
 repo_url: https://github.com/guildedapi/docs
 repo_name: GitHub
 edit_uri: blob/main/docs/
-copyright: Copyright © shay (shayypy) 2021
+copyright: Copyright © shay (shayypy) 2021-2022
 site_dir: build/
 docs_dir: docs/
 theme: 

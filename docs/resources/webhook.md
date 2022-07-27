@@ -1,10 +1,8 @@
 # Webhooks
 
-Webhooks are an easy way to post messages to team channels. They do not require any authentication to use other than the webhook URL itself (keep those secret!).
+Webhooks are an easy way to post messages to team channels. They do not require any authentication to use other than the webhook ID & token itself (keep tokens secret!).
 
 ### Webhook Object
-
-Used to represent a webhook.
 
 ###### Webhook Structure
 
@@ -36,50 +34,6 @@ Used to represent a webhook.
 }
 ```
 
-## Create Webhook
-<span class="http-verb">POST</span><span class="http-path">/webhooks</span>
-
-Create a new webhook. Returns a [webhook](#webhook-object) object on success.
-
-###### JSON Params
-
-| Field     | Type                                            | Description                               |
-|-----------|-------------------------------------------------|-------------------------------------------|
-| name      | string                                          | name of the webhook (1-??? characters)    |
-| channelId | [channel id](/resources/channel#channel-object) | the channel's id to create the webhook in |
-
-## Get Channel Webhooks
-<span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/channels/{[channel.id](/resources/channel#channel-object)}/webhooks</span>
-
-!!! bug
-    This endpoint returns an empty list. Instead, use [`webhooks` from List Team Members](/resources/team#list-team-members).
-
-Get a list of [webhook](#webhook-object) objects.
-
-## Modify Webhook
-<span class="http-verb">PUT</span><span class="http-path">/webhooks/{[webhook.id](#webhook-object)}</span>
-
-Modify a webhook. Returns the updated [webhook](#webhook-object) object on success.
-
-!!! info
-    The client performs this immediately after [creating a webhook](#create-webhook) in order to actually fill all its fields appropriately.
-
-!!! info
-    The client will always send `name` and `channelId` even if they were not changed. Try it out and see if they're required!
-
-###### JSON Params
-
-| Field      | Type                                            | Description                                        |
-|------------|-------------------------------------------------|----------------------------------------------------|
-| name       | string                                          | the default name of the webhook                    |
-| iconUrl    | image url                                       | image url for the default webhook avatar           |
-| channelId  | [channel id](/resources/channel#channel-object) | the new channel id this webhook should send to     |
-
-## Delete Webhook
-<span class="http-verb">DELETE</span><span class="http-path">/webhooks/{[webhook.id](#webhook-object)}</span>
-
-Delete a webhook. Returns a partial [webhook](#webhook-object) object on success with only `id` and `deletedAt` fields.
-
 ## Execute Webhook
 <span class="http-verb">POST</span><span class="http-path">https://media.guilded.gg/webhooks/{[webhook.id](#webhook-object)}/{[webhook.token](#webhook-object)}</span>
 
@@ -90,6 +44,8 @@ Delete a webhook. Returns a partial [webhook](#webhook-object) object on success
     You do not have to append `/github` onto your webhook URL for use with GitHub. The URL by itself will work as intended. It is recommended not to choose all events as many of them are unsupported and will result in error messages being sent through the webhook.
 
 Send a message through a webhook. Returns a [message](/resources/channel#message-object) object.
+
+This endpoint *may* also be used with the `www.guilded.gg/api` base URL, but doing so does not support uploading files.
 
 ###### JSON/Form Params
 

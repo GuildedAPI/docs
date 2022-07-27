@@ -1,15 +1,13 @@
 # Introduction
 
-Hey, welcome! This is some unofficial documentation of the Guilded user API. Please [read the Terms of Use](https://support.guilded.gg/hc/en-us/articles/360039728313-Terms-of-use) before using the API. 
-
-This [documentation is on GitHub](https://github.com/guildedapi/docs), so you know what to do there.
+Hey, welcome! This is some documentation for [Guilded](https://guilded.gg)'s user API. This [documentation is on GitHub](https://github.com/guildedapi/docs), so you know what to do there.
 
 ## Userbots & You
 
-Using the API to 'bot' your user account is a gray area in terms of ToU compliance. For this reason, these pages do not condone automating a user account and they exist solely for educational purposes.
+Guilded's terms forbid the automation of user accounts. For this reason, these pages are for building applications that make requests to Guilded as an anonymous third party ([here are some examples!](/topics/community-resources#exemplary-projects)). User authentication details will not be covered here.
 
-There is not yet any publicly available bot API like there is in Discord.
+You can apply for Guilded's early access bot API in the "Bots" tab of any server's settings or at [API-Official](https://www.guilded.gg/API-Official).
 
 ## Support
 
-Need some help? Come ask over at [the community API server](guilded://guilded-api)! ([or here if you don't have the guilded client installed](https://community.guildedapi.com))
+Need some help? Come ask over at [the community API server](https://www.guilded.gg/guilded-api)!

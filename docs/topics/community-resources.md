@@ -2,25 +2,19 @@
 
 ## Libraries
 
-The following libraries are not approved, created, or endorsed by Guilded.
-
-Many of these libraries have dedicated groups in the [community API server](https://community.guildedapi.com), making it an all-in-one place to get help with your favorite Guilded API resources.
+Guilded's bot API is currently in early access, so you will need explicit approval from a Guilded staff member to use it, and by extension, any of the libraries listed below. The following libraries are not approved, created, or endorsed by Guilded.
 
 ###### Guilded Libraries (alphabetical)
 
-| Name                                                       | Language   | API Support        |
-| ---------------------------------------------------------- | ---------- | ------------------ |
-| [deck](https://github.com/SrGaabriel/deck)                 | Kotlin     | Client             |
-| [Gdd.js](https://github.com/RemyK888/gdd.js)               | TypeScript | Official\*         |
-| [guilded.js](https://github.com/guildedjs/guilded.js)      | JavaScript | Official\*         |
-| [Guilded.NET](https://github.com/Guilded-NET/Guilded.NET)  | C#         | Official\*         |
-| [guilded.py](https://github.com/shayypy/guilded.py)        | Python     | Client, Official\* |
-| [Guilded.TS](https://github.com/guildedts/guilded.ts)      | TypeScript | Official\*         |
-| [Guilded4J](https://github.com/MCUmbrella/Guilded4J)       | Java       | Official\*         |
-| [Guildedeno](https://github.com/Scientific-Guy/guildedeno) | Deno       | Client             |
-| [Guildeno](https://github.com/guildeno/guildeno)           | TypeScript | Official\*         |
-
-\* The official API is currently in early access, so you will need explicit approval from a Guilded staff member to use it, and by extension, the libraries that wrap it.
+| Name                                                       | Language   |
+| ---------------------------------------------------------- | ---------- |
+| [Gdd.js](https://github.com/RemyK888/gdd.js)               | TypeScript |
+| [guilded.js](https://github.com/guildedjs/guilded.js)      | JavaScript |
+| [Guilded.NET](https://github.com/Guilded-NET/Guilded.NET)  | C#         |
+| [guilded.py](https://github.com/shayypy/guilded.py)        | Python     |
+| [Guilded.TS](https://github.com/guildedts/guilded.ts)      | TypeScript |
+| [Guilded4J](https://github.com/MCUmbrella/Guilded4J)       | Java       |
+| [Guildeno](https://github.com/guildeno/guildeno)           | TypeScript |
 
 ## Embed Visualizers
 
@@ -28,3 +22,12 @@ Discord and Guilded both use relatively the same [embed structure](/resources/ch
 
 - [LeoV's Embed Visualizer](https://leovoel.github.io/embed-visualizer)
 - [Discohook](https://discohook.app) (click on "JSON Data Editor" when you're done)
+
+## Exemplary Projects
+
+You may have been confused by [the preamble in this site's introduction](/#userbots-you). Here are a few cool projects that use Guilded's API without automating a user account.
+
+- [guilded-shields](https://github.com/yoki-labs/guilded-shields)
+- [Guilded.bio](https://guilded.bio)
+- [Blogsbot](https://blogsbot.shay.cat)
+- [Guilded Authlink](https://authlink.guildedapi.com)

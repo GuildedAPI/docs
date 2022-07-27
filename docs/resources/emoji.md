@@ -202,48 +202,6 @@ Upload the contents of an emoji pack to Guilded. Returns an array of `{url: url,
 | url               | string | the emoji pack to import (must link to a valid emoji pack JSON file) |
 | uploadTrackingId? | string | unknown. looks like "r-0123456-7891234"                              |
 
-## Create Team Emoji
-<span class="http-verb">POST</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/customReactions</span>
-
-Create a new emoji for the team. Returns the new [emoji](#custom-emoji-object) object on success.
-
-!!! info
-    You can request this endpoint without any image URL and recieve an HTTP 200 response, but no emoji will actually show up or be usable in the team.
-
-###### JSON Params
-
-| Field | Type   | Description                                                                |
-|-------|--------|----------------------------------------------------------------------------|
-| name  | string | name of the emoji                                                          |
-| png?  | string | url to the image you uploaded ([CustomReaction](/reference#upload-a-file)) |
-| webp? | string | url to the image you uploaded ([CustomReaction](/reference#upload-a-file)) |
-| apng? | string | url to the image you uploaded ([CustomReaction](/reference#upload-a-file)) |
-
-## Bulk Create Custom Emoji
-<span class="http-verb">POST</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/bulkCustomReactions</span>
-
-Bulk-add custom emojis to the team. Returns an array of [emoji](#custom-emoji-object) on success.
-
-| Field | Type                    | Description                                                                                                                                                                                                                                                 |
-|-------|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| urls  | array of partial emojis | the list of emojis to add. each item should include a `name` (alphanumberic only) and a `url` ([CustomReaction](/reference#upload-a-file)). if you are [importing an emoji pack](#upload-custom-emoji-pack), you may simply re-use that endpoint's response |
-
-## Modify Team Emoji
-<span class="http-verb">PATCH</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/customReactions/{[emoji.id](#custom-emoji-object)}</span>
-
-Modify the given emoji.
-
-###### JSON Params
-
-| Field | Type   | Description       |
-|-------|--------|-------------------|
-| name  | string | name of the emoji |
-
-## Delete Team Emoji
-<span class="http-verb">DELETE</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/customReactions/{[emoji.id](#custom-emoji-object)}</span>
-
-Delete the given emoji.
-
 ## Get Team Emoji Creators
 <span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](/resources/team#team-object)}/customReactionCreators</span>
 
