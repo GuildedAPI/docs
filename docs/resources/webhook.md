@@ -42,8 +42,6 @@ Webhooks are an easy way to post messages to team channels. They do not require 
 
 Send a message through a webhook. Returns a [message](/resources/channel#message-object) object.
 
-This endpoint *may* also be used with the `www.guilded.gg/api` base URL, but doing so does not support uploading files.
-
 ###### JSON/Form Params
 
 | Field          | Type                                               | Description                                  | Required                   |
