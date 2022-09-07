@@ -8,14 +8,14 @@ The meat of communication on Guilded. They are referred to as "servers" in the U
 
 | Field                 | Type                                                   | Description                                                                     |
 |-----------------------|--------------------------------------------------------|---------------------------------------------------------------------------------|
-| id                    | [generic id](/reference#generic-object-ids)            | the team's id                                                                   |
+| id                    | [generic id](/reference#ids)                           | the team's id                                                                   |
 | name                  | string                                                 | the team's name                                                                 |
 | subdomain             | ?string                                                | custom "url" of the team. equivalent to discord's `vanity_url_code`             |
 | description           | ?string                                                | the team's description                                                          |
 | bio (deprecated)      | ?string                                                | the team's bio - deprecated in favor of `description`                           |
 | profilePicture        | ?string                                                | the team's avatar url                                                           |
 | teamDashImage         | ?string                                                | the team's banner url                                                           |
-| ownerId               | [user id](/reference#generic-object-ids)               | id of the team's owner                                                          |
+| ownerId               | [user id](/reference#ids)                              | id of the team's owner                                                          |
 | createdAt             | ISO8601 timestamp                                      | when the team was created                                                       |
 | type                  | string                                                 | the [type of team](#team-types)                                                 |
 | members?\*            | array of [members](#team-member-object)                | the members in this team                                                        |
@@ -219,7 +219,7 @@ This object contains some statistics about the team. When available, you should 
 
 | Field               | Type                                                        | Description                                                               |
 |---------------------|-------------------------------------------------------------|---------------------------------------------------------------------------|
-| id                  | [generic id](/reference#generic-object-ids)                 | the user's id                                                             |
+| id                  | [generic id](/reference#ids)                                | the user's id                                                             |
 | name                | string                                                      | the user's username, not unique across the platform                       |
 | nickname            | string                                                      | the member's team-specific nickname                                       |
 | badges              | ?array                                                      | the badges that this member has ("GuildedStaff", "PartnerProgram", ?)     |
@@ -309,15 +309,15 @@ This object contains some statistics about the team. When available, you should 
 
 ###### Invite Structure
 
-| Field     | Type                                        | Description                                                    |
-|-----------|---------------------------------------------|----------------------------------------------------------------|
-| id        | [generic id](/reference#generic-object-ids) | the invite's id, referred to as an 'invite code' in the client |
-| createdAt | ISO8601 timestamp                           | when the invite was created                                    |
-| teamId    | [team id](#team-object)                     | the team's id that the invite is for                           |
-| invitedBy | [user id](/resources/user#user-object)      | the user's id who created the invite                           |
-| userBy    | ?[user id](/resources/user#user-object)     | a user's id who used the invite?                               |
-| gameId    | ?integer                                    | the game's id that the invite is for                           |
-| useCount  | integer                                     | how many times the invite has been used                        |
+| Field     | Type                                    | Description                                                    |
+|-----------|-----------------------------------------|----------------------------------------------------------------|
+| id        | [generic id](/reference#ids)            | the invite's id, referred to as an 'invite code' in the client |
+| createdAt | ISO8601 timestamp                       | when the invite was created                                    |
+| teamId    | [team id](#team-object)                 | the team's id that the invite is for                           |
+| invitedBy | [user id](/resources/user#user-object)  | the user's id who created the invite                           |
+| userBy    | ?[user id](/resources/user#user-object) | a user's id who used the invite?                               |
+| gameId    | ?integer                                | the game's id that the invite is for                           |
+| useCount  | integer                                 | how many times the invite has been used                        |
 
 ###### Example Invite
 
@@ -360,10 +360,10 @@ Returns an object of provided user IDs to [team members](#team-member-object).
 
 ###### JSON Params
 
-| Field            | Type    | Description                                                                                                                                 |
-|------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| userIds          | array of [generic ids](/reference#generic-object-ids) | the members' IDs to get member details for                                                    |
-| idsForBasicInfo? | array of [generic ids](/reference#generic-object-ids) | if an ID is included here, its entry in the response will also include basic user information |
+| Field            | Type                                   | Description                                                                                   |
+|------------------|----------------------------------------|-----------------------------------------------------------------------------------------------|
+| userIds          | array of [generic ids](/reference#ids) | the members' IDs to get member details for                                                    |
+| idsForBasicInfo? | array of [generic ids](/reference#ids) | if an ID is included here, its entry in the response will also include basic user information |
 
 ###### Example Response
 

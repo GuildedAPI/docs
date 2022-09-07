@@ -8,7 +8,7 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
 
 | Field                  | Type                                                   | Description                                                           |
 |------------------------|--------------------------------------------------------|-----------------------------------------------------------------------|
-| id                     | [generic id](/reference#generic-object-ids)            | the user's id                                                         |
+| id                     | [generic id](/reference#ids)                           | the user's id                                                         |
 | name                   | string                                                 | the user's username, not unique across the platform                   |
 | type                   | string                                                 | the [type of user](#user-types)                                       |
 | subdomain              | ?string                                                | the user's unique profile url                                         |
@@ -111,7 +111,7 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
 | name?           | string                              | the game's name (should be included if gameId is null)                                 |
 | type            | string                              | the type of status ("gamepresence", ?)   |
 | startedAt       | ISO8601 timestamp                   | when this status started                 |
-| guildedClientId | [uuid](/reference#snowflakes-uuids) | the client's id that this status is from |
+| guildedClientId | [uuid](/reference#ids)              | the client's id that this status is from |
 
 ###### Game IDs
 

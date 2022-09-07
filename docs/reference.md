@@ -21,17 +21,32 @@ Your typical error message should look like this:
 
 ... along with an appropriate [HTTP status code](/topics/status-codes#http).
 
-## Encryption
+## IDs
 
-The REST API is 'secure' (HTTPS). I am unsure of any other steps Guilded takes to secure data, if any.
+### Types
 
-## Snowflakes & UUIDs
+Unlike Discord, Guilded does not use [Snowflakes](https://discord.com/developers/docs/reference#snowflakes) for any of its IDs - instead, you will find a mix of [UUIDs](https://wikipedia.org/wiki/Universally_unique_identifier), 8-character alphanumeric strings (hereafter "generic" IDs), and incremental & random integer IDs.
 
-Unlike Discord, Guilded uses [UUIDs](https://wikipedia.org/wiki/Universally_unique_identifier) for many of its unique IDs ([Channels](/resources/channel#channel-object) (all types), [Messages](/resources/channel#message-object), and [Webhooks](/resources/webhook#webhook-object) use UUIDs). Because of this, none of the same properties apply as to Snowflakes.
+### Uniqueness of IDs by scope
 
-## Generic Object IDs
-
-These are 8-character, probably-meaningless IDs that Guilded uses in lieu of Snowflakes or UUIDs. They are used for objects like [Teams](/resources/team#team-object), [Groups](/resources/group#group-object), and [Users](/resources/user#user-object).
+| Resource                                                                  | ID Type     | Data Type | Scope       |
+|---------------------------------------------------------------------------|-------------|-----------|-------------|
+| All content replies                                                       | Incremental | integer   | per-content |
+| Announcement                                                              | Generic     | string    | ?           |
+| Availability                                                              | Incremental | integer   | global      |
+| [CalendarEvent](https://guilded.gg/docs/api/calendarEvents/CalendarEvent) | Incremental | integer   | global      |
+| [Channel](/resources/channel#channel-object)                              | UUID        | string    | global      |
+| [Doc](https://guilded.gg/docs/api/docs/Doc)                               | Incremental | integer   | global      |
+| [Emoji](/resources/emoji#custom-emoji-object) (emote)                     | Incremental | integer   | global      |
+| [ForumTopic](https://guilded.gg/docs/api/forums/ForumTopic)               | Random      | integer   | ?           |
+| [Group](/resources/group#group-object)                                    | Generic     | string    | global      |
+| [ListItem](https://guilded.gg/docs/api/listItems/ListItem)                | UUID        | string    | ?           |
+| Media                                                                     | Incremental | integer   | global      |
+| [Message](/resources/channel#message-object)                              | UUID        | string    | ?           |
+| Role                                                                      | Incremental | integer   | global      |
+| [Team](/resources/team#team-object) (server)                              | Generic     | string    | global      |
+| [User](/resources/user#user-object)                                       | Generic     | string    | global      |
+| [Webhook](/resources/webhook#webhook-object)                              | UUID        | string    | global      |
 
 ## ISO8601 Date/Time
 
