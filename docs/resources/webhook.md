@@ -38,9 +38,6 @@ Webhooks are an easy way to post messages to team channels. They do not require 
 <span class="http-verb">POST</span><span class="http-path">https://media.guilded.gg/webhooks/{[webhook.id](#webhook-object)}/{[webhook.token](#webhook-object)}</span>
 
 !!! info
-    This endpoint is supposedly [similar enough](/images/webhooks_identical.png) to Discord's [`POST /webhooks/{webhook.id}/{webhook.token}`](https://discord.dev/resources/webhook#execute-webhook) that all you have to do is "change a url". However, many of the same fields are not supported (although they will not raise).
-
-!!! info
     You do not have to append `/github` onto your webhook URL for use with GitHub. The URL by itself will work as intended. It is recommended not to choose all events as many of them are unsupported and will result in error messages being sent through the webhook.
 
 Send a message through a webhook. Returns a [message](/resources/channel#message-object) object.
@@ -55,5 +52,7 @@ This endpoint *may* also be used with the `www.guilded.gg/api` base URL, but doi
 | embeds         | array of [embeds](/resources/channel#embed-object) | up to 10 embeds                              | one of content, embeds     |
 | files[n]\*     | file contents                                      | up to 10 files                               | false                      |
 | payload_json\* | string                                             | JSON encoded body of non-file params         | `multipart/form-data` only |
+| username       | string                                             | override the webhook's default username      | false                      |
+| avatar_url     | string                                             | override the webhook's default avatar        | false                      |
 
 \* See [Uploading Files](https://discord.dev/reference#uploading-files) for details.
