@@ -28,7 +28,7 @@ Users are everywhere. They're in our servers, our DMs, our friends lists.. and i
 | userStatus             | [user status object](#user-status-object)              | this user's current activity/"status"                                 |
 | userPresenceStatus     | integer                                                | this [user's presence](#user-presence) (online, idle, etc)            |
 | userTransientStatus    | [transient status object](#transient-status)           | this user's transient status (game, streaming, ?)                     |
-| moderationStatus       | ?                                                      | ?                                                                     |
+| moderationStatus       | ?string                                                | this user's moderation status (e.g. banned, deleted)                  |
 | aboutInfo              | [about info object](#about-info-object)                | this user's bio and tagline                                           |
 | lastOnline             | ISO8601 timestamp                                      | when this user was last online                                        |
 | stonks?                | integer                                                | number of "stonks" the user has gotten from inviting people           |
