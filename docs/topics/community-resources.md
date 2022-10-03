@@ -8,13 +8,11 @@ Guilded's bot API is currently in early access, so you will need explicit approv
 
 | Name                                                       | Language   |
 | ---------------------------------------------------------- | ---------- |
-| [Gdd.js](https://github.com/RemyK888/gdd.js)               | TypeScript |
 | [guilded.js](https://github.com/guildedjs/guilded.js)      | JavaScript |
 | [Guilded.NET](https://github.com/Guilded-NET/Guilded.NET)  | C#         |
 | [guilded.py](https://github.com/shayypy/guilded.py)        | Python     |
 | [Guilded.TS](https://github.com/guildedts/guilded.ts)      | TypeScript |
 | [Guilded4J](https://github.com/MCUmbrella/Guilded4J)       | Java       |
-| [Guildeno](https://github.com/guildeno/guildeno)           | TypeScript |
 
 ## Embed Visualizers
 
