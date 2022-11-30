@@ -30,4 +30,4 @@ You may have been confused by [the preamble in this site's introduction](/#userb
 - [Guilded.bio](https://guilded.bio)
 - [Blogsbot](https://blogsbot.shay.cat)
 - [Guilded Authlink](https://authlink.guildedapi.com)
-- [Server Guard](https://serverguard.reapimus.com)
+- [Server Guard](https://serverguard.xyz)
