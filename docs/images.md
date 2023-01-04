@@ -39,6 +39,9 @@ from [/jobs](https://guilded.gg/jobs)
 ## Nothing Here
 ![nothing-here](https://img.guildedcdn.com/asset/GenericMessages/nothing-here.png)
 
+## Not found
+![not-found](https://img.guildedcdn.com/asset/GenericMessages/not-found.png)
+
 ## Gilmoji
 ![gilmoji](https://img.guildedcdn.com/asset/Default/Gilmoji.png)
 
