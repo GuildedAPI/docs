@@ -136,7 +136,7 @@ If you want to use this list in your application, feel free to grab it in [JSON 
 | 101500 | Final Fantasy XIV: Shadowbringers        |
 | 101600 | Starcraft II                             |
 | 101700 | The Elder Scrolls Online                 |
-| 101800 | Team Fortress II                         |
+| 101800 | Team Fortress 2                          |
 | 101900 | Destiny                                  |
 | 102000 | Terraria                                 |
 | 102100 | Star Wars: The Old Republic              |
