@@ -333,11 +333,6 @@ This object contains some statistics about the team. When available, you should 
 }
 ```
 
-## Check Team Name Availability
-<span class="http-verb">GET</span><span class="http-path">/dryrun/teamname/{name}</span>
-
-Check the availability of a team name. Returns `{"exists": false}` if the name is available, and `{"exists": true}` if it is not.
-
 ## Get Team Info
 <span class="http-verb">GET</span><span class="http-path">/teams/{[team.id](#team-object)}/info</span>
 
