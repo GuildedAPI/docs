@@ -14,6 +14,7 @@ Guilded's bot API is currently in early access, so you will need explicit approv
 | [Guilded.TS](https://github.com/guildedts/guilded.ts)         | TypeScript |
 | [Guilded4J](https://github.com/MCUmbrella/Guilded4J)          | Java       |
 | [TouchGuild](https://github.com/DinographicPixels/TouchGuild) | Javascript |
+| [NextGuild](https://github.com/ArjunSharda/NextGuild          | Python     |
 
 ## Embed Visualizers
 
