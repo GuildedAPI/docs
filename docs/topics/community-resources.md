@@ -27,7 +27,6 @@ Discord and Guilded both use relatively the same [embed structure](/resources/ch
 You may have been confused by [the preamble in this site's introduction](/#userbots-you). Here are a few cool projects that use Guilded's API without automating a user account.
 
 - [guilded-shields](https://github.com/yoki-labs/guilded-shields)
-- [Guilded.bio](https://guilded.bio)
 - [Blogsbot](https://blogsbot.shay.cat)
-- [Guilded Authlink](https://authlink.guildedapi.com)
+- [Guilded Authlink](https://authlink.app)
 - [Server Guard](https://serverguard.xyz)
