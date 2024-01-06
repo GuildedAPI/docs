@@ -38,7 +38,7 @@ Webhooks are an easy way to post messages to team channels. They do not require 
 <span class="http-verb">POST</span><span class="http-path">https://media.guilded.gg/webhooks/{[webhook.id](#webhook-object)}/{[webhook.token](#webhook-object)}</span>
 
 !!! info
-    You do not have to append `/github` onto your webhook URL for use with GitHub. The URL by itself will work as intended. It is recommended not to choose all events as many of them are unsupported and will result in error messages being sent through the webhook.
+    This endpoint no longer supports GitHub payloads. See [guilded-webhook-proxy](https://github.com/shayypy/guilded-webhook-proxy) for an alternative.
 
 Send a message through a webhook. Returns a [message](/resources/channel#message-object) object.
 
