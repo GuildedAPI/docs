@@ -1,0 +1,1043 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Unofficial documentation for Guilded's REST API.">
+      
+      
+        <meta name="author" content="Guilded Developer Resources">
+      
+      
+      
+        <link rel="prev" href="../images/">
+      
+      
+        <link rel="next" href="../resources/channel/">
+      
+      
+      <link rel="icon" href="../logo.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Reference - Guilded API Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  
+  
+    
+  
+  <meta property="og:site_name" content="Guilded Developer Resources">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Guilded API Documentation - Reference" />
+  <meta property="og:description" content="Unofficial documentation for Guilded's REST API." />
+  <meta property="og:url" content="None" />
+  <meta name="theme-color" content="#f5c400" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="GuildedAPI" />
+  <meta name="twitter:creator" content="GuildedAPI" />
+  <meta name="twitter:title" content="Guilded API Documentation - Reference" />
+  <meta name="twitter:description" content="Unofficial documentation for Guilded's REST API." />
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Guilded API Documentation" class="md-header__button md-logo" aria-label="Guilded API Documentation" data-md-component="logo">
+      
+  <img src="../guilded.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Guilded API Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/guildedapi/docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Guilded API Documentation" class="md-nav__button md-logo" aria-label="Guilded API Documentation" data-md-component="logo">
+      
+  <img src="../guilded.svg" alt="logo">
+
+    </a>
+    Guilded API Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/guildedapi/docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../images/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Images
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#error-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Messages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      IDs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IDs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uniqueness-of-ids-by-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uniqueness of IDs by scope
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iso8601-datetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      ISO8601 Date/Time
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nullable-and-optional-resource-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nullable and Optional Resource Fields
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rate Limiting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Formatting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Formatting
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/channel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Channels
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/emoji/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Reactions/Emojis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/group/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Groups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/team/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Teams
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Users
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/webhook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webhooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Topics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/community-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Community Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/media/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Media Endpoints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topics/status-codes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Status Codes in the API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">🔗</a></h1>
+<p>Guilded's API features a WebSocket gateway for receiving live events, but it requires user authentication and thus will not be covered here.</p>
+<h6 id="base-url">Base URL<a class="headerlink" href="#base-url" title="Permanent link">🔗</a></h6>
+<div class="highlight"><pre><span></span><code>https://www.guilded.gg/api
+</code></pre></div>
+<h2 id="error-messages">Error Messages<a class="headerlink" href="#error-messages" title="Permanent link">🔗</a></h2>
+<p>Your typical error message should look like this:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BadRequestError&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;That&#39;s no good. Try again with a different payload.&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>... along with an appropriate <a href="/topics/status-codes#http">HTTP status code</a>.</p>
+<h2 id="ids">IDs<a class="headerlink" href="#ids" title="Permanent link">🔗</a></h2>
+<h3 id="types">Types<a class="headerlink" href="#types" title="Permanent link">🔗</a></h3>
+<p>Unlike Discord, Guilded does not use <a href="https://discord.com/developers/docs/reference#snowflakes">Snowflakes</a> for any of its IDs - instead, you will find a mix of <a href="https://wikipedia.org/wiki/Universally_unique_identifier">UUIDs</a>, 8-character alphanumeric strings (hereafter "generic" IDs), and incremental &amp; random integer IDs.</p>
+<h3 id="uniqueness-of-ids-by-scope">Uniqueness of IDs by scope<a class="headerlink" href="#uniqueness-of-ids-by-scope" title="Permanent link">🔗</a></h3>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>ID Type</th>
+<th>Data Type</th>
+<th>Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All content replies</td>
+<td>Incremental</td>
+<td>integer</td>
+<td>per-content</td>
+</tr>
+<tr>
+<td>Announcement</td>
+<td>Generic</td>
+<td>string</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Availability</td>
+<td>Incremental</td>
+<td>integer</td>
+<td>global</td>
+</tr>
+<tr>
+<td><a href="https://guilded.gg/docs/api/calendarEvents/CalendarEvent">CalendarEvent</a></td>
+<td>Incremental</td>
+<td>integer</td>
+<td>global</td>
+</tr>
+<tr>
+<td><a href="/resources/channel#channel-object">Channel</a></td>
+<td>UUID</td>
+<td>string</td>
+<td>global</td>
+</tr>
+<tr>
+<td><a href="https://guilded.gg/docs/api/docs/Doc">Doc</a></td>
+<td>Incremental</td>
+<td>integer</td>
+<td>global</td>
+</tr>
+<tr>
+<td><a href="/resources/emoji#custom-emoji-object">Emoji</a> (emote)</td>
+<td>Incremental</td>
+<td>integer</td>
+<td>global</td>
+</tr>
+<tr>
+<td><a href="https://guilded.gg/docs/api/forums/ForumTopic">ForumTopic</a></td>
+<td>Random</td>
+<td>integer</td>
+<td>?</td>
+</tr>
+<tr>
+<td><a href="/resources/group#group-object">Group</a></td>
+<td>Generic</td>
+<td>string</td>
+<td>global</td>
+</tr>
+<tr>
+<td><a href="https://guilded.gg/docs/api/listItems/ListItem">ListItem</a></td>
+<td>UUID</td>
+<td>string</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Media</td>
+<td>Incremental</td>
+<td>integer</td>
+<td>global</td>
+</tr>
+<tr>
+<td><a href="/resources/channel#message-object">Message</a></td>
+<td>UUID</td>
+<td>string</td>
+<td>?</td>
+</tr>
+<tr>
+<td>Role</td>
+<td>Incremental</td>
+<td>integer</td>
+<td>global</td>
+</tr>
+<tr>
+<td><a href="/resources/team#team-object">Team</a> (server)</td>
+<td>Generic</td>
+<td>string</td>
+<td>global</td>
+</tr>
+<tr>
+<td><a href="/resources/user#user-object">User</a></td>
+<td>Generic</td>
+<td>string</td>
+<td>global</td>
+</tr>
+<tr>
+<td><a href="/resources/webhook#webhook-object">Webhook</a></td>
+<td>UUID</td>
+<td>string</td>
+<td>global</td>
+</tr>
+</tbody>
+</table>
+<h2 id="iso8601-datetime">ISO8601 Date/Time<a class="headerlink" href="#iso8601-datetime" title="Permanent link">🔗</a></h2>
+<p>Guilded utilizes the <a href="https://www.loc.gov/standards/datetime/iso-tc154-wg5_n0038_iso_wd_8601-1_2016-02-16.pdf">ISO8601 format</a> for most Date/Times returned. This format is referred to as type <code>ISO8601 timestamp</code> within tables in this documentation.</p>
+<h2 id="nullable-and-optional-resource-fields">Nullable and Optional Resource Fields<a class="headerlink" href="#nullable-and-optional-resource-fields" title="Permanent link">🔗</a></h2>
+<p>Resource fields that may contain a <code>null</code> value have types that are prefixed with a question mark.
+Resource fields that are optional have names that are suffixed with a question mark.</p>
+<h6 id="example-nullable-and-optional-fields">Example Nullable and Optional Fields<a class="headerlink" href="#example-nullable-and-optional-fields" title="Permanent link">🔗</a></h6>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>optional_field?</td>
+<td>string</td>
+</tr>
+<tr>
+<td>nullable_field</td>
+<td>?string</td>
+</tr>
+<tr>
+<td>optional_and_nullable_field?</td>
+<td>?string</td>
+</tr>
+</tbody>
+</table>
+<h2 id="http-api">HTTP API<a class="headerlink" href="#http-api" title="Permanent link">🔗</a></h2>
+<h3 id="rate-limiting">Rate Limiting<a class="headerlink" href="#rate-limiting" title="Permanent link">🔗</a></h3>
+<p>The HTTP API has very loose rate limits. Because of this, we do not know much about how rate limiting works on Guilded. A good rule of thumb is to not spam the API with repetitive requests and to simply stay reasonable.</p>
+<h2 id="message-formatting">Message Formatting<a class="headerlink" href="#message-formatting" title="Permanent link">🔗</a></h2>
+<p>Guilded uses markdown for writing messages in clients. Message are returned via the API in a very 'stacked' format. Each aspect of a message's content, such as text formatting, a mention, or anything else, is provided in a different leaf of the current node. Fortunately, this is not a format you have to <em>send</em>; you can instead use pure markdown by providing <code>markdown-plain-text</code> as your <code>type</code>.</p>
+<p>todo: fact check above</p>
+<h2 id="image-formatting">Image Formatting<a class="headerlink" href="#image-formatting" title="Permanent link">🔗</a></h2>
+<h6 id="image-base-urls">Image Base URLs<a class="headerlink" href="#image-base-urls" title="Permanent link">🔗</a></h6>
+<div class="highlight"><pre><span></span><code>https://img.guildedcdn.com/
+https://s3-us-west-2.amazonaws.com/www.guilded.gg/
+</code></pre></div>
+<p>Guilded uses hashes for its images. These hashes are not returned alone in most HTTP API requests, however--instead you are returned a full URL on the Amazon AWS platform.</p>
+<p>Below are the formats, size limitations, and CDN endpoints for images in Guilded. The returned format can be changed by changing the <a href="#image-formats">extension name</a> at the end of the URL. The returned size can be changed by appending a <code>-{Size}</code> to the URL, just before the file extension. <a href="#sizes">See below</a> for available size formats.</p>
+<p>It is important to note that, while URLs using the CDN domain are shorter than, and serve the same purpose as, AWS URLs, they will not display properly in embeds (in constrast to AWS URLs).</p>
+<h6 id="image-formats">Image Formats<a class="headerlink" href="#image-formats" title="Permanent link">🔗</a></h6>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Extension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PNG</td>
+<td>.png</td>
+</tr>
+<tr>
+<td>aPNG</td>
+<td>.png</td>
+</tr>
+<tr>
+<td>JPEG</td>
+<td>.jpg, .jpeg</td>
+</tr>
+<tr>
+<td>WebP</td>
+<td>.webp</td>
+</tr>
+<tr>
+<td>GIF</td>
+<td>.gif</td>
+</tr>
+</tbody>
+</table>
+<h6 id="cdn-endpoints">CDN Endpoints<a class="headerlink" href="#cdn-endpoints" title="Permanent link">🔗</a></h6>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Path</th>
+<th>Supports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User Avatar</td>
+<td>UserAvatar/hash.png</td>
+<td>PNG, GIF</td>
+</tr>
+<tr>
+<td>Profile Banner</td>
+<td>UserBanner/hash.png</td>
+<td>PNG</td>
+</tr>
+<tr>
+<td>Image in Chat</td>
+<td>ContentMedia/hash.webp</td>
+<td>WebP</td>
+</tr>
+<tr>
+<td>Team Emoji</td>
+<td>CustomReaction/hash.webp</td>
+<td>WebP, aPNG</td>
+</tr>
+<tr>
+<td>Team Icon</td>
+<td>TeamAvatar/hash.png</td>
+<td>PNG</td>
+</tr>
+<tr>
+<td>Team Banner</td>
+<td>TeamBanner/hash.png</td>
+<td>PNG</td>
+</tr>
+</tbody>
+</table>
+<h6 id="sizes">Sizes<a class="headerlink" href="#sizes" title="Permanent link">🔗</a></h6>
+<p>Your <code>-{Size}</code> can be one of <code>-Small</code>, <code>-Medium</code>, <code>-Large</code>, and sometimes <code>-Hero</code>. Banners can only be <code>Hero</code>, but avatars are never <code>Hero</code>.</p>
+<h6 id="example-cdn-url">Example CDN URL<a class="headerlink" href="#example-cdn-url" title="Permanent link">🔗</a></h6>
+<p>The below example is for a "large" sized User Avatar on AWS:</p>
+<div class="highlight"><pre><span></span><code>https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/{hash}-Large.png
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © shay (shayypy) 2021-2022
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.instant", "toc.integrate"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>

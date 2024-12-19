@@ -1,0 +1,3550 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Unofficial documentation for Guilded's REST API.">
+      
+      
+        <meta name="author" content="Guilded Developer Resources">
+      
+      
+      
+        <link rel="prev" href="../team/">
+      
+      
+        <link rel="next" href="../webhook/">
+      
+      
+      <link rel="icon" href="../../logo.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Users - Guilded API Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  
+  
+    
+  
+  <meta property="og:site_name" content="Guilded Developer Resources">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Guilded API Documentation - Users" />
+  <meta property="og:description" content="Unofficial documentation for Guilded's REST API." />
+  <meta property="og:url" content="None" />
+  <meta name="theme-color" content="#f5c400" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="GuildedAPI" />
+  <meta name="twitter:creator" content="GuildedAPI" />
+  <meta name="twitter:title" content="Guilded API Documentation - Users" />
+  <meta name="twitter:description" content="Unofficial documentation for Guilded's REST API." />
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#users" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Guilded API Documentation" class="md-header__button md-logo" aria-label="Guilded API Documentation" data-md-component="logo">
+      
+  <img src="../../guilded.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Guilded API Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Users
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/guildedapi/docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Guilded API Documentation" class="md-nav__button md-logo" aria-label="Guilded API Documentation" data-md-component="logo">
+      
+  <img src="../../guilded.svg" alt="logo">
+
+    </a>
+    Guilded API Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/guildedapi/docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../images/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Images
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../channel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Channels
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emoji/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Reactions/Emojis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../group/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Groups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../team/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Teams
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Users
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Users
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Object
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-presence" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Presence
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transient-status-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transient Status Object
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-status-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Status Object
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-status-content-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Status Content Object
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flair-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flair Object
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get User
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-user-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get User Profile
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-user-posts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get User Posts
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webhook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webhooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Topics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/community-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Community Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/media/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Media Endpoints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/status-codes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Status Codes in the API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="users">Users<a class="headerlink" href="#users" title="Permanent link">🔗</a></h1>
+<p>Users are everywhere. They're in our servers, our DMs, our friends lists.. and in this documentation page!</p>
+<h3 id="user-object">User Object<a class="headerlink" href="#user-object" title="Permanent link">🔗</a></h3>
+<h6 id="user-structure">User Structure<a class="headerlink" href="#user-structure" title="Permanent link">🔗</a></h6>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="/reference#ids">generic id</a></td>
+<td>the user's id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>the user's username, not unique across the platform</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>the <a href="#user-types">type of user</a></td>
+</tr>
+<tr>
+<td>subdomain</td>
+<td>?string</td>
+<td>the user's unique profile url</td>
+</tr>
+<tr>
+<td>aliases</td>
+<td>array</td>
+<td>the linked games on the user's profile</td>
+</tr>
+<tr>
+<td>email</td>
+<td>?string</td>
+<td>the user's email. null if this is not you</td>
+</tr>
+<tr>
+<td>serviceEmail</td>
+<td>?string</td>
+<td>?</td>
+</tr>
+<tr>
+<td>profilePicture</td>
+<td>string (url)</td>
+<td>the user's avatar url</td>
+</tr>
+<tr>
+<td>profilePictureSm</td>
+<td>string (url)</td>
+<td>^</td>
+</tr>
+<tr>
+<td>profilePictureLg</td>
+<td>string (url)</td>
+<td>^</td>
+</tr>
+<tr>
+<td>profilePictureBlur</td>
+<td>string (url)</td>
+<td>^</td>
+</tr>
+<tr>
+<td>profileBannerSm</td>
+<td>?string (url)</td>
+<td>the user's banner url</td>
+</tr>
+<tr>
+<td>profileBannerLg</td>
+<td>?string (url)</td>
+<td>^</td>
+</tr>
+<tr>
+<td>profileBannerBlur</td>
+<td>?string (url)</td>
+<td>^</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>ISO8601 timestamp</td>
+<td>when the user's account was created</td>
+</tr>
+<tr>
+<td>joinDate? (deprecated)</td>
+<td>ISO8601 timestamp</td>
+<td>when the user's account was created. <code>createdAt</code> may appear instead</td>
+</tr>
+<tr>
+<td>steamId</td>
+<td>?string</td>
+<td>this user's steam id, if linked</td>
+</tr>
+<tr>
+<td>userStatus</td>
+<td><a href="#user-status-object">user status object</a></td>
+<td>this user's current activity/"status"</td>
+</tr>
+<tr>
+<td>userPresenceStatus</td>
+<td>integer</td>
+<td>this <a href="#user-presence">user's presence</a> (online, idle, etc)</td>
+</tr>
+<tr>
+<td>userTransientStatus</td>
+<td><a href="#transient-status">transient status object</a></td>
+<td>this user's transient status (game, streaming, ?)</td>
+</tr>
+<tr>
+<td>moderationStatus</td>
+<td>?string</td>
+<td>this user's moderation status (e.g. banned, deleted)</td>
+</tr>
+<tr>
+<td>aboutInfo</td>
+<td><a href="#about-info-object">about info object</a></td>
+<td>this user's bio and tagline</td>
+</tr>
+<tr>
+<td>lastOnline</td>
+<td>ISO8601 timestamp</td>
+<td>when this user was last online</td>
+</tr>
+<tr>
+<td>stonks?</td>
+<td>integer</td>
+<td>number of "stonks" the user has gotten from inviting people</td>
+</tr>
+<tr>
+<td>flairInfos?</td>
+<td>array of <a href="#flair-object">flair objects</a></td>
+<td>the flairs the user has on their profile</td>
+</tr>
+<tr>
+<td>teams?</td>
+<td>boolean, array of <a href="/resources/team#team-object">teams</a></td>
+<td><code>false</code> if the user is not yourself, otherwise an array of your teams</td>
+</tr>
+</tbody>
+</table>
+<h6 id="example-user">Example User<a class="headerlink" href="#example-user" title="Permanent link">🔗</a></h6>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EdVMVKR4&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shay&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;subdomain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shayy&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;aliases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shay&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;discriminator&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shay&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;createdAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-03-03T21:02:19.901444+00:00&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;userId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EdVMVKR4&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gameId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">220015</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;socialLinkSource&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;additionalInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">      </span><span class="nt">&quot;editedAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-03-03T21:02:19.901444+00:00&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;socialLinkHandle&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;playerInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;profilePicture&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/74bfc8be9425a926a1f48d9b078509bc-Large.png?w=450&amp;h=450&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">// Some profilePicture and banner keys removed for brevity</span>
+<span class="w">  </span><span class="nt">&quot;createdAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-07-27T14:07:28.336Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;steamId&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;userStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;customReactionId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">294765</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;customReaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">294765</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ablobwobwork&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;png&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/d7cf013a4d01460a81186e65f1f8c12a-Full.webp?w=120&amp;h=120&amp;ia=1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;webp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/d7cf013a4d01460a81186e65f1f8c12a-Full.webp?w=120&amp;h=120&amp;ia=1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;apng&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;moderationStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;aboutInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;tagLine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;computer user&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;lastOnline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-03-08T00:24:49.144Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;serviceEmail&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;userPresenceStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;userTransientStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;stonks&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="p">}</span>
+</code></pre></div>
+<h5 id="user-types">User Types<a class="headerlink" href="#user-types" title="Permanent link">🔗</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user</td>
+<td>the account is a human</td>
+</tr>
+<tr>
+<td>bot</td>
+<td>the account is a bot</td>
+</tr>
+</tbody>
+</table>
+<h3 id="user-presence">User Presence<a class="headerlink" href="#user-presence" title="Permanent link">🔗</a></h3>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>online</td>
+</tr>
+<tr>
+<td>2</td>
+<td>idle</td>
+</tr>
+<tr>
+<td>3</td>
+<td>dnd</td>
+</tr>
+<tr>
+<td>4</td>
+<td>offline/invisible</td>
+</tr>
+</tbody>
+</table>
+<h3 id="transient-status-object">Transient Status Object<a class="headerlink" href="#transient-status-object" title="Permanent link">🔗</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>gameId</td>
+<td>?integer</td>
+<td>the game's id this status is for (see the game ids table below for known valid values)</td>
+</tr>
+<tr>
+<td>name?</td>
+<td>string</td>
+<td>the game's name (should be included if gameId is null)</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>the type of status ("gamepresence", ?)</td>
+</tr>
+<tr>
+<td>startedAt</td>
+<td>ISO8601 timestamp</td>
+<td>when this status started</td>
+</tr>
+<tr>
+<td>guildedClientId</td>
+<td><a href="/reference#ids">uuid</a></td>
+<td>the client's id that this status is from</td>
+</tr>
+</tbody>
+</table>
+<h6 id="game-ids">Game IDs<a class="headerlink" href="#game-ids" title="Permanent link">🔗</a></h6>
+<p>If you want to use this list in your application, feel free to grab it in <a href="https://git.guildedapi.com/datatables/blob/main/games.json">JSON format from our datatables repo</a>.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Game</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10100</td>
+<td>Overwatch</td>
+</tr>
+<tr>
+<td>10200</td>
+<td>League of Legends</td>
+</tr>
+<tr>
+<td>10300</td>
+<td>CounterStrike: Global Offensive</td>
+</tr>
+<tr>
+<td>10400</td>
+<td>Dota 2</td>
+</tr>
+<tr>
+<td>10500</td>
+<td>Minecraft</td>
+</tr>
+<tr>
+<td>10600</td>
+<td>World of Tanks</td>
+</tr>
+<tr>
+<td>10700</td>
+<td>Battlefield 4</td>
+</tr>
+<tr>
+<td>10800</td>
+<td>World of Warcraft</td>
+</tr>
+<tr>
+<td>10900</td>
+<td>Call of Duty: Black Ops III</td>
+</tr>
+<tr>
+<td>101000</td>
+<td>Smite</td>
+</tr>
+<tr>
+<td>101100</td>
+<td>Heroes of the Storm</td>
+</tr>
+<tr>
+<td>101200</td>
+<td>Halo 5: Guardians</td>
+</tr>
+<tr>
+<td>101300</td>
+<td>Tom Clancy’s The Division</td>
+</tr>
+<tr>
+<td>101400</td>
+<td>Guild Wars 2</td>
+</tr>
+<tr>
+<td>101500</td>
+<td>Final Fantasy XIV: Shadowbringers</td>
+</tr>
+<tr>
+<td>101600</td>
+<td>Starcraft II</td>
+</tr>
+<tr>
+<td>101700</td>
+<td>The Elder Scrolls Online</td>
+</tr>
+<tr>
+<td>101800</td>
+<td>Team Fortress II</td>
+</tr>
+<tr>
+<td>101900</td>
+<td>Destiny</td>
+</tr>
+<tr>
+<td>102000</td>
+<td>Terraria</td>
+</tr>
+<tr>
+<td>102100</td>
+<td>Star Wars: The Old Republic</td>
+</tr>
+<tr>
+<td>102200</td>
+<td>ArcheAge Unchained</td>
+</tr>
+<tr>
+<td>102300</td>
+<td>Runescape</td>
+</tr>
+<tr>
+<td>102400</td>
+<td>Diablo III</td>
+</tr>
+<tr>
+<td>102500</td>
+<td>Vainglory</td>
+</tr>
+<tr>
+<td>102600</td>
+<td>Clash of Clans</td>
+</tr>
+<tr>
+<td>102700</td>
+<td>Rocket League</td>
+</tr>
+<tr>
+<td>102800</td>
+<td>Pokémon GO</td>
+</tr>
+<tr>
+<td>102900</td>
+<td>Grand Theft Auto V</td>
+</tr>
+<tr>
+<td>103000</td>
+<td>EVE Online</td>
+</tr>
+<tr>
+<td>103100</td>
+<td>ARK: Survival Evolved</td>
+</tr>
+<tr>
+<td>103200</td>
+<td>Arma 3</td>
+</tr>
+<tr>
+<td>103300</td>
+<td>Battlefield 1</td>
+</tr>
+<tr>
+<td>103400</td>
+<td>Black Desert Online</td>
+</tr>
+<tr>
+<td>103500</td>
+<td>Call of Duty: Infinite Warfare</td>
+</tr>
+<tr>
+<td>103600</td>
+<td>DayZ</td>
+</tr>
+<tr>
+<td>103700</td>
+<td>Elite Dangerous</td>
+</tr>
+<tr>
+<td>103800</td>
+<td>H1Z1: Just Survive</td>
+</tr>
+<tr>
+<td>103900</td>
+<td>Miscreated</td>
+</tr>
+<tr>
+<td>104000</td>
+<td>Neverwinter</td>
+</tr>
+<tr>
+<td>104100</td>
+<td>Path of Exile</td>
+</tr>
+<tr>
+<td>104200</td>
+<td>Rainbow Six Siege</td>
+</tr>
+<tr>
+<td>104300</td>
+<td>Rust</td>
+</tr>
+<tr>
+<td>104400</td>
+<td>Starbound</td>
+</tr>
+<tr>
+<td>104500</td>
+<td>Star Citizen</td>
+</tr>
+<tr>
+<td>104600</td>
+<td>Tabletop Simulator</td>
+</tr>
+<tr>
+<td>104700</td>
+<td>Secret World Legends</td>
+</tr>
+<tr>
+<td>104800</td>
+<td>Titanfall</td>
+</tr>
+<tr>
+<td>104900</td>
+<td>Titanfall 2</td>
+</tr>
+<tr>
+<td>105000</td>
+<td>Total War: WARHAMMER</td>
+</tr>
+<tr>
+<td>105100</td>
+<td>Warframe</td>
+</tr>
+<tr>
+<td>105200</td>
+<td>No Man's Sky</td>
+</tr>
+<tr>
+<td>105300</td>
+<td>Dragon Quest X</td>
+</tr>
+<tr>
+<td>105400</td>
+<td>Ingress</td>
+</tr>
+<tr>
+<td>105500</td>
+<td>Phantasy Star Online 2</td>
+</tr>
+<tr>
+<td>105600</td>
+<td>Skyforge</td>
+</tr>
+<tr>
+<td>105700</td>
+<td>Tera</td>
+</tr>
+<tr>
+<td>105800</td>
+<td>Wildstar</td>
+</tr>
+<tr>
+<td>105900</td>
+<td>Metal Gear Online</td>
+</tr>
+<tr>
+<td>106000</td>
+<td>Super Smash Bros. for Wii U</td>
+</tr>
+<tr>
+<td>106100</td>
+<td>7 Days to Die</td>
+</tr>
+<tr>
+<td>106200</td>
+<td>Air Mech</td>
+</tr>
+<tr>
+<td>106300</td>
+<td>Battleborn</td>
+</tr>
+<tr>
+<td>106400</td>
+<td>Blacklight: Retribution</td>
+</tr>
+<tr>
+<td>106500</td>
+<td>Battlecry</td>
+</tr>
+<tr>
+<td>106600</td>
+<td>Chivalry</td>
+</tr>
+<tr>
+<td>106700</td>
+<td>Civilization VI</td>
+</tr>
+<tr>
+<td>106800</td>
+<td>Dragon Ball Xenoverse 2</td>
+</tr>
+<tr>
+<td>106900</td>
+<td>Dragon Nest</td>
+</tr>
+<tr>
+<td>107000</td>
+<td>The Elder Scrolls: Legends</td>
+</tr>
+<tr>
+<td>107100</td>
+<td>EVE: Valkyrie</td>
+</tr>
+<tr>
+<td>107200</td>
+<td>For Honor</td>
+</tr>
+<tr>
+<td>107300</td>
+<td>Forza Horizon 3</td>
+</tr>
+<tr>
+<td>107400</td>
+<td>Gears of War 4</td>
+</tr>
+<tr>
+<td>107500</td>
+<td>Gigantic</td>
+</tr>
+<tr>
+<td>107600</td>
+<td>Gran Turismo Sport</td>
+</tr>
+<tr>
+<td>107700</td>
+<td>Halo Wars 2</td>
+</tr>
+<tr>
+<td>107800</td>
+<td>Hawken</td>
+</tr>
+<tr>
+<td>107900</td>
+<td>Hearthstone</td>
+</tr>
+<tr>
+<td>108000</td>
+<td>Heroes of Newerth</td>
+</tr>
+<tr>
+<td>108100</td>
+<td>LawBreakers</td>
+</tr>
+<tr>
+<td>108200</td>
+<td>Marvel Heroes</td>
+</tr>
+<tr>
+<td>108300</td>
+<td>Paragon</td>
+</tr>
+<tr>
+<td>108400</td>
+<td>Portal Knights</td>
+</tr>
+<tr>
+<td>108500</td>
+<td>Riders of Icarus</td>
+</tr>
+<tr>
+<td>108600</td>
+<td>Scrolls</td>
+</tr>
+<tr>
+<td>108700</td>
+<td>Stardew Valley</td>
+</tr>
+<tr>
+<td>108800</td>
+<td>Star Wars Battlefront</td>
+</tr>
+<tr>
+<td>108900</td>
+<td>Street Fighter V</td>
+</tr>
+<tr>
+<td>109000</td>
+<td>Strife</td>
+</tr>
+<tr>
+<td>109100</td>
+<td>Tekken 7</td>
+</tr>
+<tr>
+<td>109200</td>
+<td>The Crew</td>
+</tr>
+<tr>
+<td>109300</td>
+<td>Trove</td>
+</tr>
+<tr>
+<td>109400</td>
+<td>Warhammer 40000: Eternal Crusade</td>
+</tr>
+<tr>
+<td>109500</td>
+<td>XCOM2</td>
+</tr>
+<tr>
+<td>109600</td>
+<td>Halo Wars</td>
+</tr>
+<tr>
+<td>109700</td>
+<td>APB Reloaded</td>
+</tr>
+<tr>
+<td>109800</td>
+<td>Arena of Fate</td>
+</tr>
+<tr>
+<td>109900</td>
+<td>Call of Duty: Advanced Warfare</td>
+</tr>
+<tr>
+<td>110000</td>
+<td>Crossout</td>
+</tr>
+<tr>
+<td>110100</td>
+<td>Crusader Kings 2</td>
+</tr>
+<tr>
+<td>110200</td>
+<td>Duelyst</td>
+</tr>
+<tr>
+<td>110300</td>
+<td>Dungeon Fighter Online</td>
+</tr>
+<tr>
+<td>110400</td>
+<td>Evolve</td>
+</tr>
+<tr>
+<td>110500</td>
+<td>Ghost Recon: Wildlands</td>
+</tr>
+<tr>
+<td>110600</td>
+<td>Guns of Icarus</td>
+</tr>
+<tr>
+<td>110700</td>
+<td>Heroes &amp; Generals</td>
+</tr>
+<tr>
+<td>110800</td>
+<td>Killing Floor 2</td>
+</tr>
+<tr>
+<td>110900</td>
+<td>King of Fighters XIV</td>
+</tr>
+<tr>
+<td>111000</td>
+<td>Master of Orion</td>
+</tr>
+<tr>
+<td>111100</td>
+<td>Battlefield Hardline</td>
+</tr>
+<tr>
+<td>111200</td>
+<td>Of Kings And Men</td>
+</tr>
+<tr>
+<td>111300</td>
+<td>Planetside 2</td>
+</tr>
+<tr>
+<td>111400</td>
+<td>Robocraft</td>
+</tr>
+<tr>
+<td>111500</td>
+<td>Savage Resurrection</td>
+</tr>
+<tr>
+<td>111600</td>
+<td>Shop Heroes</td>
+</tr>
+<tr>
+<td>111700</td>
+<td>Warface</td>
+</tr>
+<tr>
+<td>111800</td>
+<td>War Thunder</td>
+</tr>
+<tr>
+<td>111900</td>
+<td>The Walking Dead: Road to Survival</td>
+</tr>
+<tr>
+<td>112100</td>
+<td>Aion</td>
+</tr>
+<tr>
+<td>112200</td>
+<td>Armello</td>
+</tr>
+<tr>
+<td>112300</td>
+<td>Atlas Reactor</td>
+</tr>
+<tr>
+<td>112400</td>
+<td>Blade &amp; Soul</td>
+</tr>
+<tr>
+<td>112500</td>
+<td>Camelot Unchained</td>
+</tr>
+<tr>
+<td>112600</td>
+<td>Lineage 2</td>
+</tr>
+<tr>
+<td>112700</td>
+<td>Master X Master</td>
+</tr>
+<tr>
+<td>112800</td>
+<td>Onward</td>
+</tr>
+<tr>
+<td>112900</td>
+<td>RIGS Mechanized Combat League</td>
+</tr>
+<tr>
+<td>113000</td>
+<td>The Black Watchmen</td>
+</tr>
+<tr>
+<td>113100</td>
+<td>Critical Ops</td>
+</tr>
+<tr>
+<td>113200</td>
+<td>Dead Or Alive 5</td>
+</tr>
+<tr>
+<td>113300</td>
+<td>Depth</td>
+</tr>
+<tr>
+<td>113400</td>
+<td>DirtyBomb</td>
+</tr>
+<tr>
+<td>113500</td>
+<td>Plants vs Zombies 2</td>
+</tr>
+<tr>
+<td>113600</td>
+<td>Pro Evolution Soccer</td>
+</tr>
+<tr>
+<td>113700</td>
+<td>Star Trek Online</td>
+</tr>
+<tr>
+<td>113800</td>
+<td>Strike Vector</td>
+</tr>
+<tr>
+<td>113900</td>
+<td>The Tomorrow Children</td>
+</tr>
+<tr>
+<td>114000</td>
+<td>Transformers: Fall of Cybertron</td>
+</tr>
+<tr>
+<td>115000</td>
+<td>Ashes of the Singularity</td>
+</tr>
+<tr>
+<td>116000</td>
+<td>Battlerite</td>
+</tr>
+<tr>
+<td>117000</td>
+<td>Borderlands</td>
+</tr>
+<tr>
+<td>118000</td>
+<td>Borderlands: The Pre-Sequel</td>
+</tr>
+<tr>
+<td>119000</td>
+<td>Civilization: Beyond Earth</td>
+</tr>
+<tr>
+<td>120000</td>
+<td>Creativerse</td>
+</tr>
+<tr>
+<td>121000</td>
+<td>Day of Infamy</td>
+</tr>
+<tr>
+<td>122000</td>
+<td>Dead by Daylight</td>
+</tr>
+<tr>
+<td>123000</td>
+<td>Divinity: Original Sin</td>
+</tr>
+<tr>
+<td>124000</td>
+<td>Divinity: Original Sin 2</td>
+</tr>
+<tr>
+<td>125000</td>
+<td>Endless Space 2</td>
+</tr>
+<tr>
+<td>126000</td>
+<td>E.T. Armies</td>
+</tr>
+<tr>
+<td>127000</td>
+<td>EverQuest 2</td>
+</tr>
+<tr>
+<td>128000</td>
+<td>Faeria</td>
+</tr>
+<tr>
+<td>129000</td>
+<td>FIFA 17</td>
+</tr>
+<tr>
+<td>130000</td>
+<td>Formula One 2016</td>
+</tr>
+<tr>
+<td>131000</td>
+<td>Fractured Space</td>
+</tr>
+<tr>
+<td>132000</td>
+<td>Garry's Mod</td>
+</tr>
+<tr>
+<td>133000</td>
+<td>Helldivers</td>
+</tr>
+<tr>
+<td>134000</td>
+<td>Homeworld</td>
+</tr>
+<tr>
+<td>135000</td>
+<td>Hybrid Wars</td>
+</tr>
+<tr>
+<td>136000</td>
+<td>Insurgency</td>
+</tr>
+<tr>
+<td>137000</td>
+<td>Left 4 Dead 2</td>
+</tr>
+<tr>
+<td>139000</td>
+<td>Loadout</td>
+</tr>
+<tr>
+<td>140000</td>
+<td>Looterkings</td>
+</tr>
+<tr>
+<td>141000</td>
+<td>Madden NFL 17</td>
+</tr>
+<tr>
+<td>142000</td>
+<td>MechWarrior Online</td>
+</tr>
+<tr>
+<td>143000</td>
+<td>Mercenary Kings</td>
+</tr>
+<tr>
+<td>144000</td>
+<td>Metal Gear Survive</td>
+</tr>
+<tr>
+<td>145000</td>
+<td>Mirage: Arcane Warfare</td>
+</tr>
+<tr>
+<td>146000</td>
+<td>Morphies Law</td>
+</tr>
+<tr>
+<td>147000</td>
+<td>NBA 2K17</td>
+</tr>
+<tr>
+<td>148000</td>
+<td>Osiris: New Dawn</td>
+</tr>
+<tr>
+<td>149000</td>
+<td>Out of Ammo</td>
+</tr>
+<tr>
+<td>150000</td>
+<td>Paladins</td>
+</tr>
+<tr>
+<td>151000</td>
+<td>Pit People</td>
+</tr>
+<tr>
+<td>152000</td>
+<td>Pokken Tournament</td>
+</tr>
+<tr>
+<td>153000</td>
+<td>Quake Champions</td>
+</tr>
+<tr>
+<td>154000</td>
+<td>Sea of Thieves</td>
+</tr>
+<tr>
+<td>155000</td>
+<td>Shard Games</td>
+</tr>
+<tr>
+<td>156000</td>
+<td>ShootMania Storm</td>
+</tr>
+<tr>
+<td>157000</td>
+<td>SMASH+GRAB</td>
+</tr>
+<tr>
+<td>158000</td>
+<td>Splatoon</td>
+</tr>
+<tr>
+<td>159000</td>
+<td>Summoners War</td>
+</tr>
+<tr>
+<td>160000</td>
+<td>TowerFall</td>
+</tr>
+<tr>
+<td>161000</td>
+<td>Toxikk</td>
+</tr>
+<tr>
+<td>162000</td>
+<td>Tribes: Ascend</td>
+</tr>
+<tr>
+<td>163000</td>
+<td>Umbrella Corps</td>
+</tr>
+<tr>
+<td>164000</td>
+<td>Uncharted 4</td>
+</tr>
+<tr>
+<td>165000</td>
+<td>Unreal Tournament</td>
+</tr>
+<tr>
+<td>166000</td>
+<td>Versus: Battle of the Gladiator</td>
+</tr>
+<tr>
+<td>168000</td>
+<td>Armored Warfare</td>
+</tr>
+<tr>
+<td>169000</td>
+<td>Breakaway</td>
+</tr>
+<tr>
+<td>170000</td>
+<td>Clash Royale</td>
+</tr>
+<tr>
+<td>171000</td>
+<td>H1Z1: King of the Kill</td>
+</tr>
+<tr>
+<td>172000</td>
+<td>Infinite Tanks</td>
+</tr>
+<tr>
+<td>173000</td>
+<td>Midair</td>
+</tr>
+<tr>
+<td>174000</td>
+<td>Nidhogg</td>
+</tr>
+<tr>
+<td>175000</td>
+<td>Nidhogg 2</td>
+</tr>
+<tr>
+<td>176000</td>
+<td>Redout</td>
+</tr>
+<tr>
+<td>177000</td>
+<td>Shards Online</td>
+</tr>
+<tr>
+<td>178000</td>
+<td>Space Hulk: Deathwing</td>
+</tr>
+<tr>
+<td>179000</td>
+<td>Watch Dogs 2</td>
+</tr>
+<tr>
+<td>180000</td>
+<td>World of Warplanes</td>
+</tr>
+<tr>
+<td>181000</td>
+<td>World of Warships</td>
+</tr>
+<tr>
+<td>182000</td>
+<td>Astroneer</td>
+</tr>
+<tr>
+<td>183000</td>
+<td>Endless Legend</td>
+</tr>
+<tr>
+<td>184000</td>
+<td>Order &amp; Chaos Online</td>
+</tr>
+<tr>
+<td>185000</td>
+<td>Project Genom</td>
+</tr>
+<tr>
+<td>186000</td>
+<td>Squad</td>
+</tr>
+<tr>
+<td>187000</td>
+<td>Order &amp; Chaos 2</td>
+</tr>
+<tr>
+<td>188000</td>
+<td>Conan Exiles</td>
+</tr>
+<tr>
+<td>189000</td>
+<td>MU Legend</td>
+</tr>
+<tr>
+<td>190000</td>
+<td>Mutant Football League</td>
+</tr>
+<tr>
+<td>191000</td>
+<td>Revelation Online</td>
+</tr>
+<tr>
+<td>192000</td>
+<td>Snow</td>
+</tr>
+<tr>
+<td>193000</td>
+<td>Absolver</td>
+</tr>
+<tr>
+<td>194000</td>
+<td>Agents of Mayhem</td>
+</tr>
+<tr>
+<td>195000</td>
+<td>A Hat in Time</td>
+</tr>
+<tr>
+<td>196000</td>
+<td>Battalion 1944</td>
+</tr>
+<tr>
+<td>197000</td>
+<td>Battletech</td>
+</tr>
+<tr>
+<td>198000</td>
+<td>Crackdown 3</td>
+</tr>
+<tr>
+<td>199000</td>
+<td>Dauntless</td>
+</tr>
+<tr>
+<td>200000</td>
+<td>EverQuest</td>
+</tr>
+<tr>
+<td>201000</td>
+<td>Fortnite Battle Royale</td>
+</tr>
+<tr>
+<td>202000</td>
+<td>Friday the 13th: The Game</td>
+</tr>
+<tr>
+<td>203000</td>
+<td>Mass Effect: Andromeda</td>
+</tr>
+<tr>
+<td>204000</td>
+<td>Lord of the Rings Online</td>
+</tr>
+<tr>
+<td>205000</td>
+<td>Pantheon</td>
+</tr>
+<tr>
+<td>206000</td>
+<td>Pillars of Eternity 2</td>
+</tr>
+<tr>
+<td>207000</td>
+<td>Red Dead Redemption 2</td>
+</tr>
+<tr>
+<td>208000</td>
+<td>Rift</td>
+</tr>
+<tr>
+<td>209000</td>
+<td>State of Decay 2</td>
+</tr>
+<tr>
+<td>210000</td>
+<td>Albion Online</td>
+</tr>
+<tr>
+<td>211000</td>
+<td>Chronicles of Elyria</td>
+</tr>
+<tr>
+<td>212000</td>
+<td>Dark and Light</td>
+</tr>
+<tr>
+<td>213000</td>
+<td>Grim Dawn</td>
+</tr>
+<tr>
+<td>214000</td>
+<td>Playerunknown's Battlegrounds</td>
+</tr>
+<tr>
+<td>215000</td>
+<td>Blockstorm</td>
+</tr>
+<tr>
+<td>216000</td>
+<td>Destiny 2</td>
+</tr>
+<tr>
+<td>217000</td>
+<td>MapleStory</td>
+</tr>
+<tr>
+<td>218000</td>
+<td>Gloria Victis</td>
+</tr>
+<tr>
+<td>219000</td>
+<td>Starcraft</td>
+</tr>
+<tr>
+<td>220000</td>
+<td>Tribal Wars 2</td>
+</tr>
+<tr>
+<td>220001</td>
+<td>Asta Online</td>
+</tr>
+<tr>
+<td>220002</td>
+<td>Awesomenauts</td>
+</tr>
+<tr>
+<td>220003</td>
+<td>Bless</td>
+</tr>
+<tr>
+<td>220004</td>
+<td>Devilian</td>
+</tr>
+<tr>
+<td>220005</td>
+<td>Gwent</td>
+</tr>
+<tr>
+<td>220006</td>
+<td>STEAM HAMMER</td>
+</tr>
+<tr>
+<td>220007</td>
+<td>The Unspoken</td>
+</tr>
+<tr>
+<td>220008</td>
+<td>Titan Siege</td>
+</tr>
+<tr>
+<td>220009</td>
+<td>Call of Duty: WWII</td>
+</tr>
+<tr>
+<td>220010</td>
+<td>Age of Empires II</td>
+</tr>
+<tr>
+<td>220011</td>
+<td>Crossfire</td>
+</tr>
+<tr>
+<td>220012</td>
+<td>Foxhole</td>
+</tr>
+<tr>
+<td>220013</td>
+<td>Hearts of Iron 4</td>
+</tr>
+<tr>
+<td>220014</td>
+<td>Kingdom Hearts Union χ</td>
+</tr>
+<tr>
+<td>220015</td>
+<td>Mario Kart 8</td>
+</tr>
+<tr>
+<td>220016</td>
+<td>Marvel vs Capcom: Infinite</td>
+</tr>
+<tr>
+<td>220017</td>
+<td>Rising Storm 2: Vietnam</td>
+</tr>
+<tr>
+<td>220018</td>
+<td>Star Wars Galaxy of Heroes</td>
+</tr>
+<tr>
+<td>220019</td>
+<td>Stellaris</td>
+</tr>
+<tr>
+<td>220020</td>
+<td>Surviving Mars</td>
+</tr>
+<tr>
+<td>220022</td>
+<td>Wakfu</td>
+</tr>
+<tr>
+<td>220023</td>
+<td>Worlds Adrift</td>
+</tr>
+<tr>
+<td>220024</td>
+<td>Arena of Valor</td>
+</tr>
+<tr>
+<td>220025</td>
+<td>Aura Kingdom</td>
+</tr>
+<tr>
+<td>220026</td>
+<td>Black Squad</td>
+</tr>
+<tr>
+<td>220027</td>
+<td>Castle Story</td>
+</tr>
+<tr>
+<td>220028</td>
+<td>Citadel</td>
+</tr>
+<tr>
+<td>220029</td>
+<td>Crowfall</td>
+</tr>
+<tr>
+<td>220030</td>
+<td>Crusaders of Light</td>
+</tr>
+<tr>
+<td>220031</td>
+<td>Divekick</td>
+</tr>
+<tr>
+<td>220032</td>
+<td>Escape from Tarkov</td>
+</tr>
+<tr>
+<td>220033</td>
+<td>Everybody's Golf</td>
+</tr>
+<tr>
+<td>220034</td>
+<td>FutureFight</td>
+</tr>
+<tr>
+<td>220035</td>
+<td>Hyper Universe</td>
+</tr>
+<tr>
+<td>220036</td>
+<td>Keystone</td>
+</tr>
+<tr>
+<td>220037</td>
+<td>Kritika Online</td>
+</tr>
+<tr>
+<td>220038</td>
+<td>Livelock</td>
+</tr>
+<tr>
+<td>220039</td>
+<td>MOBA Legends</td>
+</tr>
+<tr>
+<td>220040</td>
+<td>NextDay</td>
+</tr>
+<tr>
+<td>220041</td>
+<td>Payday 2</td>
+</tr>
+<tr>
+<td>220042</td>
+<td>Planet Coaster</td>
+</tr>
+<tr>
+<td>220043</td>
+<td>PWND</td>
+</tr>
+<tr>
+<td>220044</td>
+<td>Roblox</td>
+</tr>
+<tr>
+<td>220045</td>
+<td>Shadowverse</td>
+</tr>
+<tr>
+<td>220046</td>
+<td>Spiral Knights</td>
+</tr>
+<tr>
+<td>220047</td>
+<td>Splatoon 2</td>
+</tr>
+<tr>
+<td>220048</td>
+<td>Tower Unite</td>
+</tr>
+<tr>
+<td>220049</td>
+<td>Tree of Life</td>
+</tr>
+<tr>
+<td>220050</td>
+<td>Witch It</td>
+</tr>
+<tr>
+<td>220051</td>
+<td>Alicia Online</td>
+</tr>
+<tr>
+<td>220052</td>
+<td>Elyon - Ascent: Infinite Realm</td>
+</tr>
+<tr>
+<td>220053</td>
+<td>Ashes of Creation</td>
+</tr>
+<tr>
+<td>220054</td>
+<td>Brawl Stars</td>
+</tr>
+<tr>
+<td>220055</td>
+<td>Darkfall: New Dawn</td>
+</tr>
+<tr>
+<td>220056</td>
+<td>Darwin Project</td>
+</tr>
+<tr>
+<td>220057</td>
+<td>Dissidia: Final Fantasy NT</td>
+</tr>
+<tr>
+<td>220058</td>
+<td>Dofus</td>
+</tr>
+<tr>
+<td>220059</td>
+<td>Dragon Ball FighterZ</td>
+</tr>
+<tr>
+<td>220060</td>
+<td>Dual Universe</td>
+</tr>
+<tr>
+<td>220061</td>
+<td>Dungeons &amp; Dragons Online</td>
+</tr>
+<tr>
+<td>220062</td>
+<td>Elsword</td>
+</tr>
+<tr>
+<td>220063</td>
+<td>Heliborne</td>
+</tr>
+<tr>
+<td>220064</td>
+<td>Lineage 2: Revolution</td>
+</tr>
+<tr>
+<td>220065</td>
+<td>Lost Ark</td>
+</tr>
+<tr>
+<td>220066</td>
+<td>Orcs Must Die! Unchained</td>
+</tr>
+<tr>
+<td>220067</td>
+<td>Raiders of the Broken Planet</td>
+</tr>
+<tr>
+<td>220068</td>
+<td>Star Wars Battlefront II</td>
+</tr>
+<tr>
+<td>220069</td>
+<td>Tantra Rumble</td>
+</tr>
+<tr>
+<td>220070</td>
+<td>The Exiled</td>
+</tr>
+<tr>
+<td>220071</td>
+<td>Total War: ARENA</td>
+</tr>
+<tr>
+<td>220072</td>
+<td>Total War: WARHAMMER II</td>
+</tr>
+<tr>
+<td>220073</td>
+<td>Unison League</td>
+</tr>
+<tr>
+<td>220074</td>
+<td>ValnirRok</td>
+</tr>
+<tr>
+<td>221074</td>
+<td>Brawlhalla</td>
+</tr>
+<tr>
+<td>222074</td>
+<td>Age of Conan: Unchained</td>
+</tr>
+<tr>
+<td>223074</td>
+<td>Clash of Kings</td>
+</tr>
+<tr>
+<td>224074</td>
+<td>Closers</td>
+</tr>
+<tr>
+<td>225074</td>
+<td>Dungeons &amp; Dragons</td>
+</tr>
+<tr>
+<td>226074</td>
+<td>Eternal</td>
+</tr>
+<tr>
+<td>227074</td>
+<td>Fantasy Strike</td>
+</tr>
+<tr>
+<td>228074</td>
+<td>Fractured</td>
+</tr>
+<tr>
+<td>229074</td>
+<td>Free Fire</td>
+</tr>
+<tr>
+<td>230074</td>
+<td>Harry Potter: Wizards Unite</td>
+</tr>
+<tr>
+<td>231074</td>
+<td>Hell Let Loose</td>
+</tr>
+<tr>
+<td>232074</td>
+<td>Holdfast: Nations At War</td>
+</tr>
+<tr>
+<td>233074</td>
+<td>Honkai Impact 3rd</td>
+</tr>
+<tr>
+<td>234074</td>
+<td>iRacing</td>
+</tr>
+<tr>
+<td>235074</td>
+<td>Ironsight</td>
+</tr>
+<tr>
+<td>236074</td>
+<td>Kerbal Space Program</td>
+</tr>
+<tr>
+<td>237074</td>
+<td>King of Avalon</td>
+</tr>
+<tr>
+<td>238074</td>
+<td>Laser League</td>
+</tr>
+<tr>
+<td>239074</td>
+<td>Maelstrom</td>
+</tr>
+<tr>
+<td>240074</td>
+<td>Magic: The Gathering</td>
+</tr>
+<tr>
+<td>241074</td>
+<td>Monster Hunter: World</td>
+</tr>
+<tr>
+<td>242074</td>
+<td>OrbusVR</td>
+</tr>
+<tr>
+<td>243074</td>
+<td>Pathfinder</td>
+</tr>
+<tr>
+<td>244074</td>
+<td>Post Scriptum</td>
+</tr>
+<tr>
+<td>245074</td>
+<td>Shadowrun</td>
+</tr>
+<tr>
+<td>246074</td>
+<td>SoulWorker</td>
+</tr>
+<tr>
+<td>247074</td>
+<td>Space Junkies</td>
+</tr>
+<tr>
+<td>248074</td>
+<td>SpellForce 3</td>
+</tr>
+<tr>
+<td>249074</td>
+<td>Squids From Space</td>
+</tr>
+<tr>
+<td>250074</td>
+<td>Stick Fight: The Game</td>
+</tr>
+<tr>
+<td>251074</td>
+<td>13th Age</td>
+</tr>
+<tr>
+<td>252074</td>
+<td>The Wild Eight</td>
+</tr>
+<tr>
+<td>253074</td>
+<td>Tree of Savior</td>
+</tr>
+<tr>
+<td>254074</td>
+<td>Valiant Force</td>
+</tr>
+<tr>
+<td>255074</td>
+<td>VRChat</td>
+</tr>
+<tr>
+<td>256074</td>
+<td>War Dragons</td>
+</tr>
+<tr>
+<td>257074</td>
+<td>Ylands</td>
+</tr>
+<tr>
+<td>258074</td>
+<td>MapleStory 2</td>
+</tr>
+<tr>
+<td>259074</td>
+<td>Call of Duty: Black Ops 4</td>
+</tr>
+<tr>
+<td>260074</td>
+<td>Sky Noon</td>
+</tr>
+<tr>
+<td>261074</td>
+<td>Unturned</td>
+</tr>
+<tr>
+<td>262074</td>
+<td>War Robots</td>
+</tr>
+<tr>
+<td>263074</td>
+<td>Game of Thrones: Conquest</td>
+</tr>
+<tr>
+<td>264074</td>
+<td>Marvel Strike Force</td>
+</tr>
+<tr>
+<td>265074</td>
+<td>Pokémon TCG Online</td>
+</tr>
+<tr>
+<td>266074</td>
+<td>SCP: Secret Laboratory</td>
+</tr>
+<tr>
+<td>267074</td>
+<td>Star Wars Commander</td>
+</tr>
+<tr>
+<td>268074</td>
+<td>Raft</td>
+</tr>
+<tr>
+<td>269074</td>
+<td>Tibia</td>
+</tr>
+<tr>
+<td>270074</td>
+<td>TerraTech</td>
+</tr>
+<tr>
+<td>271074</td>
+<td>Project: Gorgon</td>
+</tr>
+<tr>
+<td>272074</td>
+<td>Life Is Feudal: MMO</td>
+</tr>
+<tr>
+<td>273074</td>
+<td>Battlefield V</td>
+</tr>
+<tr>
+<td>274074</td>
+<td>World of Tanks Blitz</td>
+</tr>
+<tr>
+<td>275074</td>
+<td>Fallout: 76</td>
+</tr>
+<tr>
+<td>276074</td>
+<td>Infinite Flight</td>
+</tr>
+<tr>
+<td>277074</td>
+<td>Europa Universalis IV</td>
+</tr>
+<tr>
+<td>278074</td>
+<td>Rage 2</td>
+</tr>
+<tr>
+<td>279074</td>
+<td>Realm Royale</td>
+</tr>
+<tr>
+<td>280074</td>
+<td>Skull &amp; Bones</td>
+</tr>
+<tr>
+<td>281074</td>
+<td>Super Smash Bros. Ultimate</td>
+</tr>
+<tr>
+<td>282074</td>
+<td>Gears 5</td>
+</tr>
+<tr>
+<td>283074</td>
+<td>The Elder Scrolls: Blades</td>
+</tr>
+<tr>
+<td>284074</td>
+<td>Generation Zero</td>
+</tr>
+<tr>
+<td>285074</td>
+<td>Rend</td>
+</tr>
+<tr>
+<td>286074</td>
+<td>The Division 2</td>
+</tr>
+<tr>
+<td>287074</td>
+<td>Defiance 2050</td>
+</tr>
+<tr>
+<td>288074</td>
+<td>Mavericks</td>
+</tr>
+<tr>
+<td>289074</td>
+<td>Strange Brigade</td>
+</tr>
+<tr>
+<td>290074</td>
+<td>Mario Tennis Aces</td>
+</tr>
+<tr>
+<td>291074</td>
+<td>Eco</td>
+</tr>
+<tr>
+<td>292074</td>
+<td>Town of Salem</td>
+</tr>
+<tr>
+<td>293074</td>
+<td>Legends of Aria</td>
+</tr>
+<tr>
+<td>294074</td>
+<td>Ragnarok Online</td>
+</tr>
+<tr>
+<td>295074</td>
+<td>The Crew 2</td>
+</tr>
+<tr>
+<td>296074</td>
+<td>Captain Tsubasa: Dream Team</td>
+</tr>
+<tr>
+<td>297074</td>
+<td>Remnant: From the Ashes</td>
+</tr>
+<tr>
+<td>298074</td>
+<td>FIFA 19</td>
+</tr>
+<tr>
+<td>299074</td>
+<td>Madden NFL 19</td>
+</tr>
+<tr>
+<td>300074</td>
+<td>Fractured Lands</td>
+</tr>
+<tr>
+<td>301074</td>
+<td>Planet of Heroes</td>
+</tr>
+<tr>
+<td>302074</td>
+<td>Satisfactory</td>
+</tr>
+<tr>
+<td>303074</td>
+<td>Roof Rage</td>
+</tr>
+<tr>
+<td>304074</td>
+<td>Lords Mobile</td>
+</tr>
+<tr>
+<td>305074</td>
+<td>TrackMania</td>
+</tr>
+<tr>
+<td>306074</td>
+<td>Heroes Evolved</td>
+</tr>
+<tr>
+<td>307074</td>
+<td>PixARK</td>
+</tr>
+<tr>
+<td>308074</td>
+<td>Avorion</td>
+</tr>
+<tr>
+<td>309074</td>
+<td>PUBG Mobile</td>
+</tr>
+<tr>
+<td>310074</td>
+<td>Football Manager</td>
+</tr>
+<tr>
+<td>311074</td>
+<td>Adventure Quest 3D</td>
+</tr>
+<tr>
+<td>312074</td>
+<td>Anthem</td>
+</tr>
+<tr>
+<td>313074</td>
+<td>Celtic Heroes</td>
+</tr>
+<tr>
+<td>314074</td>
+<td>Dungeon Hunter Champions</td>
+</tr>
+<tr>
+<td>315074</td>
+<td>Modern Combat Versus</td>
+</tr>
+<tr>
+<td>316074</td>
+<td>Space Engineers</td>
+</tr>
+<tr>
+<td>317074</td>
+<td>SCUM</td>
+</tr>
+<tr>
+<td>318074</td>
+<td>Artifact</td>
+</tr>
+<tr>
+<td>319074</td>
+<td>Don't Starve Together</td>
+</tr>
+<tr>
+<td>320074</td>
+<td>Warhammer: Vermintide II</td>
+</tr>
+<tr>
+<td>321074</td>
+<td>Interstellar Rift</td>
+</tr>
+<tr>
+<td>322074</td>
+<td>Battlerite Royale</td>
+</tr>
+<tr>
+<td>323074</td>
+<td>osu"</td>
+</tr>
+<tr>
+<td>324074</td>
+<td>Rise of Kingdoms</td>
+</tr>
+<tr>
+<td>325074</td>
+<td>New World</td>
+</tr>
+<tr>
+<td>326074</td>
+<td>GunBound</td>
+</tr>
+<tr>
+<td>327074</td>
+<td>Mount &amp; Blade Warband</td>
+</tr>
+<tr>
+<td>328074</td>
+<td>SoulCalibur VI</td>
+</tr>
+<tr>
+<td>329074</td>
+<td>World War 3</td>
+</tr>
+<tr>
+<td>332074</td>
+<td>America's Army: Proving Grounds</td>
+</tr>
+<tr>
+<td>333074</td>
+<td>Project CARS 2</td>
+</tr>
+<tr>
+<td>334074</td>
+<td>Forza Horizon 4</td>
+</tr>
+<tr>
+<td>335074</td>
+<td>Warcraft III: Reforged</td>
+</tr>
+<tr>
+<td>336074</td>
+<td>Rise of Agon</td>
+</tr>
+<tr>
+<td>337074</td>
+<td>Ring of Elysium</td>
+</tr>
+<tr>
+<td>338074</td>
+<td>Temtem</td>
+</tr>
+<tr>
+<td>339074</td>
+<td>FIFA Mobile</td>
+</tr>
+<tr>
+<td>340074</td>
+<td>Atlas</td>
+</tr>
+<tr>
+<td>341074</td>
+<td>Digital Combat Simulator</td>
+</tr>
+<tr>
+<td>342074</td>
+<td>Last Year: The Nightmare</td>
+</tr>
+<tr>
+<td>343074</td>
+<td>The Forest</td>
+</tr>
+<tr>
+<td>344074</td>
+<td>Eden Rising</td>
+</tr>
+<tr>
+<td>345074</td>
+<td>Creative Destruction</td>
+</tr>
+<tr>
+<td>346074</td>
+<td>Final Fantasy XI</td>
+</tr>
+<tr>
+<td>347074</td>
+<td>Insurgency: Sandstorm</td>
+</tr>
+<tr>
+<td>348074</td>
+<td>Hurtworld</td>
+</tr>
+<tr>
+<td>349074</td>
+<td>Mortal Kombat 11</td>
+</tr>
+<tr>
+<td>350074</td>
+<td>World of Warcraft Classic</td>
+</tr>
+<tr>
+<td>351074</td>
+<td>Pantropy</td>
+</tr>
+<tr>
+<td>352074</td>
+<td>Apex Legends</td>
+</tr>
+<tr>
+<td>353074</td>
+<td>Rules of Survival</td>
+</tr>
+<tr>
+<td>354074</td>
+<td>Allods Online</td>
+</tr>
+<tr>
+<td>355074</td>
+<td>Star Trek Fleet Command</td>
+</tr>
+<tr>
+<td>356074</td>
+<td>Empyrion: Galactic Survival</td>
+</tr>
+<tr>
+<td>357074</td>
+<td>Mordhau</td>
+</tr>
+<tr>
+<td>358074</td>
+<td>Echo Arena</td>
+</tr>
+<tr>
+<td>359074</td>
+<td>Echo Combat</td>
+</tr>
+<tr>
+<td>360074</td>
+<td>Planetside Arena</td>
+</tr>
+<tr>
+<td>361074</td>
+<td>Halo</td>
+</tr>
+<tr>
+<td>362074</td>
+<td>Halo 2</td>
+</tr>
+<tr>
+<td>363074</td>
+<td>Halo 3</td>
+</tr>
+<tr>
+<td>364074</td>
+<td>Halo: Reach</td>
+</tr>
+<tr>
+<td>365074</td>
+<td>Halo 4</td>
+</tr>
+<tr>
+<td>366074</td>
+<td>Risk of Rain 2</td>
+</tr>
+<tr>
+<td>367074</td>
+<td>Tiny Tanks</td>
+</tr>
+<tr>
+<td>368074</td>
+<td>Mobile Legends: Bang Bang</td>
+</tr>
+<tr>
+<td>369074</td>
+<td>LifeAfter</td>
+</tr>
+<tr>
+<td>370074</td>
+<td>Splitgate: Arena Warfare</td>
+</tr>
+<tr>
+<td>371074</td>
+<td>Total War: Three Kingdoms</td>
+</tr>
+<tr>
+<td>372074</td>
+<td>Astellia Online</td>
+</tr>
+<tr>
+<td>373074</td>
+<td>FRAG Pro Shooter</td>
+</tr>
+<tr>
+<td>374074</td>
+<td>Rocket Arena</td>
+</tr>
+<tr>
+<td>375074</td>
+<td>Auto Chess</td>
+</tr>
+<tr>
+<td>376074</td>
+<td>Bleeding Edge</td>
+</tr>
+<tr>
+<td>377074</td>
+<td>Dota Underlords</td>
+</tr>
+<tr>
+<td>378074</td>
+<td>Halo Infinite</td>
+</tr>
+<tr>
+<td>379074</td>
+<td>Last Oasis</td>
+</tr>
+<tr>
+<td>380074</td>
+<td>Midnight Ghost Hunt</td>
+</tr>
+<tr>
+<td>381074</td>
+<td>Minecraft Dungeons</td>
+</tr>
+<tr>
+<td>382074</td>
+<td>Outriders</td>
+</tr>
+<tr>
+<td>383074</td>
+<td>Roller Champions</td>
+</tr>
+<tr>
+<td>384074</td>
+<td>Teamfight Tactics</td>
+</tr>
+<tr>
+<td>385074</td>
+<td>Battletoads</td>
+</tr>
+<tr>
+<td>386074</td>
+<td>Clans of Reign</td>
+</tr>
+<tr>
+<td>387074</td>
+<td>Hytale</td>
+</tr>
+<tr>
+<td>388074</td>
+<td>Killsquad</td>
+</tr>
+<tr>
+<td>389074</td>
+<td>Kingdom Under Fire 2</td>
+</tr>
+<tr>
+<td>390074</td>
+<td>Krunker</td>
+</tr>
+<tr>
+<td>391074</td>
+<td>Call of Duty: Modern Warfare</td>
+</tr>
+<tr>
+<td>392074</td>
+<td>Pokemon Sword &amp; Shield</td>
+</tr>
+<tr>
+<td>393074</td>
+<td>Skyweaver</td>
+</tr>
+<tr>
+<td>394074</td>
+<td>Streets of Rage 4</td>
+</tr>
+<tr>
+<td>395074</td>
+<td>SYNCED: Off-Planet</td>
+</tr>
+<tr>
+<td>396074</td>
+<td>The Cycle</td>
+</tr>
+<tr>
+<td>397074</td>
+<td>Call of Duty: Mobile</td>
+</tr>
+<tr>
+<td>398074</td>
+<td>FIFA 20</td>
+</tr>
+<tr>
+<td>399074</td>
+<td>Borderlands 3</td>
+</tr>
+<tr>
+<td>400074</td>
+<td>Warhammer 40K: Inquisitor - Martyr</td>
+</tr>
+<tr>
+<td>401074</td>
+<td>Black Desert Mobile</td>
+</tr>
+<tr>
+<td>402074</td>
+<td>GTFO</td>
+</tr>
+<tr>
+<td>403074</td>
+<td>Hunt: Showdown</td>
+</tr>
+<tr>
+<td>404074</td>
+<td>Old School RuneScape</td>
+</tr>
+<tr>
+<td>405074</td>
+<td>Warfield</td>
+</tr>
+<tr>
+<td>406074</td>
+<td>Magic the Gathering: Arena</td>
+</tr>
+<tr>
+<td>407074</td>
+<td>Legends of Runeterra</td>
+</tr>
+<tr>
+<td>408074</td>
+<td>Wolcen</td>
+</tr>
+<tr>
+<td>409074</td>
+<td>American Truck Simulator</td>
+</tr>
+<tr>
+<td>410074</td>
+<td>Boundless</td>
+</tr>
+<tr>
+<td>411074</td>
+<td>Broomstick League</td>
+</tr>
+<tr>
+<td>412074</td>
+<td>Call of Duty: Warzone</td>
+</tr>
+<tr>
+<td>413074</td>
+<td>Disintegration</td>
+</tr>
+<tr>
+<td>414074</td>
+<td>Euro Truck Simulator 2</td>
+</tr>
+<tr>
+<td>415074</td>
+<td>Kerbal Space Program 2</td>
+</tr>
+<tr>
+<td>416074</td>
+<td>Quantum League</td>
+</tr>
+<tr>
+<td>417074</td>
+<td>Spellbreak</td>
+</tr>
+<tr>
+<td>418074</td>
+<td>State of Survival</td>
+</tr>
+<tr>
+<td>419074</td>
+<td>Rogue Company</td>
+</tr>
+<tr>
+<td>420074</td>
+<td>Black Mesa</td>
+</tr>
+<tr>
+<td>422074</td>
+<td>Valorant</td>
+</tr>
+<tr>
+<td>423074</td>
+<td>Starborne</td>
+</tr>
+<tr>
+<td>424074</td>
+<td>Torchlight III</td>
+</tr>
+<tr>
+<td>425074</td>
+<td>Chivalry II</td>
+</tr>
+<tr>
+<td>426074</td>
+<td>Predator: Hunting Grounds</td>
+</tr>
+<tr>
+<td>427074</td>
+<td>Crucible</td>
+</tr>
+<tr>
+<td>428074</td>
+<td>KartRider: Drift</td>
+</tr>
+<tr>
+<td>429074</td>
+<td>Ninjala</td>
+</tr>
+<tr>
+<td>430074</td>
+<td>Assetto Corsa</td>
+</tr>
+<tr>
+<td>431074</td>
+<td>Assetto Corsa Competizione</td>
+</tr>
+<tr>
+<td>432074</td>
+<td>Boom Beach</td>
+</tr>
+<tr>
+<td>433074</td>
+<td>Conqueror's Blade</td>
+</tr>
+<tr>
+<td>434074</td>
+<td>Crossfire X</td>
+</tr>
+<tr>
+<td>435074</td>
+<td>DeadSide</td>
+</tr>
+<tr>
+<td>436074</td>
+<td>Dragalia Lost</td>
+</tr>
+<tr>
+<td>437074</td>
+<td>Killer Instinct</td>
+</tr>
+<tr>
+<td>438074</td>
+<td>Pokémon Unite</td>
+</tr>
+<tr>
+<td>439074</td>
+<td>Star Wars: Squadrons</td>
+</tr>
+<tr>
+<td>440074</td>
+<td>TrackMania</td>
+</tr>
+<tr>
+<td>441074</td>
+<td>World of Warships: Legends</td>
+</tr>
+<tr>
+<td>442074</td>
+<td>Seven Deadly Sins: Grand Cross</td>
+</tr>
+<tr>
+<td>443074</td>
+<td>ARMS</td>
+</tr>
+<tr>
+<td>444074</td>
+<td>Blightbound</td>
+</tr>
+<tr>
+<td>445074</td>
+<td>Contractors</td>
+</tr>
+<tr>
+<td>446074</td>
+<td>Crash Team Racing: Nitro-Fueled</td>
+</tr>
+<tr>
+<td>447074</td>
+<td>Tom Clancy's Elite Squad</td>
+</tr>
+<tr>
+<td>448074</td>
+<td>Fragsurf</td>
+</tr>
+<tr>
+<td>449074</td>
+<td>Grounded</td>
+</tr>
+<tr>
+<td>450074</td>
+<td>Marvel's Avengers</td>
+</tr>
+<tr>
+<td>451074</td>
+<td>Hyper Scape</td>
+</tr>
+<tr>
+<td>452074</td>
+<td>NBA 2K21</td>
+</tr>
+<tr>
+<td>453074</td>
+<td>Need For Speed Heat</td>
+</tr>
+<tr>
+<td>454074</td>
+<td>Plan 8</td>
+</tr>
+<tr>
+<td>455074</td>
+<td>Teppen</td>
+</tr>
+<tr>
+<td>456074</td>
+<td>Fall Guys</td>
+</tr>
+<tr>
+<td>457074</td>
+<td>Million Lords</td>
+</tr>
+<tr>
+<td>458074</td>
+<td>Tetris 99</td>
+</tr>
+<tr>
+<td>459074</td>
+<td>Among Us</td>
+</tr>
+<tr>
+<td>460074</td>
+<td>Diabotical</td>
+</tr>
+<tr>
+<td>461074</td>
+<td>League of Legends Wild Rift</td>
+</tr>
+<tr>
+<td>462074</td>
+<td>Genshin Impact</td>
+</tr>
+<tr>
+<td>463074</td>
+<td>EVE Echoes</td>
+</tr>
+<tr>
+<td>464074</td>
+<td>Baldur's Gate III</td>
+</tr>
+<tr>
+<td>465074</td>
+<td>Phasmophobia</td>
+</tr>
+<tr>
+<td>466074</td>
+<td>Call of Duty: Black Ops Cold War</td>
+</tr>
+<tr>
+<td>467074</td>
+<td>SWORD ART ONLINE Alicization Lycoris</td>
+</tr>
+<tr>
+<td>468074</td>
+<td>NARUTO TO BORUTO: Shinobi Striker</td>
+</tr>
+<tr>
+<td>469074</td>
+<td>NARUTO SHIPPUDEN: Ultimate Ninja Storm 4</td>
+</tr>
+<tr>
+<td>470074</td>
+<td>Super Buckyball Tournament</td>
+</tr>
+<tr>
+<td>471074</td>
+<td>PokerStars</td>
+</tr>
+<tr>
+<td>472074</td>
+<td>FIFA 21</td>
+</tr>
+<tr>
+<td>473074</td>
+<td>Jackbox Party</td>
+</tr>
+<tr>
+<td>474074</td>
+<td>Craftopia</td>
+</tr>
+<tr>
+<td>475074</td>
+<td>Valheim</td>
+</tr>
+<tr>
+<td>476074</td>
+<td>Knockout City</td>
+</tr>
+<tr>
+<td>477074</td>
+<td>Farming Simulator 19</td>
+</tr>
+</tbody>
+</table>
+<h3 id="user-status-object">User Status Object<a class="headerlink" href="#user-status-object" title="Permanent link">🔗</a></h3>
+<h6 id="user-status-structure">User Status Structure<a class="headerlink" href="#user-status-structure" title="Permanent link">🔗</a></h6>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td>?<a href="#user-status-content-object">user status content object</a></td>
+<td>the actual content of the status</td>
+</tr>
+<tr>
+<td>customReactionId</td>
+<td>?integer</td>
+<td>the emoji's id that goes alongside the status</td>
+</tr>
+<tr>
+<td>customReaction?</td>
+<td><a href="/resources/team#team-emoji-object">emoji object</a></td>
+<td>the emoji that goes alongside the status</td>
+</tr>
+</tbody>
+</table>
+<h6 id="example-user-status">Example User Status<a class="headerlink" href="#example-user-status" title="Permanent link">🔗</a></h6>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;document&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">      </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;paragraph&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;leaves&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;g.gg/guilded-api&quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;marks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;leaf&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;reaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">294745</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;customReaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">294745</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;blobcouple&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;png&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/448cff53087b93e72298bae9d47708f1-Full.webp?w=120&amp;h=120&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;webp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/448cff53087b93e72298bae9d47708f1-Full.webp?w=120&amp;h=120&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;apng&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">                  </span><span class="p">},</span>
+<span class="w">                  </span><span class="nt">&quot;customReactionId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">294745</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;reaction&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;leaves&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                      </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;:blobcouple:&quot;</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">&quot;marks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                      </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;leaf&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                  </span><span class="p">],</span>
+<span class="w">                  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inline&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;leaves&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;g.gg/blob-emoji &quot;</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;marks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;leaf&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;reaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">294677</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">&quot;customReaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">294677</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;blobpats&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;png&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/ff03be6efe491bc934b1c217d70da9ce-Full.webp?w=120&amp;h=120&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;webp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/ff03be6efe491bc934b1c217d70da9ce-Full.webp?w=120&amp;h=120&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;apng&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">                  </span><span class="p">},</span>
+<span class="w">                  </span><span class="nt">&quot;customReactionId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">294677</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;reaction&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;nodes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">&quot;leaves&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                      </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;:blobpats:&quot;</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">&quot;marks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">                      </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;leaf&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                  </span><span class="p">],</span>
+<span class="w">                  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">],</span>
+<span class="w">              </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;inline&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;block&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;customReactionId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">294765</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;customReaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">294765</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ablobwobwork&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;png&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/d7cf013a4d01460a81186e65f1f8c12a-Full.webp?w=120&amp;h=120&amp;ia=1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;webp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/d7cf013a4d01460a81186e65f1f8c12a-Full.webp?w=120&amp;h=120&amp;ia=1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;apng&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="example user status in the client" src="/images/example_status.png" /></p>
+<h3 id="user-status-content-object">User Status Content Object<a class="headerlink" href="#user-status-content-object" title="Permanent link">🔗</a></h3>
+<p>Status content is an example of "stacked" content, much like message data. It's pretty difficult to portray its structure in a table, so I've simply not done that. The useful part of the object is the <code>document.nodes[0].nodes</code> list. Refer to <a href="#example-user-status">this example</a> and parse it as you will.</p>
+<h3 id="flair-object">Flair Object<a class="headerlink" href="#flair-object" title="Permanent link">🔗</a></h3>
+<p>Represents a profile flair. Does not include stonks, those can be found at <a href="#user-object"><code>user.stonks</code></a>.</p>
+<h6 id="flair-structure">Flair Structure<a class="headerlink" href="#flair-structure" title="Permanent link">🔗</a></h6>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Known Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flair</td>
+<td>string</td>
+<td>name of the flair</td>
+<td><code>'gil_gang'</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>integer</td>
+<td>quantity of this flair that the user has, probably intended for stonks</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="get-user">Get User<a class="headerlink" href="#get-user" title="Permanent link">🔗</a></h2>
+<p><span class="http-verb">GET</span><span class="http-path">/users/{<a href="#user-object">user.id</a>}</span></p>
+<p>Returns a <a href="#user-object">user</a> object for a given user ID.</p>
+<h2 id="get-user-profile">Get User Profile<a class="headerlink" href="#get-user-profile" title="Permanent link">🔗</a></h2>
+<p><span class="http-verb">GET</span><span class="http-path">/users/{<a href="#user-object">user.id</a>}/profilev3</span></p>
+<p>Returns a <a href="#user-object">user</a> object for a given user ID. This slightly differs from <a href="#get-user">Get User</a>.</p>
+<h2 id="get-user-posts">Get User Posts<a class="headerlink" href="#get-user-posts" title="Permanent link">🔗</a></h2>
+<p><span class="http-verb">GET</span><span class="http-path">/users/{<a href="#user-object">user.id</a>}/posts</span></p>
+<p>Get the list of posts this user has on their profile.</p>
+<h6 id="query-params">Query Params<a class="headerlink" href="#query-params" title="Permanent link">🔗</a></h6>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>maxPosts</td>
+<td>integer</td>
+<td>the maximum amount of posts to return</td>
+<td>false</td>
+<td>7</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>integer</td>
+<td>?</td>
+<td>false</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © shay (shayypy) 2021-2022
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.instant", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>

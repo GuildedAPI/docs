@@ -1,0 +1,1502 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Unofficial documentation for Guilded's REST API.">
+      
+      
+        <meta name="author" content="Guilded Developer Resources">
+      
+      
+      
+        <link rel="prev" href="../group/">
+      
+      
+        <link rel="next" href="../user/">
+      
+      
+      <link rel="icon" href="../../logo.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Teams - Guilded API Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  
+  
+    
+  
+  <meta property="og:site_name" content="Guilded Developer Resources">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Guilded API Documentation - Teams" />
+  <meta property="og:description" content="Unofficial documentation for Guilded's REST API." />
+  <meta property="og:url" content="None" />
+  <meta name="theme-color" content="#f5c400" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="GuildedAPI" />
+  <meta name="twitter:creator" content="GuildedAPI" />
+  <meta name="twitter:title" content="Guilded API Documentation - Teams" />
+  <meta name="twitter:description" content="Unofficial documentation for Guilded's REST API." />
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#teams" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Guilded API Documentation" class="md-header__button md-logo" aria-label="Guilded API Documentation" data-md-component="logo">
+      
+  <img src="../../guilded.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Guilded API Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Teams
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/guildedapi/docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Guilded API Documentation" class="md-nav__button md-logo" aria-label="Guilded API Documentation" data-md-component="logo">
+      
+  <img src="../../guilded.svg" alt="logo">
+
+    </a>
+    Guilded API Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/guildedapi/docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../images/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Images
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../channel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Channels
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emoji/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Reactions/Emojis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../group/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Groups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Teams
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Teams
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#team-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Team Object
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#team-measurements-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Team Measurements Object
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#team-member-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Team Member Object
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ban-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ban Object
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invite-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Invite Object
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-team-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Team Info
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-team-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get Team Channels
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-team-members" class="md-nav__link">
+    <span class="md-ellipsis">
+      List Team Members
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detail-team-members" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detail Team Members
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Users
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webhook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webhooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Topics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/community-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Community Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/media/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Media Endpoints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../topics/status-codes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Status Codes in the API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="teams">Teams<a class="headerlink" href="#teams" title="Permanent link">🔗</a></h1>
+<p>The meat of communication on Guilded. They are referred to as "servers" in the UI.</p>
+<h3 id="team-object">Team Object<a class="headerlink" href="#team-object" title="Permanent link">🔗</a></h3>
+<h6 id="team-structure">Team Structure<a class="headerlink" href="#team-structure" title="Permanent link">🔗</a></h6>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="/reference#ids">generic id</a></td>
+<td>the team's id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>the team's name</td>
+</tr>
+<tr>
+<td>subdomain</td>
+<td>?string</td>
+<td>custom "url" of the team. equivalent to discord's <code>vanity_url_code</code></td>
+</tr>
+<tr>
+<td>description</td>
+<td>?string</td>
+<td>the team's description</td>
+</tr>
+<tr>
+<td>bio (deprecated)</td>
+<td>?string</td>
+<td>the team's bio - deprecated in favor of <code>description</code></td>
+</tr>
+<tr>
+<td>profilePicture</td>
+<td>?string</td>
+<td>the team's avatar url</td>
+</tr>
+<tr>
+<td>teamDashImage</td>
+<td>?string</td>
+<td>the team's banner url</td>
+</tr>
+<tr>
+<td>ownerId</td>
+<td><a href="/reference#ids">user id</a></td>
+<td>id of the team's owner</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>ISO8601 timestamp</td>
+<td>when the team was created</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>the <a href="#team-types">type of team</a></td>
+</tr>
+<tr>
+<td>members?*</td>
+<td>array of <a href="#team-member-object">members</a></td>
+<td>the members in this team</td>
+</tr>
+<tr>
+<td>bots?**</td>
+<td>array of flow-bots</td>
+<td>the flow-bots in this team</td>
+</tr>
+<tr>
+<td>webhooks?**</td>
+<td>array of <a href="/resources/webhook#webhook-object">webhooks</a></td>
+<td>the webhooks in this team</td>
+</tr>
+<tr>
+<td>baseGroup</td>
+<td><a href="/resources/group#group-object">group</a></td>
+<td>the team's base group</td>
+</tr>
+<tr>
+<td>visibility</td>
+<td>string</td>
+<td>the team's <a href="#team-visibility">visibility setting</a></td>
+</tr>
+<tr>
+<td>isRecruiting</td>
+<td>boolean</td>
+<td>whether the team is accepting new applications</td>
+</tr>
+<tr>
+<td>isVerified</td>
+<td>boolean</td>
+<td>whether the team is verified</td>
+</tr>
+<tr>
+<td>isPro</td>
+<td>boolean</td>
+<td>whether the team is "pro" - probably deprecated</td>
+</tr>
+<tr>
+<td>isPublic</td>
+<td>boolean</td>
+<td>whether the team is public. true when <code>visibility</code> is <code>open-entry</code></td>
+</tr>
+<tr>
+<td>isDiscoverable</td>
+<td>boolean</td>
+<td>whether the team will show up in search results &amp; the server directory</td>
+</tr>
+<tr>
+<td>rolesById</td>
+<td>object</td>
+<td>mapping of role id (string) to role, plus a duplicate <code>baseRole</code></td>
+</tr>
+<tr>
+<td>userFollowsTeam</td>
+<td>boolean</td>
+<td>whether the current users follows the team</td>
+</tr>
+<tr>
+<td>isUserApplicant?</td>
+<td>boolean</td>
+<td>whether the current user has a pending application in the team</td>
+</tr>
+<tr>
+<td>isUserInvited?</td>
+<td>boolean</td>
+<td>whether the current user has been invited to the team</td>
+</tr>
+<tr>
+<td>isUserBannedFromTeam?</td>
+<td>boolean</td>
+<td>whether the current user is banned from the team</td>
+</tr>
+<tr>
+<td>followerCount</td>
+<td>?integer</td>
+<td>the number of followers the team has (approximate)</td>
+</tr>
+<tr>
+<td>memberCount</td>
+<td>?string</td>
+<td>the number of members the team has (approximate)</td>
+</tr>
+<tr>
+<td>onlineMemberCount?</td>
+<td>?string</td>
+<td>the number of non-offline members in the team</td>
+</tr>
+<tr>
+<td>measurements?</td>
+<td>object</td>
+<td>a <a href="#team-measurements-object">team measurements</a> object for the team</td>
+</tr>
+<tr>
+<td>games?</td>
+<td>array of <a href="/resources/user#game-ids">games ids</a></td>
+<td>the games that the team plays</td>
+</tr>
+<tr>
+<td>additionalGameInfo</td>
+<td>object</td>
+<td>mapping of game id to <code>region</code> and <code>platformps4,xbox,pc</code>, both optional strings</td>
+</tr>
+</tbody>
+</table>
+<p>* <code>members</code> will only contain the current user's member data for the <a href="#get-team-info">Get Team Info</a> response.</p>
+<p>** <code>bots</code> and <code>webhooks</code> are not present for the <a href="#get-team-info">Get Team Info</a> response.</p>
+<h6 id="example-team">Example Team<a class="headerlink" href="#example-team" title="Permanent link">🔗</a></h6>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4R5q39VR&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Guilded-API&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;subdomain&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;guilded-api&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;bio&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timezone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;America/New York (EST/EDT)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The unofficial resource hub for all API-related projects and development to do with the Guilded API. API docs: guildedapi.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;community&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;open-entry&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;createdAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-07-31T18:10:35.302Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ownerId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EdVMVKR4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;profilePicture&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamAvatar/a66e23924a4bc49fbf9242a98d955a7c-Large.png?w=450&amp;h=450&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;teamDashImage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamBanner/62d94db23c910fa3a209b5edf2cf7387-Hero.png?w=1067&amp;h=600&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;homeBannerImageSm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamBanner/62d94db23c910fa3a209b5edf2cf7387-Hero.png?w=1067&amp;h=600&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;homeBannerImageMd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamBanner/62d94db23c910fa3a209b5edf2cf7387-Hero.png?w=1067&amp;h=600&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;homeBannerImageLg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/TeamBanner/62d94db23c910fa3a209b5edf2cf7387-Hero.png?w=1067&amp;h=600&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;additionalInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;platform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;native&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;additionalGameInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nt">&quot;teamPreferences&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;socialInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;twitter&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@GuildedAPI&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;isRecruiting&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;isVerified&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;isPro&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;isPublic&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;notificationPreference&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;isDiscoverable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;baseGroup&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;l3GmAe9d&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;team&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Server home&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;avatar&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;banner&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;teamId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4R5q39VR&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;gameId&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;visibilityTeamRoleId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23138884</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;membershipTeamRoleId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23138884</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;isBase&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;isPublic&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;additionalGameInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">        </span><span class="nt">&quot;createdBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;createdAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-07-31T18:10:35.376Z&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;updatedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EdVMVKR4&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;customReactionId&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;updatedAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-05-03T19:20:08.249Z&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;deletedAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;archivedAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;archivedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;followingGroups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nt">&quot;rolesById&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;26302427&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">26302427</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bot&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;xp&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;bots&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;chat&quot;</span><span class="p">:</span><span class="mi">503</span><span class="p">,</span><span class="nt">&quot;docs&quot;</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="nt">&quot;forms&quot;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span><span class="nt">&quot;lists&quot;</span><span class="p">:</span><span class="mi">63</span><span class="p">,</span><span class="nt">&quot;media&quot;</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="nt">&quot;voice&quot;</span><span class="p">:</span><span class="mi">8179</span><span class="p">,</span><span class="nt">&quot;forums&quot;</span><span class="p">:</span><span class="mi">123</span><span class="p">,</span><span class="nt">&quot;general&quot;</span><span class="p">:</span><span class="mi">130100</span><span class="p">,</span><span class="nt">&quot;streams&quot;</span><span class="p">:</span><span class="mi">51</span><span class="p">,</span><span class="nt">&quot;brackets&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="nt">&quot;calendar&quot;</span><span class="p">:</span><span class="mi">31</span><span class="p">,</span><span class="nt">&quot;scheduling&quot;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="nt">&quot;matchmaking&quot;</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="nt">&quot;recruitment&quot;</span><span class="p">:</span><span class="mi">55</span><span class="p">,</span><span class="nt">&quot;announcements&quot;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span><span class="nt">&quot;customization&quot;</span><span class="p">:</span><span class="mi">49</span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;teamId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4R5q39VR&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;createdAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-12-01T17:11:43.610Z&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;updatedAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-03-02T22:47:11.473Z&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;isBase&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;discordRoleId&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;discordSyncedAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;isMentionable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;isSelfAssignable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;isDisplayedSeparately&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;botScope&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;userId&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;baseRole&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23138884</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Member&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ececee&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;chat&quot;</span><span class="p">:</span><span class="mi">243</span><span class="p">,</span><span class="nt">&quot;docs&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nt">&quot;forms&quot;</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span><span class="nt">&quot;lists&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nt">&quot;media&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nt">&quot;voice&quot;</span><span class="p">:</span><span class="mi">6211</span><span class="p">,</span><span class="nt">&quot;forums&quot;</span><span class="p">:</span><span class="mi">67</span><span class="p">,</span><span class="nt">&quot;streams&quot;</span><span class="p">:</span><span class="mi">51</span><span class="p">,</span><span class="nt">&quot;calendar&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nt">&quot;scheduling&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="nt">&quot;announcements&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nt">&quot;customization&quot;</span><span class="p">:</span><span class="mi">16</span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;teamId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4R5q39VR&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;createdAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-07-31T18:10:35.350Z&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;updatedAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-03-02T22:47:11.473Z&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;isBase&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;discordRoleId&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;discordSyncedAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;isMentionable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;isSelfAssignable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;isDisplayedSeparately&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;botScope&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;userFollowsTeam&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;followerCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">88</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;memberCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1958&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;members&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EdVMVKR4&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shay&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;membershipRole&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;profilePicture&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/c2da767cf9795e7c73facc399159fefc-Large.png?w=450&amp;h=450&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;roleIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">23138891</span><span class="p">,</span><span class="mi">23281097</span><span class="p">,</span><span class="mi">23138936</span><span class="p">,</span><span class="mi">23139118</span><span class="p">,</span><span class="mi">23138883</span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;upsell&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;serverSubscriptionPlans&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nt">&quot;teamPaymentInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;games&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">    </span><span class="nt">&quot;bannerImages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nt">&quot;lfmStatusByGameId&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nt">&quot;drawbridgeGateEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;flair&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;socialLinks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h5 id="team-types">Team Types<a class="headerlink" href="#team-types" title="Permanent link">🔗</a></h5>
+<p>Team types are probably used in server discovery.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>team</td>
+</tr>
+<tr>
+<td>organization</td>
+</tr>
+<tr>
+<td>community</td>
+</tr>
+<tr>
+<td>clan</td>
+</tr>
+<tr>
+<td>guild</td>
+</tr>
+<tr>
+<td>friends</td>
+</tr>
+<tr>
+<td>streaming</td>
+</tr>
+<tr>
+<td>other</td>
+</tr>
+</tbody>
+</table>
+<h5 id="team-visibility">Team Visibility<a class="headerlink" href="#team-visibility" title="Permanent link">🔗</a></h5>
+<p>Reflects the team's <a href="https://www.guilded.gg/blog/server-privacy">privacy setting</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private</td>
+<td>the team is not visible through its direct link and cannot show up in search results</td>
+<td>false</td>
+</tr>
+<tr>
+<td>default</td>
+<td>the team is visible through its direct link and will show up in search results if <code>team.isDiscoverable</code> is <code>true</code></td>
+<td>true</td>
+</tr>
+<tr>
+<td>open-entry</td>
+<td><code>default</code>, but the team does not require an invite to join</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<h3 id="team-measurements-object">Team Measurements Object<a class="headerlink" href="#team-measurements-object" title="Permanent link">🔗</a></h3>
+<p>This object contains some statistics about the team. When available, you should prefer this object's <code>numMembers</code> over <code>team.memberCount</code> because it is more accurate.</p>
+<h6 id="team-measurements-structure">Team Measurements Structure<a class="headerlink" href="#team-measurements-structure" title="Permanent link">🔗</a></h6>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>numMembers</td>
+<td>integer</td>
+<td>the number of members the team has</td>
+</tr>
+<tr>
+<td>numFollowers</td>
+<td>integer or string</td>
+<td>the number of followers the team has</td>
+</tr>
+<tr>
+<td>numRecentMatches</td>
+<td>integer</td>
+<td>the number of matches the team has participated in recently</td>
+</tr>
+<tr>
+<td>numRecentMatchWins</td>
+<td>integer</td>
+<td>the number of matches the team has won recently</td>
+</tr>
+<tr>
+<td>matchmakingGameRanks</td>
+<td>array</td>
+<td></td>
+</tr>
+<tr>
+<td>numFollowersAndMembers</td>
+<td>integer</td>
+<td><code>numMembers</code> + <code>numFollowers</code></td>
+</tr>
+<tr>
+<td>numMembersAddedInLastDay</td>
+<td>integer</td>
+<td>the number of members who have joined the team in the last 24 hours</td>
+</tr>
+<tr>
+<td>numMembersAddedInLastWeek</td>
+<td>integer</td>
+<td>the number of members who have joined the team in the last 7 days</td>
+</tr>
+<tr>
+<td>numMembersAddedInLastMonth</td>
+<td>integer</td>
+<td>the number of members who have joined the team in the last 30 days</td>
+</tr>
+<tr>
+<td>mostRecentMemberLastOnline</td>
+<td>integer</td>
+<td>unix timestamp of the last time a member was not offline in the team</td>
+</tr>
+<tr>
+<td>subscriptionMonthsRemaining (deprecated)</td>
+<td>?integer</td>
+<td>the number of months remaining on the team's <a href="https://www.guilded.gg/p/new-feature-november">guilded gold subscription</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="team-member-object">Team Member Object<a class="headerlink" href="#team-member-object" title="Permanent link">🔗</a></h3>
+<h6 id="team-member-structure">Team Member Structure<a class="headerlink" href="#team-member-structure" title="Permanent link">🔗</a></h6>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="/reference#ids">generic id</a></td>
+<td>the user's id</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>the user's username, not unique across the platform</td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>string</td>
+<td>the member's team-specific nickname</td>
+</tr>
+<tr>
+<td>badges</td>
+<td>?array</td>
+<td>the badges that this member has ("GuildedStaff", "PartnerProgram", ?)</td>
+</tr>
+<tr>
+<td>membershipRole</td>
+<td>string</td>
+<td>?</td>
+</tr>
+<tr>
+<td>profilePicture</td>
+<td>string (url)</td>
+<td>the user's avatar url</td>
+</tr>
+<tr>
+<td>profileBannerBlur</td>
+<td>?string (url)</td>
+<td>the user's banner url</td>
+</tr>
+<tr>
+<td>joinDate</td>
+<td>ISO8601 timestamp</td>
+<td>when this member joined their team</td>
+</tr>
+<tr>
+<td>userStatus</td>
+<td><a href="/resources/user#user-status-object">user status object</a></td>
+<td>this user's current activity/"status"</td>
+</tr>
+<tr>
+<td>userPresenceStatus</td>
+<td>integer</td>
+<td>this <a href="/resources/user#user-presence">user's presence</a> (online, idle, etc)</td>
+</tr>
+<tr>
+<td>userTransientStatus</td>
+<td><a href="/resources/user#transient-status">transient status object</a></td>
+<td>this user's transient status (game, streaming, ?)</td>
+</tr>
+<tr>
+<td>aliases</td>
+<td>array</td>
+<td>the linked games on the user's profile</td>
+</tr>
+<tr>
+<td>lastOnline</td>
+<td>ISO8601 timestamp</td>
+<td>when the user was last online</td>
+</tr>
+<tr>
+<td>roleIds</td>
+<td>array of integer</td>
+<td>the roles' ids that the member has</td>
+</tr>
+<tr>
+<td>subscriptionType</td>
+<td>?integer(?)</td>
+<td>guilded gold-related value</td>
+</tr>
+<tr>
+<td>socialLinks</td>
+<td>array of dictionaries</td>
+<td>each item has <code>type</code> - the platform, <code>handle</code> - the user's username on that platform, and <code>additionalInfo</code> - unknown</td>
+</tr>
+<tr>
+<td>teamXp</td>
+<td>integer</td>
+<td>how much xp the member has in this team</td>
+</tr>
+</tbody>
+</table>
+<h6 id="example-team-member">Example Team Member<a class="headerlink" href="#example-team-member" title="Permanent link">🔗</a></h6>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EdVMVKR4&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shay&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;nickname&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;badges&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;joinDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-07-31T18:10:35.302Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;membershipRole&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;lastOnline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-03-07T05:22:09.597Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;profilePicture&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/74bfc8be9425a926a1f48d9b078509bc-Large.png?w=450&amp;h=450&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;profileBannerBlur&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserBanner/acaa9d0f78dd8cdd93f3ce44d14c0260-Hero.png?w=1500&amp;h=500&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;userStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;customReactionId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">294765</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;customReaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">294765</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ablobwobwork&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;png&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/d7cf013a4d01460a81186e65f1f8c12a-Full.webp?w=120&amp;h=120&amp;ia=1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;webp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/d7cf013a4d01460a81186e65f1f8c12a-Full.webp?w=120&amp;h=120&amp;ia=1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;apng&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;roleIds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="mi">23138883</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">23138891</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">23138936</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">23139118</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">23281097</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;subscriptionType&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;socialLinks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;twitter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;handle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GuildedAPI&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;additionalInfo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;aliases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="nt">&quot;userPresenceStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;userTransientStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;teamXp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="ban-object">Ban Object<a class="headerlink" href="#ban-object" title="Permanent link">🔗</a></h3>
+<h6 id="ban-structure">Ban Structure<a class="headerlink" href="#ban-structure" title="Permanent link">🔗</a></h6>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reason</td>
+<td>string</td>
+<td>the reason for the ban (can be empty, won't be null)</td>
+</tr>
+<tr>
+<td>userId</td>
+<td><a href="/resources/user#user-object">user id</a></td>
+<td>the banned user's id</td>
+</tr>
+<tr>
+<td>bannedBy</td>
+<td><a href="/resources/user#user-object">user id</a></td>
+<td>the moderator who banned this user</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>ISO8601 timestamp</td>
+<td>when this ban was created</td>
+</tr>
+</tbody>
+</table>
+<h6 id="example-ban">Example Ban<a class="headerlink" href="#example-ban" title="Permanent link">🔗</a></h6>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;something funny here, idk&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;userId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2d2Wg8Pm&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;bannedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EdVMVKR4&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;createdAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-03-13T18:15:53.622Z&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="invite-object">Invite Object<a class="headerlink" href="#invite-object" title="Permanent link">🔗</a></h3>
+<h6 id="invite-structure">Invite Structure<a class="headerlink" href="#invite-structure" title="Permanent link">🔗</a></h6>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="/reference#ids">generic id</a></td>
+<td>the invite's id, referred to as an 'invite code' in the client</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>ISO8601 timestamp</td>
+<td>when the invite was created</td>
+</tr>
+<tr>
+<td>teamId</td>
+<td><a href="#team-object">team id</a></td>
+<td>the team's id that the invite is for</td>
+</tr>
+<tr>
+<td>invitedBy</td>
+<td><a href="/resources/user#user-object">user id</a></td>
+<td>the user's id who created the invite</td>
+</tr>
+<tr>
+<td>userBy</td>
+<td>?<a href="/resources/user#user-object">user id</a></td>
+<td>a user's id who used the invite?</td>
+</tr>
+<tr>
+<td>gameId</td>
+<td>?integer</td>
+<td>the game's id that the invite is for</td>
+</tr>
+<tr>
+<td>useCount</td>
+<td>integer</td>
+<td>how many times the invite has been used</td>
+</tr>
+</tbody>
+</table>
+<h6 id="example-invite">Example Invite<a class="headerlink" href="#example-invite" title="Permanent link">🔗</a></h6>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;XENGAmn2&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;createdAt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-26T22:43:52.380Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;teamId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4R5q39VR&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;invitedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EdVMVKR4&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;usedBy&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;gameId&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;useCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="get-team-info">Get Team Info<a class="headerlink" href="#get-team-info" title="Permanent link">🔗</a></h2>
+<p><span class="http-verb">GET</span><span class="http-path">/teams/{<a href="#team-object">team.id</a>}/info</span></p>
+<p>Returns a <a href="#team-object">team</a> object wrapped in a <code>team</code> key on success. If the team is invalid or private, this returns HTTP 404.</p>
+<h2 id="get-team-channels">Get Team Channels<a class="headerlink" href="#get-team-channels" title="Permanent link">🔗</a></h2>
+<p><span class="http-verb">GET</span><span class="http-path">/teams/{<a href="#team-object">team.id</a>}/channels</span></p>
+<p>Returns a list of team <a href="/resources/channel#channel-object">channel</a> objects.</p>
+<h2 id="list-team-members">List Team Members<a class="headerlink" href="#list-team-members" title="Permanent link">🔗</a></h2>
+<p><span class="http-verb">GET</span><span class="http-path">/teams/{<a href="#team-object">team.id</a>}/members</span></p>
+<p>Returns a list of partial <a href="#team-member-object">team members</a>, flow bots, and <a href="/topics/webhook#webhook-object">webhooks</a> under <code>members</code>, <code>bots</code>, and <code>webhooks</code> keys respectively. A partial team member object includes, at minimum, <code>id</code> and <code>name</code>, but may also include one or multiple of <code>profilePicture</code>, <code>roleIds</code>, <code>userPresenceStatus</code>, and <code>nickname</code>.</p>
+<h2 id="detail-team-members">Detail Team Members<a class="headerlink" href="#detail-team-members" title="Permanent link">🔗</a></h2>
+<p><span class="http-verb">POST</span><span class="http-path">/teams/{<a href="#team-object">team.id</a>}/members/detail</span></p>
+<p>Returns an object of provided user IDs to <a href="#team-member-object">team members</a>.</p>
+<h6 id="json-params">JSON Params<a class="headerlink" href="#json-params" title="Permanent link">🔗</a></h6>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userIds</td>
+<td>array of <a href="/reference#ids">generic ids</a></td>
+<td>the members' IDs to get member details for</td>
+</tr>
+<tr>
+<td>idsForBasicInfo?</td>
+<td>array of <a href="/reference#ids">generic ids</a></td>
+<td>if an ID is included here, its entry in the response will also include basic user information</td>
+</tr>
+</tbody>
+</table>
+<h6 id="example-response">Example Response<a class="headerlink" href="#example-response" title="Permanent link">🔗</a></h6>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;EdVMVKR4&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;userStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;customReactionId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">925765</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;customReaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">925765</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;blobspider&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;png&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/b721e28333392c335fcff52eb27997fd-Full.webp?w=120&amp;h=120&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;webp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/CustomReaction/b721e28333392c335fcff52eb27997fd-Full.webp?w=120&amp;h=120&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;apng&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EdVMVKR4&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shay&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;membershipRole&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;profilePicture&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://s3-us-west-2.amazonaws.com/www.guilded.gg/UserAvatar/c2da767cf9795e7c73facc399159fefc-Large.png?w=450&amp;h=450&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;userTransientStatus&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;teamXp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">117</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;lastOnline&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-04-29T21:10:42.120Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;joinDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-07-31T18:10:35.302Z&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stonks&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © shay (shayypy) 2021-2022
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.instant", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>

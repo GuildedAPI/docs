@@ -1,0 +1,76 @@
+:root>* {
+    --md-default-fg-color: #ececee;
+    --md-primary-fg-color: #f5c400;
+    --md-primary-fg-color--dark: #f5c400;
+    --md-default-fg-color--light: #ececee;
+    --md-default-fg-color--lighter: #1F2126;
+    --md-primary-bg-color: black;
+    --md-default-bg-color: #3c3e48;
+    --md-accent-fg-color: #EDD658;
+
+    --md-code-bg-color: #292b32;
+    --md-code-fg-color: hsla(0, 0%, 96%, 1);
+    --md-code-hl-keyword-color: #dbdcdc;
+    --md-code-hl-string-color: #e6db74;
+    --md-code-hl-number-color: #ae81ff;
+    --md-code-hl-name-color: #ae81ff;
+    --md-code-hl-punctuation-color: #bd2760;
+
+    --md-footer-bg-color: #2F313A
+}
+
+body {
+    font-family: 'Gotham Narrow', Arial, sans-serif;
+    color: var(--md-default-fg-color--light);
+}
+h1 {font-weight: bold !important}
+h6 {font-size: 16px !important}
+
+@font-face {
+    font-family: 'Gotham Narrow';
+    src: url('https://www.guilded.gg/fonts/gotham-narrow-book.woff2') format('woff2'),
+        url('https://www.guilded.gg/fonts/gotham-narrow-book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Gotham Narrow';
+    src: url('https://www.guilded.gg/fonts/gotham-narrow-book-italic.woff2') format('woff2'),
+        url('https://www.guilded.gg/fonts/gotham-narrow-book-italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Gotham Narrow';
+    src: url('https://www.guilded.gg/fonts/gotham-narrow-bold.woff2') format('woff2'),
+        url('https://www.guilded.gg/fonts/gotham-narrow-bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Gotham Narrow';
+    src: url('https://www.guilded.gg/fonts/gotham-narrow-bold-italic.woff2') format('woff2'),
+        url('https://www.guilded.gg/fonts/gotham-narrow-bold-italic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+.md-typeset table:not([class]) {background-color: var(--md-code-bg-color);}
+th {background-color: var(--md-primary-bg-color)!important; color:var(--md-default-fg-color)!important;}
+.http-verb {
+    font-size: 20px;
+    color: var(--md-primary-fg-color);
+    font-family: Menlo,Consolas,Monaco,monospace;
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+.http-path {
+    font-family: Menlo,Consolas,Monaco,monospace;
+    font-size: 18px;
+}
+.http-container {margin: 0 !important}
+h2 {margin-bottom: 0 !important;}
